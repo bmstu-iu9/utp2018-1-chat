@@ -27,7 +27,7 @@ body {
     font-weight: 400;
     overflow-x: hidden;
     opacity: 1;
-    background: f2f7f9;
+    background: #f2f7f9;
 }
 
 .img-responsive {
@@ -38,16 +38,6 @@ body {
 
 .text-center {
     text-align: center;
-}
-
-.shadow-blue {
-    -webkit-box-shadow: 0 8px 30px rgba(0, 78, 255, 0.33);
-    box-shadow: 0 8px 30px rgba(0, 78, 255, 0.33);
-}
-
-.shadow-blue:hover {
-    -webkit-box-shadow: 0 8px 20px rgba(0, 78, 255, 0.33);
-    box-shadow: 0 8px 20px rgba(0, 78, 255, 0.33);
 }
 
 input[type=search] {
@@ -63,35 +53,6 @@ input[type=search] {
     line-height: 14px;
     padding: 11px 50px 10px 50px;
     outline: none;
-}
-
-.button {
-    display: inline-block;
-    font-family: Rubik, sans-serif;
-    font-size: 16px;
-    line-height: 14px;
-    font-weight: 500;
-    min-width: 75px;
-    min-height: 30px;
-    -webkit-border-radius: 50px;
-    border-radius: 50px;
-    background: #f6f6fe;
-    color: #0a1335;
-    text-decoration: none;
-    padding: 10px 16px;
-    text-align: center;
-}
-
-.button-blue {
-    background: #2b58fe;
-    color: #fff;
-}
-
-.button-big {
-    font-size: 16px;
-    font-weight: 500;
-    width: 100%;
-    padding: 16px 30px;
 }
 
 .grid {
@@ -128,6 +89,7 @@ input[type=search] {
 }
 
 .content .list .dialogs ul li {
+    text-decoration: none;
     grid-template-columns: 1fr 4fr;
     -webkit-box-align: center;
     -webkit-align-items: center;
@@ -170,6 +132,10 @@ input[type=search] {
 
 .content .list .dialogs ul .profile {
     padding: 8px 20px 0 20px;
+}
+
+.content .list .dialogs ul li.focus .profile {
+    padding: 8px 20px 0 17px;
 }
 
 .content .list .dialogs ul .profile img {
@@ -291,13 +257,17 @@ input[type=search] {
     list-style: none;
 }
 
-.content .dialog .chat ul li {
+.content .dialog .tab-content {
+    animation: fadeEffect 1s;
+}
+
+.content .dialog .chat .tab-content ul li {
     grid-template-rows: minmax(55px 1fr);
     grid-gap: 25px;
     margin-bottom: 25px;
 }
 
-.content .dialog .chat ul li .user {
+.content .dialog .chat .tab-content ul li .user {
     width: 45px;
     -webkit-box-align: center;
     -webkit-align-items: center;
@@ -316,13 +286,13 @@ input[type=search] {
     */
 }
 
-.content .dialog .chat ul li .user img {
+.content .dialog .chat .tab-content ul li .user img {
     height: 45px;
     -webkit-border-radius: 50%;
     border-radius: 50%;
 }
 
-.content .dialog .chat ul li .chat-msg {
+.content .dialog .chat .tab-content ul li .chat-msg {
     -webkit-border-radius: 5px;
     border-radius: 5px;
     font-size: 16px;
@@ -346,24 +316,24 @@ input[type=search] {
     */
 }
 
-.content .dialog .chat ul li:last-child {
+.content .dialog .chat .tab-content ul li:last-child {
     margin-bottom: 0;
 }
 
-.content .dialog li.incoming {
+.content .dialog .tab-content li.incoming {
     grid-template-columns: 45px 1fr;
 }
 
-.content .dialog li.incoming .chat-msg {
+.content .dialog .tab-content li.incoming .chat-msg {
     background: #fff;
     color: rgba(0, 0, 0, 0.9);
 }
 
-.content .dialog li.sent {
+.content .dialog .tab-content li.sent {
     grid-template-columns: 1fr 45px;
 }
 
-.content .dialog li.sent .chat-msg {
+.content .dialog .tab-content li.sent .chat-msg {
     background: #0084ff;
     color: #fff;
 }
@@ -443,6 +413,16 @@ input[type=search] {
     opacity: 0.7;
     border: none;
     outline: none;
+}
+
+@keyframes fadeEffect {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 @media only screen and (max-width: 768px) {
