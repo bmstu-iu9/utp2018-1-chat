@@ -1,1 +1,14 @@
+const http = require('http');
+const Router = require('./modules/router');
 
+const port = 8080;
+
+const app = new Router('http://localhost:${port}');
+
+const server = http.createServer((request, response) => {
+  app.routing(request, response);
+});
+
+server.listen(port, () => {
+  console.log(`Сервер запущен: http://localhost:${port}`);
+});
