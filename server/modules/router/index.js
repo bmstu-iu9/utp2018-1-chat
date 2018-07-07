@@ -10,13 +10,13 @@ class App {
     this.urlSource = urlSource;
   }
 
-  routing(req, response) {
-    let pathName = url.parse(req.url).pathname;
+  routing(request, response) {
+    let pathName = url.parse(request.url).pathname;
 
-    if (req.method == 'GET') {
-      if (req.url.match(fileExtension)) {
-        source.sendAsset(pathName, req, response);
-      } else if (req.url.match(/api.[a-z]/)) {
+    if (request.method == 'GET') {
+      if (request.url.match(fileExtension)) {
+        source.sendAsset(pathName, request, response);
+      } else if (request.url.match(/api.[a-z]/)) {
         source.sendJSON(this.urlSource, pathName, response);
       } else {
         if (pathName === '/') {
