@@ -22,7 +22,7 @@ class App {
         if (pathName === '/') {
           source.sendHome(response);
         } else {
-          // TODO : 404
+          // TODO : response 404 page
         }
       }
     }

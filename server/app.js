@@ -9,6 +9,6 @@ const server = http.createServer((request, response) => {
   app.routing(request, response);
 });
 
-server.listen(port, () => {
+server.listen(port, 'localhost', () => {
   console.log(`Сервер запущен: http://localhost:${port}`);
 });

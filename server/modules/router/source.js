@@ -16,6 +16,8 @@ const mimeType = {
     'js': 'text/javascript'
 };
 
+const clientPath = '../client';
+
 class Source {
     constructor() {
         this.file;
@@ -28,7 +30,7 @@ class Source {
 
         this.mime = mimeType[path.extname(request.url).substr(1)];
 
-        this.stream = fs.createReadStream(path.resolve('../client', this.file));
+        this.stream = fs.createReadStream(path.resolve(clientPath, this.file));
         this.stream.pipe(response);
 
         response.writeHead( 200, {
@@ -41,8 +43,7 @@ class Source {
     }
 
     sendHome(response) {
-        const stream = fs.createReadStream(path.resolve('../client', 'index.html'));
-        console.log(path.resolve('../client', 'index.html'));
+        const stream = fs.createReadStream(path.resolve(clientPath, 'index.html'));
 
         response.writeHead(200, {
             'Content-Type': 'text/html'
