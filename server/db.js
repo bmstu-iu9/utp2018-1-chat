@@ -1,3 +1,5 @@
+'use strict'
+
 const mongoose = require('./modules/db');
 
 mongoose.connection.on('open', () => {
