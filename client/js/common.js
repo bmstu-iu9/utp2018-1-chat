@@ -1,3 +1,5 @@
+'use strict'
+
 // Выполнение по загрузки HTML и построении DOM
 document.addEventListener('DOMContentLoaded', function() {
 
@@ -5,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Переключение между диалогами
 function switchDialog(evt, dlg) {
-    var tabContent = document.getElementsByClassName('tab-content');
+    let tabContent = document.getElementsByClassName('tab-content');
     for (i = 0; i < tabContent.length; i++)
         tabContent[i].style.display = 'none';
 
