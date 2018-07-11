@@ -57,4 +57,3 @@ function sendMessage() {
     console.log('Добавлено сообщение ', test);
 }
 
-
