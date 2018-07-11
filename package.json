@@ -1,0 +1,12 @@
+{
+    "name": "Baumangram",
+    "version": "0.1.0",
+    "description": "",
+    "main": "./server/app.js",
+    "scripts": {},
+    "author": "",
+    "license": "MIT",
+    "dependencies": {
+        "mongoose": "^5.2.2"
+    }
+}
