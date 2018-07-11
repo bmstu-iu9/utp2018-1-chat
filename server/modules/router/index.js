@@ -1,5 +1,3 @@
-'use strict'
-
 const fs = require('fs');
 const url = require('url');
 const path = require('path');
@@ -32,3 +30,4 @@ class App {
 };
 
 module.exports = App;
+
