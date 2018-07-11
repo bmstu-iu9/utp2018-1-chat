@@ -30,6 +30,21 @@ body {
     background: #f2f7f9;
 }
 
+button {
+    cursor: pointer;
+    background-color: white;
+    border: none;
+    display: inline-block;
+}
+button:active {
+    background-color: #e0e5e8;
+}
+
+button:focus {
+    outline: none;
+    border: 0;
+}
+
 .img-responsive {
     display: block;
     max-width: 100%;
