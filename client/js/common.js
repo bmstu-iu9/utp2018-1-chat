@@ -18,6 +18,8 @@ function switchDialog(evt, dlg) {
 
     document.getElementById(dlg).style.display = 'block';
     evt.currentTarget.className += ' focus';
+    
+    document.forms['messageField'].elements['message'].value = '';
 
     console.log('Переключено на ', evt.currentTarget);
 }
