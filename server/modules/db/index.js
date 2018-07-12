@@ -1,7 +1,10 @@
 'use strict'
 
-const mongoose = require('mongoose');
+const level = require('level');
+const path = require('path');
 
-mongoose.connect('mongodb://localhost:27017/chat', { useNewUrlParser: true });
+module.exports = (db) => {
+    const uri = path.join(__dirname, '..', '..', 'data', db)
 
-module.exports = mongoose;
+    return db = level(uri, { valueEncoding: 'json' });
+};

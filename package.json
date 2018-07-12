@@ -3,10 +3,13 @@
     "version": "0.1.0",
     "description": "",
     "main": "./server/app.js",
-    "scripts": {},
+    "scripts": {
+        "server": "node ./server/app.js"
+    },
     "author": "",
     "license": "MIT",
     "dependencies": {
-        "mongoose": "^5.2.2"
+        "encoding-down": "^5.0.4",
+        "level": "^4.0.0"
     }
 }

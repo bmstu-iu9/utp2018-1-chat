@@ -18,7 +18,7 @@ const mimeType = {
     'js': 'text/javascript'
 };
 
-const clientPath = '../client';
+const clientPath = path.join(__dirname, '..', '..', '..', 'client');
 
 class Source {
     constructor() {
