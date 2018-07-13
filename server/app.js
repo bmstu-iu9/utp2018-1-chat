@@ -10,5 +10,5 @@ const server = http.createServer((request, response) => {
 });
 
 server.listen(port, 'localhost', () => {
-  console.log(`Сервер запущен: http://localhost: ${port}`);
+  console.log(`Сервер запущен: http://localhost:${port}`);
 });
