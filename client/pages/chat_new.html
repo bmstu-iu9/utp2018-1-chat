@@ -11,11 +11,10 @@
 
     <link rel="stylesheet" href="../css/main.css">
 
-    <script src="js/scripts.min.js"></script>
+    <script src="../js/common.js"></script>
 </head>
 
 <body>
-
     <div class="content">
         <section class="sidebar">
             <div class="profile">
@@ -44,10 +43,10 @@
             </div>
 
             <div class="search">
-                <span class="input input--hoshi">
-    				<input class="input__field input__field--hoshi" type="text" autocomplete="off" id="input-4" />
-    				<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-4">
-    					<span class="input__label-content input__label-content--hoshi">Поиск</span>
+                <span class="input input_main-search">
+    				<input class="input-field input-field_main-search" type="text" autocomplete="off" id="sidebar-search" />
+    				<label class="input-label input-label_main-search input-label_main-search-color-1" for="sidebar-search">
+    					<span class="input-label-content input-label-content_main-search">Поиск</span>
     				</label>
     			</span>
             </div>
@@ -171,53 +170,62 @@
 
             <div class="dialog-chat">
                 <ul>
-                    <li class="incoming">
-                        <div class="profile">
-                            <img src="../img/user3.jpg"></img>
-                        </div>
+                    <li class="tab-content" id="1">
+                        <ul class="chat-messages" style="display: block;" id="messageBody">
+                            <li class="incoming">
+                                <div class="profile">
+                                    <img src="../img/user3.jpg"></img>
+                                </div>
 
-                        <div class="msg">
-                            <div class="msg-header">
-                                18:21
-                            </div>
+                                <div class="msg">
+                                    <div class="msg-header">
+                                        18:21
+                                    </div>
 
-                            <div class="msg-content text">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora eaque numquam commodi dolore voluptate ratione porro architecto, eligendi culpa est excepturi exercitationem dolorum, dignissimos. Perspiciatis iste tempore consequuntur reiciendis, dolores.
-                            </div>
-                        </div>
+                                    <div class="msg-content text">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora eaque numquam commodi dolore voluptate ratione porro architecto, eligendi culpa est excepturi exercitationem dolorum, dignissimos. Perspiciatis iste tempore consequuntur reiciendis, dolores.
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="sent">
+                                <div class="msg">
+                                    <div class="msg-header">
+                                        18:29
+                                    </div>
+
+                                    <div class="msg-content text">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora eaque numquam commodi dolore voluptate ratione porro architecto, eligendi culpa est excepturi exercitationem dolorum, dignissimos. Perspiciatis iste tempore consequuntur reiciendis, dolores.
+                                    </div>
+                                </div>
+
+                                <div class="profile">
+                                    <img src="../img/user6.jpg"></img>
+                                </div>
+                            </li>
+
+                            <li class="incoming">
+                                <div class="profile">
+                                    <img src="../img/user3.jpg"></img>
+                                </div>
+
+                                <div class="msg">
+                                    <div class="msg-header">
+                                        18:36
+                                    </div>
+
+                                    <div class="msg-content text">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora eaque numquam commodi dolore voluptate ratione porro architecto, eligendi culpa est excepturi exercitationem dolorum, dignissimos. Perspiciatis iste tempore consequuntur reiciendis, dolores.
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
                     </li>
-
-                    <li class="sent">
-                        <div class="msg">
-                            <div class="msg-header">
-                                18:29
-                            </div>
-
-                            <div class="msg-content text">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora eaque numquam commodi dolore voluptate ratione porro architecto, eligendi culpa est excepturi exercitationem dolorum, dignissimos. Perspiciatis iste tempore consequuntur reiciendis, dolores.
-                            </div>
-                        </div>
-
-                        <div class="profile">
-                            <img src="../img/user6.jpg"></img>
-                        </div>
-                    </li>
-
-                    <li class="incoming">
-                        <div class="profile">
-                            <img src="../img/user3.jpg"></img>
-                        </div>
-
-                        <div class="msg">
-                            <div class="msg-header">
-                                18:36
-                            </div>
-
-                            <div class="msg-content text">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora eaque numquam commodi dolore voluptate ratione porro architecto, eligendi culpa est excepturi exercitationem dolorum, dignissimos. Perspiciatis iste tempore consequuntur reiciendis, dolores.
-                            </div>
-                        </div>
-                    </li>
+                    <li class="tab-content" id="2"></li>
+                    <li class="tab-content" id="3"></li>
+                    <li class="tab-content" id="4"></li>
+                    <li class="tab-content" id="5"></li>
+                    <li class="tab-content" id="6"></li>
                 </ul>
             </div>
 
@@ -249,13 +257,20 @@
 
                 <div class="send grid">
                     <div class="grid btn-wrap">
-                        <a href="#" class=" grid button button-accent button-big button-circle" href="#">
+                        <a href="#" class=" grid button button-accent button-big button-circle" id="msgSend">
                             <img class="" src="../img/send.svg">
                         </a>
                     </div>
                     <!-- <button type="submit" form="messageField" onclick="sendMessage()">
                         <img class="" src="../img/send.svg">
                     </button> -->
+                    <form id="messageField" target="_blank" action="" style="display: none;"></form>
+                    <script>
+                        document.getElementById("msgSend").onclick = function() {
+                            sendMessage();
+                            // document.getElementById("messageField").submit();
+                        }
+                    </script>
                 </div>
             </div>
         </section>

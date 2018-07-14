@@ -1,7 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&subset=cyrillic");
 
-@import url(../libs/normalize-css/normalize.css);
-
 ::-moz-selection {
 	background: rgba(219, 22, 35, 0.5);
 }
@@ -61,7 +59,7 @@ body {
 	vertical-align: top;
 }
 
-.input__field {
+.input-field {
 	position: relative;
 	display: block;
 	float: right;
@@ -78,11 +76,11 @@ body {
 	-webkit-appearance: none;
 }
 
-.input__field:focus {
+.input-field:focus {
 	outline: none;
 }
 
-.input__label {
+.input-label {
 	display: inline-block;
 	float: right;
 	padding: 0 1em;
@@ -99,22 +97,22 @@ body {
 	user-select: none;
 }
 
-.input--filled .input__label {
+.input_fill .input-label {
 	color: #db1623;
 }
 
-.input__label-content {
+.input-label-content {
 	position: relative;
 	display: block;
 	padding: 1em 0;
 	width: 100%;
 }
 
-.input--hoshi {
+.input_main-search {
 	overflow: hidden;
 }
 
-.input__field--hoshi {
+.input-field_main-search {
 	margin-top: 1em;
 	padding: 1.5em 0;
 	width: 100%;
@@ -122,7 +120,7 @@ body {
 	color: #151518;
 }
 
-.input__label--hoshi {
+.input-label_main-search {
 	position: absolute;
 	bottom: 0;
 	left: 0;
@@ -134,12 +132,12 @@ body {
 	pointer-events: none;
 }
 
-.input__label-content--hoshi {
+.input-label-content_main-search {
 	position: absolute;
 }
 
-.input__label--hoshi::before,
-.input__label--hoshi::after {
+.input-label_main-search::before,
+.input-label_main-search::after {
 	content: '';
 	position: absolute;
 	top: 0;
@@ -150,7 +148,7 @@ body {
 	border-bottom: 1px solid #151518;
 }
 
-.input__label--hoshi::after {
+.input-label_main-search::after {
 	margin-top: 2px;
 	border-bottom: 4px solid red;
 	-webkit-transform: translate3d(-100%, 0, 0);
@@ -162,26 +160,26 @@ body {
 	transition: transform 0.3s, -webkit-transform 0.3s;
 }
 
-.input__label--hoshi-color-1::after {
+.input-label_main-search-color-1::after {
 	border-color: #db1623;
 }
 
-.input__label--hoshi-color-2::after {
+.input-label_main-search-color-2::after {
 	border-color: #00ffaa;
 }
 
-.input__label--hoshi-color-3::after {
+.input-label_main-search-color-3::after {
 	border-color: #ff5500;
 }
 
-.input__field--hoshi:focus + .input__label--hoshi::after,
-.input--filled .input__label--hoshi::after {
+.input-field_main-search:focus + .input-label_main-search::after,
+.input_fill .input-label_main-search::after {
 	-webkit-transform: translate3d(0, 0, 0);
 	transform: translate3d(0, 0, 0);
 }
 
-.input__field--hoshi:focus + .input__label--hoshi .input__label-content--hoshi,
-.input--filled .input__label-content--hoshi {
+.input-field_main-search:focus + .input-label_main-search .input-label-content_main-search,
+.input_fill .input-label-content_main-search {
 	-webkit-animation: anim-1 0.3s forwards;
 	animation: anim-1 0.3s forwards;
 }
@@ -381,6 +379,14 @@ body {
 	padding: 5px;
 }
 
+.tab-links {
+    cursor: pointer;
+}
+
+.tab-content {
+    animation: fadeEffect 1s;
+}
+
 .sidebar .list {
 	padding: 30px 0;
 }
@@ -518,6 +524,11 @@ body {
 	font-weight: 500;
 }
 
+.sidebar .list .dialogs ul .text .msg {
+	font-size: 0.8em;
+	font-weight: 400;
+}
+
 .sidebar .list .dialogs ul .text .dialog-footer {
 	font-size: 0.8em;
 	font-weight: 300;
@@ -591,6 +602,11 @@ body {
 	width: 55px;
 	-webkit-border-radius: 50%;
 	border-radius: 50%;
+}
+
+.chat-messages {
+    overflow-y: scroll;
+    height: calc(100vh - 30px - 65px - 75px - 65px - 60px - 30px);
 }
 
 .dialog .dialog-chat .incoming .msg {
@@ -746,4 +762,14 @@ body {
 	opacity: 0.7;
 	border: none;
 	outline: none;
+}
+
+@keyframes fadeEffect {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
