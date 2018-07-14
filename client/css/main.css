@@ -158,18 +158,7 @@ body {
 	-o-transition: transform 0.3s;
 	transition: transform 0.3s;
 	transition: transform 0.3s, -webkit-transform 0.3s;
-}
-
-.input-label_main-search-color-1::after {
-	border-color: #db1623;
-}
-
-.input-label_main-search-color-2::after {
-	border-color: #00ffaa;
-}
-
-.input-label_main-search-color-3::after {
-	border-color: #ff5500;
+    border-color: #db1623;
 }
 
 .input-field_main-search:focus + .input-label_main-search::after,
