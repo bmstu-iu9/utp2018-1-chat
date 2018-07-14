@@ -15,7 +15,8 @@ const mimeType = {
     'html': 'text/html',
     'md': 'text/markdown',
     'css': 'text/css',
-    'js': 'text/javascript'
+    'js': 'text/javascript',
+    'mp4': 'video/mp4'
 };
 
 const clientPath = path.join(__dirname, '..', '..', '..', 'client');
@@ -35,7 +36,7 @@ class Source {
         this.stream = fs.createReadStream(path.resolve(clientPath, this.file));
         this.stream.pipe(response);
 
-        response.writeHead( 200, {
+        response.writeHead(200, {
             'Content-Type': this.mime
         });
 
@@ -44,8 +45,8 @@ class Source {
         });
     }
 
-    sendHome(response) {
-        const stream = fs.createReadStream(path.resolve(clientPath, 'index.html'));
+    sendPage(page, response) {
+        const stream = fs.createReadStream(path.resolve(clientPath, 'pages', `${page}.html`));
 
         response.writeHead(200, {
             'Content-Type': 'text/html'
@@ -76,7 +77,9 @@ class Source {
         response.end(error.message);
     }
 
-    // TODO : send404()
+    send404(response) {
+        response.end('404');
+    }
 }
 
 module.exports = new Source;
