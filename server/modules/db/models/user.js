@@ -8,6 +8,8 @@ class User {
         this.login = login;
         this.password = pass;
         this.friends = [];
+        this.dialogs = [];
+        this.birthday = null;
         this.date = new Date().toISOString()
                             .replace(/T/, ' ')
                             .replace(/\..+/, '');

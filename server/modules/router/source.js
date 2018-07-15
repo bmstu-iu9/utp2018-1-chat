@@ -61,12 +61,12 @@ class Source {
     }
 
     sendJSON(resUrl, pathName, response) {
-      response.writeHead(200, {
-          'Content-Type': mimeType['json']
-      });
-      response.setHeader('Access-Control-Allow-Origin', resUrl);
+        response.setHeader('Access-Control-Allow-Origin', resUrl);
+        response.writeHead(200, {
+            'Content-Type': mimeType['json']
+        });
 
-      response.end("{\"name\":\"UTP\"}");
+        response.end("{\"name\":\"UTP\"}");
     }
 
     sendError(error, response) {
