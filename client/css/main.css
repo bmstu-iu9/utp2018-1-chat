@@ -97,6 +97,64 @@ body {
     user-select: none;
 }
 
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 37px;
+    height: 23px;
+}
+
+.switch input {
+    display: none;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 17px;
+    width: 17px;
+    left: 4px;
+    bottom: 3px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(12px);
+    -ms-transform: translateX(12px);
+    transform: translateX(12px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
 .input_fill .input-label {
     color: #db1623;
 }
@@ -498,7 +556,7 @@ body {
 }
 
 .sidebar .list .dialogs ul .text .user-name,
-  .sidebar .list .dialogs ul .text .dialog-footer {
+.sidebar .list .dialogs ul .text .dialog-footer {
     display: block;
     color: #db1623;
     white-space: nowrap;
@@ -685,9 +743,9 @@ body {
 }
 
 .dialog .dialog-footer .attachment a,
-  .dialog .dialog-footer .emoji a,
-  .dialog .dialog-footer .voice a,
-  .dialog .dialog-footer .send a {
+.dialog .dialog-footer .emoji a,
+.dialog .dialog-footer .voice a,
+.dialog .dialog-footer .send a {
     -webkit-box-pack: center;
     -webkit-justify-content: center;
     -ms-flex-pack: center;
@@ -699,9 +757,9 @@ body {
 }
 
 .dialog .dialog-footer .attachment img,
-  .dialog .dialog-footer .emoji img,
-  .dialog .dialog-footer .voice img,
-  .dialog .dialog-footer .send img {
+.dialog .dialog-footer .emoji img,
+.dialog .dialog-footer .voice img,
+.dialog .dialog-footer .send img {
     height: 20px;
     -webkit-transform: rotate(-45deg);
     -ms-transform: rotate(-45deg);
@@ -709,23 +767,23 @@ body {
 }
 
 .dialog .dialog-footer .attachment img:hover,
-  .dialog .dialog-footer .emoji img:hover,
-  .dialog .dialog-footer .voice img:hover {
+.dialog .dialog-footer .emoji img:hover,
+.dialog .dialog-footer .voice img:hover {
     -webkit-transform: rotate(-45deg) scale(1.1);
     -ms-transform: rotate(-45deg) scale(1.1);
     transform: rotate(-45deg) scale(1.1);
 }
 
 .dialog .dialog-footer .emoji img,
-  .dialog .dialog-footer .voice img,
-  .dialog .dialog-footer .send img {
+.dialog .dialog-footer .voice img,
+.dialog .dialog-footer .send img {
     -webkit-transform: none;
     -ms-transform: none;
     transform: none;
 }
 
 .dialog .dialog-footer .emoji img:hover,
-  .dialog .dialog-footer .voice img:hover {
+.dialog .dialog-footer .voice img:hover {
     -webkit-transform: scale(1.1);
     -ms-transform: scale(1.1);
     transform: scale(1.1);
