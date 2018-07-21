@@ -4,6 +4,8 @@ require('app-module-path').addPath(__dirname + '/modules');
 const http = require('http');
 const Router = require('router');
 
+const Database = require('db');
+
 const port = 8080;
 
 const router = new Router(`http://localhost:${port}`);
