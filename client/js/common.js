@@ -160,3 +160,18 @@ function sendMessage() {
     console.log('Добавлено сообщение ', test);
 }
 /* === END Отрисовка сообщений == */
+
+/* === Авторизация === */
+function auth(event) {
+    const authForm = document.getElementById('auth-form');
+    const authSubmit = document.getElementById('auth-submit');
+
+    if (event.currentTarget.id === 'sign-up') {
+        authForm.action = '/api/login';
+    } else if (event.currentTarget.id === 'sign-in') {
+        authForm.action = '/api/reg';
+    }
+
+    authSubmit.click();
+}
+/* === END Авторищация */

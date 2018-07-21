@@ -25,26 +25,40 @@
                 Gist<span>`</span>
             </span>
 
-            <span class="input input_transparent">
-                <input class="input-field input-field_transparent" type="text" id="input-10" />
-                <label class="input-label input-label_transparent" for="input-10">
-                <span class="input-label-content input-label-content_transparent">Логин</span>
-                </label>
-            </span>
+            <form action="" id="auth-form" method="post">
+                <span class="input input_transparent">
+                    <input class="input-field input-field_transparent"
+                        type="text"
+                        name="login"
+                        minlength=4
+                        maxlength=24
+                        required />
+                    <label class="input-label input-label_transparent">
+                    <span class="input-label-content input-label-content_transparent">Логин</span>
+                    </label>
+                </span>
 
-            <span class="input input_transparent">
-                <input class="input-field input-field_transparent" type="password" id="input-10" />
-                <label class="input-label input-label_transparent" for="input-10">
-                <span class="input-label-content input-label-content_transparent">Пароль</span>
-                </label>
-            </span>
+                <span class="input input_transparent">
+                    <input class="input-field input-field_transparent"
+                        type="password"
+                        name="password"
+                        minlength=4
+                        maxlength=30
+                        required />
+                    <label class="input-label input-label_transparent">
+                    <span class="input-label-content input-label-content_transparent">Пароль</span>
+                    </label>
+                </span>
 
-            <span class="input input_transparent">
-                <a class="button button-accent button-big" href="#">Войти</a>
-            </span>
+                <span class="input input_transparent">
+                    <a class="button button-accent button-big" href="#" onclick="auth(event);" id="sign-up">Войти</a>
+                </span>
 
-            <span class="input input_transparent">
-                <a class="button button-accent button-big button-solid" href="#">Регистрация</a>
+                <span class="input input_transparent">
+                    <a class="button button-accent button-big button-solid" href="#" onclick="auth(event);" id="sign-in">Регистрация</a>
+                </span>
+                <button type="submit" style="display: none;" id="auth-submit"></button>
+            </form>
         </div>
     </div>
 
