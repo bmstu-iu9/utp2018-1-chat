@@ -1,15 +1,17 @@
 {
-    "name": "Baumangram",
+    "name": "Gist",
     "version": "0.1.0",
     "description": "",
     "main": "./server/app.js",
     "scripts": {
-        "server": "node ./server/app.js"
+        "server": "nodemon ./server/app.js"
     },
     "author": "",
     "license": "MIT",
     "dependencies": {
+        "app-module-path": "^2.2.0",
         "encoding-down": "^5.0.4",
+        "nodemon": "^1.18.3",
         "level": "^4.0.0"
     }
 }

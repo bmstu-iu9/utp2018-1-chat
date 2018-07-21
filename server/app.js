@@ -1,9 +1,12 @@
+// Упрощаем импорт собственных модулей
+require('app-module-path').addPath(__dirname + '/modules');
+
 const http = require('http');
-const Router = require('./modules/router');
+const Router = require('/router');
 
 const port = 8080;
 
-const app = new Router(`http://localhost:${port}`);
+const router = new Router(`http://localhost:${port}`);
 
 const server = http.createServer((request, response) => {
     app.routing(request, response);
