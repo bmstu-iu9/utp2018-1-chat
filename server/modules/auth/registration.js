@@ -28,7 +28,7 @@ module.exports.signUp = async (response, data) => {
                     login,
                     passData.passHash,
                     passData.salt,
-                    new Date().toISOString()
+                    new Date().toUTCString()
                 );
 
                 response.writeHead(200, {

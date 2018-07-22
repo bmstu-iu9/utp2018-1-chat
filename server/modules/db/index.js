@@ -3,7 +3,8 @@
 const RxDB = require('rxdb');
 RxDB.plugin(require('pouchdb-adapter-leveldb'));
 
-const userSchema = require('db/models/user.js');
+const userSchema = require('db/models/user');
+const sessionSchema = require('db/models/session');
 
 const path = require('path');
 
@@ -27,6 +28,20 @@ const create = async () => {
                     password,
                     salt,
                     date
+                });
+            }
+        }
+    });
+
+    await db.collection({
+        name: 'sessions',
+        schema: sessionSchema,
+        statics: {
+            async addSession(login, token, expires) {
+                return this.upsert({
+                    login,
+                    token,
+                    expires
                 });
             }
         }

@@ -12,12 +12,12 @@ const sessionSchema = {
             type: 'string',
             primary: true
         },
-        time: {
+        expires: {
             type: 'string'
         }
 
     },
-    required: ['login', 'token', 'time']
+    required: ['login', 'token', 'expires']
 };
 
 module.exports = sessionSchema;
