@@ -35,6 +35,9 @@ const userSchema = {
         date: {
             type: 'string'
         },
+        online: {
+            type: 'boolean'
+        }
 
     },
     required: ['login', 'password', 'salt', 'date']
