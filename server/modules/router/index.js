@@ -4,9 +4,12 @@ const url = require('url');
 const path = require('path');
 const source = require('router/source');
 const api = require('router/api');
+const session = require('auth/session');
+const cookie = require('cookies');
 
 const fileExtension = /.(css|js|png|jpg|gif|svg|mp4)/;
 
+// TODO : Организация модуля
 class Router {
     constructor(urlSource) {
         this.urlSource = urlSource;
@@ -21,7 +24,15 @@ class Router {
             api.handler(this.urlSource, pathName.split('/')[2], request, response);
         } else {
             if (pathName === '/') {
-                source.sendPage('auth', response);
+                // TODO : Структура
+                session.checkSession(cookie.parse(request).session_token, response)
+                    .then(data => {
+                        if (data.flag === true) {
+                            source.sendPage('chat_new', data.res);
+                        } else {
+                            source.sendPage('auth', response);
+                        }
+                    });
             } else if (pathName === '/chat') {
                 source.sendPage('chat', response);
             } else if (pathName === '/chat_new') {
