@@ -10,9 +10,16 @@ module.exports.signIn = async (response, data) => {
 
     const db = await Database.get();
 
-    db.users.findOne(login)
+    await db.users.findOne(login)
         .exec()
         .then((doc) => {
+            if (!doc) {
+                return {
+                    flag: false,
+                    json: null
+                }
+            }
+
             const postPassData = auth.getHashPassword(
                 data.password,
                 doc.get('salt')
@@ -20,27 +27,42 @@ module.exports.signIn = async (response, data) => {
 
             if (postPassData.passHash === doc.get('password')) {
                 const now = new Date();
-                const sessionData = {
-                    login: login,
-                    expires: new Date(now.getTime() + 30 * 60000).toUTCString(),
-                    token: auth.getHashPassword(now.toUTCString()).passHash
-                };
 
-                // console.log(JSON.stringify(sessionData, null, 4));
-                session.addSession(sessionData);
-
-                response.writeHead(200, {
-                    'Set-Cookie': `session_token=${sessionData.token}; expires=${sessionData.expires}; path=/;`
-                });
-
-                response.end(`Hello, ${login}!`);
+                return {
+                    flag: true,
+                    json: {
+                        login: login,
+                        expires: new Date(now.getTime() + 30 * 60000).toUTCString(),
+                        token: auth.getHashPassword(now.toUTCString()).passHash
+                    }
+                }
             } else {
+                return {
+                    flag: false,
+                    json: null
+                }
+            }
+        })
+        .then(async (data) => {
+            if (!data.flag || !data.json) {
                 response.writeHead(422, {
                     'Content-Type': 'text/html'
                 });
 
                 response.end('Invalid password');
+                return;
             }
+
+            await session.addSession(data.json);
+
+            // await db.sessions.dump().then(json => console.dir(json));
+
+            response.writeHead(200, {
+                'Set-Cookie': `session_token=${data.json.token}; expires=${data.json.expires}; path=/;`
+            });
+
+            response.end(`Hello, ${login}!`);
+            db.sessions.dump().then(json => console.dir(json));
         })
         .catch(
             // TODO : Error handler

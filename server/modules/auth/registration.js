@@ -16,7 +16,7 @@ module.exports.signUp = async (response, data) => {
             if (doc !== null) return true;
             return false;
         })
-        .then((val) => {
+        .then(async (val) => {
             if (val === true) {
                 response.writeHead(422, {
                     'Content-Type': 'text/html'
@@ -24,7 +24,7 @@ module.exports.signUp = async (response, data) => {
 
                 response.end('Login is already taken')
             } else {
-                db.users.addUser(
+                await db.users.addUser(
                     login,
                     passData.passHash,
                     passData.salt,
