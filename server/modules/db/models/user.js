@@ -1,17 +1,46 @@
 'use strict'
 
-const crypto = require('crypto');   // TODO : crypt pass
-const path = require('path');
+const userSchema = {
+    title: 'user schema',
+    type: 'object',
+    version: 0,
+    properties: {
+        login: {
+            type: 'string',
+            primary: true
+        },
+        password: {
+            type: 'string'
+        },
+        salt: {
+            type: 'string'
+        },
+        friends: {
+            type: 'array',
+            uniqueItems: true,
+            item: {
+                type: 'string'
+            }
+        },
+        dialogs: {
+            type: 'array',
+            uniqueItems: true,
+            item: {
+                type: 'number'
+            }
+        },
+        birthday: {
+            type: 'string'
+        },
+        date: {
+            type: 'string'
+        },
+        online: {
+            type: 'boolean'
+        }
 
-class User {
-    constructor(login, pass) {
-        this.login = login;
-        this.password = pass;
-        this.friends = [];
-        this.date = new Date().toISOString()
-                            .replace(/T/, ' ')
-                            .replace(/\..+/, '');
-    }
-}
+    },
+    required: ['login', 'password', 'salt', 'date']
+};
 
-module.exports = (login, pass) => { return new User(login, pass) };
+module.exports = userSchema;

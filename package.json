@@ -1,15 +1,18 @@
 {
-    "name": "Baumangram",
+    "name": "Gist",
     "version": "0.1.0",
     "description": "",
     "main": "./server/app.js",
     "scripts": {
-        "server": "node ./server/app.js"
+        "server": "nodemon ./server/app.js"
     },
     "author": "",
     "license": "MIT",
     "dependencies": {
-        "encoding-down": "^5.0.4",
-        "level": "^4.0.0"
+        "app-module-path": "^2.2.0",
+        "nodemon": "^1.18.3",
+        "pouchdb-adapter-leveldb": "^7.0.0",
+        "rxdb": "^7.7.0",
+        "rxjs": "^6.2.2"
     }
 }

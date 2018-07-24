@@ -2,12 +2,12 @@
 <html lang="ru">
 
 <head>
-	<meta charset="utf-8">
+    <meta charset="utf-8">
 
-	<title>Gist` — Авторизация</title>
-	<meta name="description" content="">
+    <title>Gist`</title>
+    <meta name="description" content="">
 
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <link rel="stylesheet" href="../css/auth.css">
 </head>
@@ -20,34 +20,105 @@
     </div>
 
     <div class="content">
-        <div class="auth">
-            <span class="logo">
-                Gist<span>`</span>
-            </span>
+        <div class="flip-container" ontouchstart="">
+            <div class="flipper" id="auth-flip">
+                <div class="auth auth-signin front">
+                    <span class="logo">
+                        Gist<span>`</span>
+                    </span>
 
-            <span class="input input_transparent">
-                <input class="input-field input-field_transparent" type="text" id="input-10" />
-                <label class="input-label input-label_transparent" for="input-10">
-                <span class="input-label-content input-label-content_transparent">Логин</span>
-                </label>
-            </span>
+                    <form action="/api/login" id="signin-form" method="post">
+                        <span class="input input_transparent">
+                            <input class="input-field input-field_transparent"
+                                type="text"
+                                name="user-in[login]"
+                                minlength=4
+                                maxlength=24
+                                required />
+                            <label class="input-label input-label_transparent">
+                            <span class="input-label-content input-label-content_transparent">Логин</span>
+                            </label>
+                        </span>
 
-            <span class="input input_transparent">
-                <input class="input-field input-field_transparent" type="password" id="input-10" />
-                <label class="input-label input-label_transparent" for="input-10">
-                <span class="input-label-content input-label-content_transparent">Пароль</span>
-                </label>
-            </span>
+                        <span class="input input_transparent">
+                            <input class="input-field input-field_transparent"
+                                type="password"
+                                name="user-in[password]"
+                                minlength=4
+                                maxlength=30
+                                required />
+                            <label class="input-label input-label_transparent">
+                            <span class="input-label-content input-label-content_transparent">Пароль</span>
+                            </label>
+                        </span>
 
-            <span class="input input_transparent">
-                <a class="button button-accent button-big" href="#">Войти</a>
-            </span>
+                        <span class="input input_transparent">
+                            <a class="button button-accent button-big" href="#" onclick="auth(event);" id="sign-up">Войти</a>
+                        </span>
 
-            <span class="input input_transparent">
-                <a class="button button-accent button-big button-solid" href="#">Регистрация</a>
+                        <span class="input input_transparent">
+                            <a class="button button-accent button-big button-solid" href="#" onclick="flip();" id="sign-in">Регистрация</a>
+                        </span>
+                        <button type="submit" style="display: none;" id="signin-submit"></button>
+                    </form>
+                </div>
+
+                <div class="auth auth-up back">
+                    <span class="logo">
+                        Gist<span>`</span>
+                    </span>
+
+                    <form action="/api/reg" id="signup-form" method="post">
+                        <span class="input input_transparent">
+                            <input class="input-field input-field_transparent"
+                                type="text"
+                                name="user-up[login]"
+                                minlength=4
+                                maxlength=24
+                                required />
+                            <label class="input-label input-label_transparent">
+                            <span class="input-label-content input-label-content_transparent">Логин</span>
+                            </label>
+                        </span>
+
+                        <span class="input input_transparent">
+                            <input class="input-field input-field_transparent"
+                                type="password"
+                                name="user-up[password]"
+                                minlength=4
+                                maxlength=30
+                                required />
+                            <label class="input-label input-label_transparent">
+                            <span class="input-label-content input-label-content_transparent">Пароль</span>
+                            </label>
+                        </span>
+
+                        <span class="input input_transparent">
+                            <input class="input-field input-field_transparent"
+                                type="password"
+                                name="user-up[confirm]"
+                                minlength=4
+                                maxlength=30
+                                required />
+                            <label class="input-label input-label_transparent">
+                            <span class="input-label-content input-label-content_transparent">Подтверждение пороля</span>
+                            </label>
+                        </span>
+
+                        <span class="input input_transparent">
+                            <a class="button button-accent button-big" href="#" onclick="auth(event);" id="sign-up">Зарегистрироваться</a>
+                        </span>
+
+                        <span class="input input_transparent">
+                            <a class="button button-accent button-big button-solid" href="#" onclick="flip();" id="sign-in">Уже есть аккаут?</a>
+                        </span>
+                        <button type="submit" style="display: none;" id="signup-submit"></button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 
-	<script src="../js/common.js"></script>
+    <script src="../js/common.js"></script>
 </body>
 </html>

@@ -41,7 +41,7 @@ class Source {
         });
 
         this.stream.on('error', (error) => {
-          this.sendError(error, response);
+            this.sendError(error, response);
         });
     }
 
@@ -55,18 +55,17 @@ class Source {
         stream.pipe(response);
 
         stream.on('error', (error) => {
-            // TODO : Перенаправление на 404
-            response.end('404');
+            sendError(error, response);
         });
     }
 
     sendJSON(resUrl, pathName, response) {
-      response.writeHead(200, {
-          'Content-Type': mimeType['json']
-      });
-      response.setHeader('Access-Control-Allow-Origin', resUrl);
+        response.setHeader('Access-Control-Allow-Origin', resUrl);
+        response.writeHead(200, {
+            'Content-Type': mimeType['json']
+        });
 
-      response.end("{\"name\":\"UTP\"}");
+        response.end("{\"name\":\"UTP\"}");
     }
 
     sendError(error, response) {
@@ -78,6 +77,10 @@ class Source {
     }
 
     send404(response) {
+        response.writeHead(404, {
+            'Content-Type': mimeType['txt']
+        });
+        
         response.end('404');
     }
 }
