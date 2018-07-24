@@ -163,15 +163,22 @@ function sendMessage() {
 
 /* === Авторизация === */
 function auth(event) {
-    const authForm = document.getElementById('auth-form');
-    const authSubmit = document.getElementById('auth-submit');
-
     if (event.currentTarget.id === 'sign-up') {
-        authForm.action = '/api/login';
+        document.getElementById('signup-submit').click();
     } else if (event.currentTarget.id === 'sign-in') {
-        authForm.action = '/api/reg';
+        document.getElementById('signin-submit').click();
     }
-
-    authSubmit.click();
 }
 /* === END Авторищация */
+
+/* === Преключение формы === */
+function flip() {
+    const flipper = document.getElementById('auth-flip');
+
+    if (clsHelper.has(flipper, 'flip-on')) {
+        clsHelper.remove(document.getElementById('auth-flip'), 'flip-on')
+    } else {
+        clsHelper.add(document.getElementById('auth-flip'), 'flip-on')
+    }
+}
+/* === END Преключение формы === */
