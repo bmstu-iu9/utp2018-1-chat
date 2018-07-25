@@ -6,7 +6,7 @@ const session = require('auth/session');
 const Database = require('db');
 
 module.exports.signIn = async (response, data) => {
-    const login = data.login;
+    const login = data['user-in[login]'];
 
     const db = await Database.get();
 
@@ -21,7 +21,7 @@ module.exports.signIn = async (response, data) => {
             }
 
             const postPassData = auth.getHashPassword(
-                data.password,
+                data['user-in[password]'],
                 doc.get('salt')
             );
 
@@ -62,7 +62,6 @@ module.exports.signIn = async (response, data) => {
             });
 
             response.end(`Hello, ${login}!`);
-            db.sessions.dump().then(json => console.dir(json));
         })
         .catch(
             // TODO : Error handler
