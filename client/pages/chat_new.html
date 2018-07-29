@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="../css/main.css">
 
     <script src="../js/common.js"></script>
+    <script src="../js/chat.js"></script>
 </head>
 
 <body>
@@ -268,7 +269,7 @@
                     </div>
                     <form id="messageField" target="_blank" action="" style="display: none;"></form>
                     <script>
-                        document.getElementById("msgSend").onclick = function() {
+                        document.getElementById("msgSend").onclick = () => {
                             sendMessage();
                         }
                     </script>
