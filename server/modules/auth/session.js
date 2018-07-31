@@ -24,7 +24,6 @@ module.exports.checkSession = async (token, response) => {
     return db.sessions.findOne(token)
         .exec()
         .then((doc) => {
-            console.log(`doc: ${doc}`)
             if (!doc) return {
                 flag: false,
                 res: response
@@ -37,7 +36,7 @@ module.exports.checkSession = async (token, response) => {
                 };
             } else {
                 doc.remove();
-                
+
                 response.writeHead(200, {
                     'Set-Cookie': `session_token=; expires=; path=/;`
                 });
