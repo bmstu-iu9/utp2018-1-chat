@@ -8,7 +8,7 @@ const handler = (methods, request, response) => {
 
     switch (methods[1]) {
         case 'user':
-            // require('api/user').receiver(methods, request, response);
+            require('api/user').receiver(methods, request, response);
             break;
 
         case 'msg':
