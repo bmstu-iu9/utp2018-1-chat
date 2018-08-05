@@ -6,13 +6,13 @@ const qs = require('querystring');
 const handler = (methods, request, response) => {
     // console.log(methods);
 
-    switch (methods[1]) {
+    switch (methods[0]) {
         case 'user':
             require('api/user').receiver(methods, request, response);
             break;
 
         case 'msg':
-            // require('api/msg').receiver(methods, request, response);
+            require('api/msg').receiver(methods, request, response);
             break;
 
         case 'dialog':

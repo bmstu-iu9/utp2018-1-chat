@@ -4,7 +4,7 @@ const qs = require('querystring');
 
 const Database = require('db');
 
-const receiver = (methods, request, response) => {
+const receiver = async (methods, request, response) => {
     console.log(methods);
 
     if (request.method === 'GET') {
@@ -21,9 +21,9 @@ const receiver = (methods, request, response) => {
         });
 
         request.on('end', () => {
-            if (methods[2] === 'signin')
+            if (methods[1] === 'signin')
                 require('auth/login').signin(response, qs.parse(data));
-            else if (methods[2] === 'signup')
+            else if (methods[1] === 'signup')
                 require('auth/registration').signup(response, qs.parse(data));
         });
     } else if (request.method === 'PUT') {
@@ -64,4 +64,4 @@ const getUserInfo = (login) => {
     // TODO : task #24.1
 };
 
-module.exports.handler = receiver;
+module.exports.receiver = receiver;
