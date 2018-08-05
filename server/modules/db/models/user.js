@@ -15,6 +15,15 @@ const userSchema = {
         salt: {
             type: 'string'
         },
+        firstname: {
+            type: 'string'
+        },
+        lasttname: {
+            type: 'string'
+        },
+        bio: {
+            type: 'string'
+        },
         friends: {
             type: 'array',
             uniqueItems: true,
