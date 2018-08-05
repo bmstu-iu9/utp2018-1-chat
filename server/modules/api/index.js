@@ -4,7 +4,7 @@ const source = require('router/source');
 const qs = require('querystring');
 
 const handler = (methods, request, response) => {
-    // console.log(methods);
+    console.log(request.method);
 
     switch (methods[0]) {
         case 'user':
@@ -16,7 +16,7 @@ const handler = (methods, request, response) => {
             break;
 
         case 'dialog':
-            // require('api/dialog').receiver(methods, request, response);
+            require('api/dialog').receiver(methods, request, response);
             break;
 
         case 'chart':
