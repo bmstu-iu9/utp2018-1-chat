@@ -2,14 +2,15 @@
 
 const qs = require('querystring');
 
-const receiver = async (methods, request, response) => {
+const Database = require('db');
+
+const receiver = (methods, request, response) => {
     console.log(methods);
 
     if (request.method === 'GET') {
-        if (!methods[1] || methods[1][0] !== ':')
-            console.log('err');
+        if (!methods[2] || methods[2][0] !== ':') console.log('err');
 
-        let userInfo = getUserInfo(methods[1].slice(1)); // Убираем двоеточие в параметре
+        let userInfo = getUserInfo(methods[2].slice(1));
 
         // TODO : task #24.1
 
@@ -20,9 +21,9 @@ const receiver = async (methods, request, response) => {
         });
 
         request.on('end', () => {
-            if (methods[1] === 'signin')
+            if (methods[2] === 'signin')
                 require('auth/login').signin(response, qs.parse(data));
-            else if (methods[1] === 'signup')
+            else if (methods[2] === 'signup')
                 require('auth/registration').signup(response, qs.parse(data));
         });
     } else if (request.method === 'PUT') {
@@ -57,11 +58,10 @@ const receiver = async (methods, request, response) => {
         source.send404(response);
     }
 
-
 }
 
 const getUserInfo = (login) => {
     // TODO : task #24.1
 };
 
-module.exports.receiver = receiver;
+module.exports.handler = receiver;
