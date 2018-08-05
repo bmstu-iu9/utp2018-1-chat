@@ -6,9 +6,8 @@ const dialogSchema = {
     version: 0,
     properties: {
         id: {
-            type: 'number',
-            final: true,
-            min: 0
+            type: 'string',
+            primary: true
         },
         kind: {
             type: 'string'
@@ -19,21 +18,22 @@ const dialogSchema = {
         description: {
             type: 'string'
         },
-        avatar {
+        avatar: {
             type: 'string'
         },
         date: {
             type: 'string'
         },
         members: {
-            type: 'array'
+            type: 'array',
             uniqueItems: true,
             item: {
                 type: 'string'
-            }
+            },
+            default: []
         },
         messages: {
-            type: 'array'
+            type: 'array',
             uniqueItems: true,
             item: {
                 type: 'object',
@@ -47,8 +47,8 @@ const dialogSchema = {
                     text: {
                         type: 'string'
                     },
-                    options {
-                        type: 'array'
+                    options: {
+                        type: 'array',
                         uniqueItems: true,
                         item: {
                             type: 'string'
