@@ -5,7 +5,7 @@ RxDB.plugin(require('pouchdb-adapter-leveldb'));
 
 const userSchema = require('db/models/user');
 const sessionSchema = require('db/models/session');
-const dialogSchema = require('db/models/session');
+const dialogSchema = require('db/models/dialog');
 
 const path = require('path');
 
@@ -77,10 +77,10 @@ const createCollections = async (db) => {
                     .then(dlg => {
                         let members = dlg.get('members');
                         members.push(login);
-                        dlg.set('members', members)
+                        dlg.set('members', members);
                     })
                     .catch(error => {
-                        return error;
+                        console.log(error);
                     });
             },
             async deleteMember(id, login) {
