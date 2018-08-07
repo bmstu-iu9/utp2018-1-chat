@@ -6,10 +6,38 @@ const receiver = async (methods, request, response) => {
     console.log(methods);
 
     if (request.method === 'GET') {
-        if (!methods[1] || methods[1][0] !== ':')
+        if (!methods[1])
             console.log('err');
 
-        let userInfo = getUserInfo(methods[1].slice(1)); // Убираем двоеточие в параметре
+        let userInfo = getUserInfo(methods[1]);
+
+        const db = await Database.get();
+
+        db.users.findOne(login)
+            .exec()
+            .then(async (doc) => {
+                if (doc == null) {
+                    response.writeHead(204, {
+                        'Content-Type': 'text/html'
+                    });
+
+                    response.end('User doesn\'t exist')
+
+                } else {
+
+                    let userr = {
+                        login: doc.get('login'),
+                        date: doc.get('date')
+                    };
+
+                    response.writeHead(200, {
+                        'Content-Type': 'application/json'
+                    });
+
+                    response.end(JSON.stringify(userr))
+                }
+            });
+
 
         // TODO : task #24.1
 
@@ -25,8 +53,18 @@ const receiver = async (methods, request, response) => {
             else if (methods[1] === 'signup')
                 require('auth/registration').signup(response, qs.parse(data));
         });
+
     } else if (request.method === 'PUT') {
         // TODO : task #24.4
+        let data = '';
+        request.on('data', (chunk) => {
+            data += chunk.toString();
+        });
+
+        request.on('end', () => {
+            data = qs.parse(data);
+        });
+
     } else if (request.method === 'DELETE') {
         // TODI : task #24.5 (дополнить)
         const db = await Database.get();
