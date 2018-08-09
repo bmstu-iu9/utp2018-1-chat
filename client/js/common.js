@@ -164,7 +164,6 @@ function sendMessage() {
 
 /* === END Отрисовка сообщений == */
 
-
 /* === Смена стиля == */
 function changeStyle() {
     let p = document.head.getElementsByTagName('link');
@@ -186,3 +185,26 @@ function addCssToDom(url) {
 }
 
 /* === END Смена стиля == */
+
+/* === Авторизация === */
+function auth(event) {
+    if (event.currentTarget.id === 'sign-up') {
+        document.getElementById('signup-submit').click();
+    } else if (event.currentTarget.id === 'sign-in') {
+        document.getElementById('signin-submit').click();
+    }
+}
+/* === END Авторищация */
+
+/* === Преключение формы === */
+function flip() {
+    const flipper = document.getElementById('auth-flip');
+
+    if (clsHelper.has(flipper, 'flip-on')) {
+        clsHelper.remove(document.getElementById('auth-flip'), 'flip-on')
+    } else {
+        clsHelper.add(document.getElementById('auth-flip'), 'flip-on')
+    }
+}
+/* === END Преключение формы === */
+

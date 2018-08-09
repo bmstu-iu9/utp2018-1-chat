@@ -268,12 +268,18 @@
                     <img class="" src="../img/voice.svg">
                 </a>
             </div>
-
-            <div class="send grid">
-                <div class="grid btn-wrap">
-                    <a href="#" class=" grid button button-accent button-big button-circle" id="msgSend">
-                        <img class="" src="../img/send.svg">
-                    </a>
+                <div class="send grid">
+                    <div class="grid btn-wrap">
+                        <a href="#" class=" grid button button-accent button-big button-circle" id="msgSend">
+                            <img class="" src="../img/send.svg">
+                        </a>
+                    </div>
+                    <form id="messageField" target="_blank" action="" style="display: none;"></form>
+                    <script>
+                        document.getElementById("msgSend").onclick = function() {
+                            sendMessage();
+                        }
+                    </script>
                 </div>
                 <!-- <button type="submit" form="messageField" onclick="sendMessage()">
                     <img class="" src="../img/send.svg">

@@ -1,13 +1,16 @@
 'use strict'
 
-const fs = require('fs');
 const url = require('url');
 const path = require('path');
-const source = require('./source');
+const source = require('router/source');
+const api = require('router/api');
+const session = require('auth/session');
+const cookie = require('cookies');
 
-const fileExtension = /.(css|js|png|jpg|gif|svg|mp4)/
+const fileExtension = /.(css|js|png|jpg|gif|svg|mp4)/;
 
-class App {
+// TODO : Организация модуля
+class Router {
     constructor(urlSource) {
         this.urlSource = urlSource;
     }
@@ -15,24 +18,30 @@ class App {
     routing(request, response) {
         let pathName = url.parse(request.url).pathname;
 
-        if (request.method == 'GET') {
-            if (request.url.match(fileExtension)) {
-                source.sendAsset(pathName, request, response);
-            } else if (request.url.match(/api.[a-z]/)) {
-                source.sendJSON(this.urlSource, pathName, response);
+        if (request.url.match(fileExtension)) {
+            source.sendAsset(pathName, request, response);
+        } else if (request.url.match(/api\/[a-z]/)) {
+            api.handler(this.urlSource, pathName.split('/')[2], request, response);
+        } else {
+            if (pathName === '/') {
+                // TODO : Структура
+                session.checkSession(cookie.parse(request).session_token, response)
+                    .then(data => {
+                        if (data.flag === true) {
+                            source.sendPage('chat_new', data.res);
+                        } else {
+                            source.sendPage('auth', response);
+                        }
+                    });
+            } else if (pathName === '/chat') {
+                source.sendPage('chat', response);
+            } else if (pathName === '/chat_new') {
+                source.sendPage('chat_new', response);
             } else {
-                if (pathName === '/') {
-                    source.sendPage('auth', response);
-                } else if (pathName === '/chat') {
-                    source.sendPage('chat', response);
-                } else if (pathName === '/chat_new') {
-                    source.sendPage('chat_new', response);
-                } else {
-                    source.send404(response);
-                }
+                source.send404(response);
             }
         }
     }
 };
 
-module.exports = App;
+module.exports = Router;
