@@ -97,6 +97,64 @@ body {
     user-select: none;
 }
 
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 37px;
+    height: 23px;
+}
+
+.switch input {
+    display: none;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 17px;
+    width: 17px;
+    left: 4px;
+    bottom: 3px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(12px);
+    -ms-transform: translateX(12px);
+    transform: translateX(12px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
 .input_fill .input-label {
     color: #db1623;
 }
@@ -377,14 +435,14 @@ body {
 }
 
 .sidebar .list {
-    padding: 30px 0;
+    padding-top: 10px;
 }
 
 .sidebar .list .dialogs ul {
     display: grid;
     list-style: none;
-    height: -webkit-calc(100vh - 30px - 65px - 75px - 65px - 60px);
-    height: calc(100vh - 30px - 65px - 75px - 65px - 60px);
+    height: -webkit-calc(100vh - 30px - 65px - 75px - 65px - 60px + 55px);
+    height: calc(100vh - 30px - 65px - 75px - 65px - 60px + 55px);
     overflow-y: scroll;
 }
 
@@ -498,7 +556,7 @@ body {
 }
 
 .sidebar .list .dialogs ul .text .user-name,
-  .sidebar .list .dialogs ul .text .dialog-footer {
+.sidebar .list .dialogs ul .text .dialog-footer {
     display: block;
     color: #db1623;
     white-space: nowrap;
@@ -564,16 +622,24 @@ body {
 }
 
 .dialog .dialog-chat {
-    padding: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 2px;
     border-bottom: 1px solid rgba(102, 102, 111, 0.3);
+    box-shadow: inset 6px 6px 12px -6px rgba(0, 0, 0, .2);
 }
 
 .dialog .dialog-chat ul {
     list-style: none;
 }
 
-.dialog .dialog-chat ul li {
-    margin-bottom: 30px;
+.dialog .profile {
+    margin-top: 8px;
+}
+
+.dialog .dialog-chat ul .chat-messages li {
+    margin-bottom: 10px;
+    margin-right: 10px;
 }
 
 .dialog .dialog-chat .incoming {
@@ -595,7 +661,7 @@ body {
 
 .chat-messages {
     overflow-y: scroll;
-    height: calc(100vh - 30px - 65px - 75px - 65px - 60px - 30px);
+    height: calc(100vh - 30px - 65px - 75px - 65px - 60px - 30px + 92px);
 }
 
 .dialog .dialog-chat .incoming .msg {
@@ -670,6 +736,7 @@ body {
     grid-template-columns: 75px 1fr 50px 50px 75px;
     grid-template-rows: 115px;
     background: #fff;
+    box-shadow: inset 6px 0px 12px -6px rgba(0, 0, 0, .2);
 }
 
 .dialog .dialog-footer .send {
@@ -685,9 +752,9 @@ body {
 }
 
 .dialog .dialog-footer .attachment a,
-  .dialog .dialog-footer .emoji a,
-  .dialog .dialog-footer .voice a,
-  .dialog .dialog-footer .send a {
+.dialog .dialog-footer .emoji a,
+.dialog .dialog-footer .voice a,
+.dialog .dialog-footer .send a {
     -webkit-box-pack: center;
     -webkit-justify-content: center;
     -ms-flex-pack: center;
@@ -699,9 +766,9 @@ body {
 }
 
 .dialog .dialog-footer .attachment img,
-  .dialog .dialog-footer .emoji img,
-  .dialog .dialog-footer .voice img,
-  .dialog .dialog-footer .send img {
+.dialog .dialog-footer .emoji img,
+.dialog .dialog-footer .voice img,
+.dialog .dialog-footer .send img {
     height: 20px;
     -webkit-transform: rotate(-45deg);
     -ms-transform: rotate(-45deg);
@@ -709,23 +776,23 @@ body {
 }
 
 .dialog .dialog-footer .attachment img:hover,
-  .dialog .dialog-footer .emoji img:hover,
-  .dialog .dialog-footer .voice img:hover {
+.dialog .dialog-footer .emoji img:hover,
+.dialog .dialog-footer .voice img:hover {
     -webkit-transform: rotate(-45deg) scale(1.1);
     -ms-transform: rotate(-45deg) scale(1.1);
     transform: rotate(-45deg) scale(1.1);
 }
 
 .dialog .dialog-footer .emoji img,
-  .dialog .dialog-footer .voice img,
-  .dialog .dialog-footer .send img {
+.dialog .dialog-footer .voice img,
+.dialog .dialog-footer .send img {
     -webkit-transform: none;
     -ms-transform: none;
     transform: none;
 }
 
 .dialog .dialog-footer .emoji img:hover,
-  .dialog .dialog-footer .voice img:hover {
+.dialog .dialog-footer .voice img:hover {
     -webkit-transform: scale(1.1);
     -ms-transform: scale(1.1);
     transform: scale(1.1);

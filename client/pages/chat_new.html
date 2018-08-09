@@ -2,259 +2,272 @@
 <html lang="ru">
 
 <head>
-	<meta charset="utf-8">
+    <meta charset="utf-8">
 
-	<title>Gist` — Чат</title>
-	<meta name="description" content="">
+    <title>Gist` — Чат</title>
+    <meta name="description" content="">
 
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <link rel="stylesheet" href="../css/main.css">
-
     <script src="../js/common.js"></script>
 </head>
 
 <body>
-    <div class="content">
-        <section class="sidebar">
-            <div class="profile">
-                <div class="avatar">
-                    <img src="../img/user6.jpg" alt="">
-                </div>
-
-                <div class="title">
-                    <span class="user-name">Arsen Gavrilenko</span>
-                    <span class="user-status">@senya-g</span>
-                </div>
+<div class="content">
+    <section class="sidebar">
+        <div class="profile">
+            <div class="avatar">
+                <img src="../img/user6.jpg" alt="">
             </div>
 
-            <div class="tab-icons">
-                <a href="#">
-                    <img src="../img/bubble.svg" alt="">
-                </a>
-
-                <a href="#">
-                    <img src="../img/team.svg" alt="">
-                </a>
-
-                <a href="#">
-                    <img src="../img/gear.svg" alt="">
-                </a>
+            <div class="title">
+                <span class="user-name">Arsen Gavrilenko</span>
+                <span class="user-status">@senya-g</span>
             </div>
+        </div>
 
-            <div class="search">
+        <div class="tab-icons">
+            <a href="#">
+                <img src="../img/bubble.svg" alt="">
+            </a>
+
+            <a href="#">
+                <img src="../img/team.svg" alt="">
+            </a>
+
+            <a href="#">
+                <img src="../img/gear.svg" alt="">
+            </a>
+
+            <label class="switch">
+                <input type="checkbox" onclick="changeStyle()">
+                <span class="slider round"></span>
+            </label>
+        </div>
+
+        <div class="search">
                 <span class="input input_main-search">
-    				<input class="input-field input-field_main-search" type="text" autocomplete="off" id="sidebar-search" />
+    				<input class="input-field input-field_main-search" type="text" autocomplete="off"
+                           id="sidebar-search"/>
     				<label class="input-label input-label_main-search" for="sidebar-search">
     					<span class="input-label-content input-label-content_main-search">Поиск</span>
     				</label>
     			</span>
-            </div>
+        </div>
 
-            <div class="list">
-                <div class="dialogs">
-                    <ul>
-                        <li class="grid tab-links focus" onclick="switchDialog(event, '1');">
+        <div class="list">
+            <div class="dialogs">
+                <ul>
+                    <li class="grid tab-links focus" onclick="switchDialog(event, '1');">
+                        <div class="profile">
+                            <img src="../img/user3.jpg"></img>
+                            <div class="status offline"></div>
+                        </div>
+                        <div class="text">
+                            <div class="user-name">Антон Ростецкий</div>
+                            <div class="msg">Девяточка топ!</div>
+                        </div>
+                    </li>
+                    <li class="grid tab-links" onclick="switchDialog(event, '2');">
+                        <div class="profile">
+                            <img src="../img/user1.jpg"></img>
+                            <div class="status online"></div>
+                        </div>
+                        <div class="text">
+                            <div class="user-name">Вольха Котова</div>
+                            <div class="msg">Девяточка топ!</div>
+                        </div>
+                    </li>
+                    <li class="grid tab-links" onclick="switchDialog(event, '3');">
+                        <div class="profile">
+                            <img src="../img/user2.jpg"></img>
+                            <div class="status online"></div>
+                        </div>
+                        <div class="text">
+                            <div class="user-name">Наталия Климова</div>
+                            <div class="msg">Девяточка топ!</div>
+                        </div>
+                    </li>
+                    <li class="grid tab-links" onclick="switchDialog(event, '4');">
+                        <div class="profile">
+                            <img src="../img/user6.jpg"></img>
+                            <div class="status offline"></div>
+                        </div>
+                        <div class="text">
+                            <div class="user-name">Арсений Гавриленко</div>
+                            <div class="msg">Девяточка топ!</div>
+                        </div>
+                    </li>
+                    <li class="grid tab-links" onclick="switchDialog(event, '5');">
+                        <div class="profile">
+                            <img src="../img/user4.jpg"></img>
+                            <div class="status offline"></div>
+                        </div>
+                        <div class="text">
+                            <div class="user-name">Глеб Бахметьев</div>
+                            <div class="msg">Девяточка топ!</div>
+                        </div>
+                    </li>
+                    <li class="grid tab-links" onclick="switchDialog(event, '6');">
+                        <div class="profile">
+                            <img src="../img/user5.jpg"></img>
+                            <div class="status offline"></div>
+                        </div>
+                        <div class="text">
+                            <div class="user-name">Дмитрий Рыбаков</div>
+                            <div class="msg">Девяточка топ!</div>
+                        </div>
+                    </li>
+                    <li class="grid tab-links" onclick="switchDialog(event, '1');">
+                        <div class="profile">
+                            <img src="../img/user3.jpg"></img>
+                            <div class="status offline"></div>
+                        </div>
+                        <div class="text">
+                            <div class="user-name">Антон Ростецкий</div>
+                            <div class="msg">Девяточка топ!</div>
+                        </div>
+                    </li>
+                    <li class="grid tab-links" onclick="switchDialog(event, '2');">
+                        <div class="profile">
+                            <img src="../img/user1.jpg"></img>
+                            <div class="status online"></div>
+                        </div>
+                        <div class="text">
+                            <div class="user-name">Вольха Котова</div>
+                            <div class="msg">Девяточка топ!</div>
+                        </div>
+                    </li>
+                    <li class="grid tab-links" onclick="switchDialog(event, '3');">
+                        <div class="profile">
+                            <img src="../img/user2.jpg"></img>
+                            <div class="status online"></div>
+                        </div>
+                        <div class="text">
+                            <div class="user-name">Наталия Климова</div>
+                            <div class="msg">Девяточка топ!</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="dialog">
+        <div class="dialog-header">
+            <div class="dialog-header-wrap">
+                <div class="title">
+                    <span class="user-name">Антон Ростецкий</span>
+                    <span class="user-status">Не в сети</span>
+                </div>
+
+                <div class="empty">
+
+                </div>
+
+                <div class="folder">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="dialog-chat">
+            <ul>
+                <li class="tab-content" id="1">
+                    <ul class="chat-messages" style="display: block;" id="messageBody">
+                        <li class="incoming">
                             <div class="profile">
                                 <img src="../img/user3.jpg"></img>
-                                <div class="status offline"></div>
                             </div>
-                            <div class="text">
-                                <div class="user-name">Антон Ростецкий</div>
-                                <div class="msg">Девяточка топ!</div>
-                            </div>
-                        </li>
-                        <li class="grid tab-links" onclick="switchDialog(event, '2');">
-                            <div class="profile">
-                                <img src="../img/user1.jpg"></img>
-                                <div class="status online"></div>
-                            </div>
-                            <div class="text">
-                                <div class="user-name">Вольха Котова</div>
-                                <div class="msg">Девяточка топ!</div>
+
+                            <div class="msg">
+                                <div class="msg-header">
+                                    18:21
+                                </div>
+
+                                <div class="msg-content text">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora eaque numquam
+                                    commodi dolore voluptate ratione porro architecto, eligendi culpa est excepturi
+                                    exercitationem dolorum, dignissimos. Perspiciatis iste tempore consequuntur
+                                    reiciendis, dolores.
+                                </div>
                             </div>
                         </li>
-                        <li class="grid tab-links" onclick="switchDialog(event, '3');">
-                            <div class="profile">
-                                <img src="../img/user2.jpg"></img>
-                                <div class="status online"></div>
+
+                        <li class="sent">
+                            <div class="msg">
+                                <div class="msg-header">
+                                    18:29
+                                </div>
+
+                                <div class="msg-content text">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora eaque numquam
+                                    commodi dolore voluptate ratione porro architecto, eligendi culpa est excepturi
+                                    exercitationem dolorum, dignissimos. Perspiciatis iste tempore consequuntur
+                                    reiciendis, dolores.
+                                </div>
                             </div>
-                            <div class="text">
-                                <div class="user-name">Наталия Климова</div>
-                                <div class="msg">Девяточка топ!</div>
-                            </div>
-                        </li>
-                        <li class="grid tab-links" onclick="switchDialog(event, '4');">
+
                             <div class="profile">
                                 <img src="../img/user6.jpg"></img>
-                                <div class="status offline"></div>
-                            </div>
-                            <div class="text">
-                                <div class="user-name">Арсений Гавриленко</div>
-                                <div class="msg">Девяточка топ!</div>
                             </div>
                         </li>
-                        <li class="grid tab-links" onclick="switchDialog(event, '5');">
-                            <div class="profile">
-                                <img src="../img/user4.jpg"></img>
-                                <div class="status offline"></div>
-                            </div>
-                            <div class="text">
-                                <div class="user-name">Глеб Бахметьев</div>
-                                <div class="msg">Девяточка топ!</div>
-                            </div>
-                        </li>
-                        <li class="grid tab-links" onclick="switchDialog(event, '6');">
-                            <div class="profile">
-                                <img src="../img/user5.jpg"></img>
-                                <div class="status offline"></div>
-                            </div>
-                            <div class="text">
-                                <div class="user-name">Дмитрий Рыбаков</div>
-                                <div class="msg">Девяточка топ!</div>
-                            </div>
-                        </li>
-                        <li class="grid tab-links" onclick="switchDialog(event, '1');">
+
+                        <li class="incoming">
                             <div class="profile">
                                 <img src="../img/user3.jpg"></img>
-                                <div class="status offline"></div>
                             </div>
-                            <div class="text">
-                                <div class="user-name">Антон Ростецкий</div>
-                                <div class="msg">Девяточка топ!</div>
-                            </div>
-                        </li>
-                        <li class="grid tab-links" onclick="switchDialog(event, '2');">
-                            <div class="profile">
-                                <img src="../img/user1.jpg"></img>
-                                <div class="status online"></div>
-                            </div>
-                            <div class="text">
-                                <div class="user-name">Вольха Котова</div>
-                                <div class="msg">Девяточка топ!</div>
-                            </div>
-                        </li>
-                        <li class="grid tab-links" onclick="switchDialog(event, '3');">
-                            <div class="profile">
-                                <img src="../img/user2.jpg"></img>
-                                <div class="status online"></div>
-                            </div>
-                            <div class="text">
-                                <div class="user-name">Наталия Климова</div>
-                                <div class="msg">Девяточка топ!</div>
+
+                            <div class="msg">
+                                <div class="msg-header">
+                                    18:36
+                                </div>
+
+                                <div class="msg-content text">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora eaque numquam
+                                    commodi dolore voluptate ratione porro architecto, eligendi culpa est excepturi
+                                    exercitationem dolorum, dignissimos. Perspiciatis iste tempore consequuntur
+                                    reiciendis, dolores.
+                                </div>
                             </div>
                         </li>
                     </ul>
-                </div>
-            </div>
+                </li>
+                <li class="tab-content" id="2"></li>
+                <li class="tab-content" id="3"></li>
+                <li class="tab-content" id="4"></li>
+                <li class="tab-content" id="5"></li>
+                <li class="tab-content" id="6"></li>
+            </ul>
+        </div>
 
-        </section>
-
-        <section class="dialog">
-            <div class="dialog-header">
-                <div class="dialog-header-wrap">
-                    <div class="title">
-                        <span class="user-name">Антон Ростецкий</span>
-                        <span class="user-status">Не в сети</span>
-                    </div>
-
-                    <div class="empty">
-
-                    </div>
-
-                    <div class="folder">
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="dialog-chat">
-                <ul>
-                    <li class="tab-content" id="1">
-                        <ul class="chat-messages" style="display: block;" id="messageBody">
-                            <li class="incoming">
-                                <div class="profile">
-                                    <img src="../img/user3.jpg"></img>
-                                </div>
-
-                                <div class="msg">
-                                    <div class="msg-header">
-                                        18:21
-                                    </div>
-
-                                    <div class="msg-content text">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora eaque numquam commodi dolore voluptate ratione porro architecto, eligendi culpa est excepturi exercitationem dolorum, dignissimos. Perspiciatis iste tempore consequuntur reiciendis, dolores.
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="sent">
-                                <div class="msg">
-                                    <div class="msg-header">
-                                        18:29
-                                    </div>
-
-                                    <div class="msg-content text">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora eaque numquam commodi dolore voluptate ratione porro architecto, eligendi culpa est excepturi exercitationem dolorum, dignissimos. Perspiciatis iste tempore consequuntur reiciendis, dolores.
-                                    </div>
-                                </div>
-
-                                <div class="profile">
-                                    <img src="../img/user6.jpg"></img>
-                                </div>
-                            </li>
-
-                            <li class="incoming">
-                                <div class="profile">
-                                    <img src="../img/user3.jpg"></img>
-                                </div>
-
-                                <div class="msg">
-                                    <div class="msg-header">
-                                        18:36
-                                    </div>
-
-                                    <div class="msg-content text">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora eaque numquam commodi dolore voluptate ratione porro architecto, eligendi culpa est excepturi exercitationem dolorum, dignissimos. Perspiciatis iste tempore consequuntur reiciendis, dolores.
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="tab-content" id="2"></li>
-                    <li class="tab-content" id="3"></li>
-                    <li class="tab-content" id="4"></li>
-                    <li class="tab-content" id="5"></li>
-                    <li class="tab-content" id="6"></li>
-                </ul>
-            </div>
-
-            <div class="dialog-footer">
-                <div class="attachment grid">
+        <div class="dialog-footer">
+            <div class="attachment grid">
                 <a href="#" class="grid">
                     <img class="" src="../img/attachment.svg">
                 </a>
-                </div>
-                <div class="text grid">
-                    <input type="text"
-                           placeholder="Введите сообщение..."
-                           form="messageField"
-                           name="message"
-                           autocomplete="off">
-                </div>
+            </div>
+            <div class="text grid">
+                <input type="text"
+                       placeholder="Введите сообщение..."
+                       form="messageField"
+                       name="message"
+                       autocomplete="off">
+            </div>
 
-                <div class="emoji grid">
-                    <a href="#" class="grid">
-                        <img class="" src="../img/emoji.svg">
-                    </a>
-                </div>
+            <div class="emoji grid">
+                <a href="#" class="grid">
+                    <img class="" src="../img/emoji.svg">
+                </a>
+            </div>
 
-                <div class="voice grid">
-                    <a href="#" class="grid">
-                        <img class="" src="../img/voice.svg">
-                    </a>
-                </div>
-
+            <div class="voice grid">
+                <a href="#" class="grid">
+                    <img class="" src="../img/voice.svg">
+                </a>
+            </div>
                 <div class="send grid">
                     <div class="grid btn-wrap">
                         <a href="#" class=" grid button button-accent button-big button-circle" id="msgSend">
@@ -268,8 +281,19 @@
                         }
                     </script>
                 </div>
+                <!-- <button type="submit" form="messageField" onclick="sendMessage()">
+                    <img class="" src="../img/send.svg">
+                </button> -->
+                <form id="messageField" target="_blank" action="" style="display: none;"></form>
+                <script>
+                    document.getElementById("msgSend").onclick = function () {
+                        sendMessage();
+                        // document.getElementById("messageField").submit();
+                    }
+                </script>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
+</div>
 </body>
 </html>
