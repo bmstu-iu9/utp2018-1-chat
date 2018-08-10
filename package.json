@@ -2,9 +2,9 @@
     "name": "Gist",
     "version": "0.1.0",
     "description": "",
-    "main": "./server/app.js",
+    "main": "./server/server.js",
     "scripts": {
-        "server": "nodemon ./server/app.js"
+        "server": "nodemon ./server/server.js"
     },
     "author": "",
     "license": "MIT",

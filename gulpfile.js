@@ -7,7 +7,8 @@ let gulp = require('gulp'),
     concat = require('gulp-concat'),
     rename = require('gulp-rename'),
     notify = require("gulp-notify"),
-    browserSync = require('browser-sync');
+    browserSync = require('browser-sync'),
+    nodemon = require('nodemon');
 
 gulp.task('styles', function() {
     return gulp.src('client/sass/**/*.sass')
@@ -46,6 +47,17 @@ gulp.task('bsync', function() {
         // tunnel: true,
         // tunnel: "gist"
     })
+});
+
+gulp.task('server', function() {
+    nodemon({
+        script: 'server/server.js',
+        watch: ["server/server.js", "server/**", 'server/*'],
+        ext: 'js'
+    }).on('restart', () => {
+    gulp.src('server.js')
+      .pipe(notify('Запущен сервер и отслеживание изменений файлов'));
+  });
 });
 
 gulp.task('watch', ['styles', 'js', 'bsync'], function() {
