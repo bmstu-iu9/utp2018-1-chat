@@ -1,0 +1,62 @@
+.slider:before {
+    background-color: #1c1c1c;
+}
+
+input:checked + .slider {
+    background-color: #8b8b90;
+}
+
+.tab-icons img {
+    filter: contrast(2);
+}
+
+.dialog .dialog-footer, .dialog-chat {
+    background: #121212;
+}
+
+.dialog-header, .sidebar {
+    background: #1c1c1c;
+}
+
+.sidebar .profile .title .user-status, .sidebar .list .dialogs ul .text .msg {
+    color: #7d7d86;
+}
+
+.dialog {
+    grid-template-rows: 115px 1fr 115px;
+    border-left: 1px solid rgba(0, 0, 0, 0.76);
+}
+
+.dialog .dialog-chat .incoming .msg .msg-content.text {
+    color: #151518;
+    background: #8b8b90;
+}
+
+.dialog .dialog-chat .sent .msg .msg-content.text {
+    color: #151518;
+    background: #db1623;
+}
+
+.dialog .dialog-footer .text input {
+    color: #ccc;
+    opacity: 0.7;
+    background-color: #121212;
+}
+
+.dialog .dialog-header .dialog-header-wrap .title .user-name, .input-label {
+    color: #8b8b90;
+}
+
+.input_fill .input-label {
+    color: #db1623;
+}
+
+.input-label_main-search::before {
+    border-bottom: 1px solid rgb(139, 139, 148);
+}
+
+.input-field_main-search {
+    color: #8b8b90;
+}
+
+
