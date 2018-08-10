@@ -5,10 +5,17 @@ RxDB.plugin(require('pouchdb-adapter-leveldb'));
 
 const userSchema = require('db/models/user');
 const sessionSchema = require('db/models/session');
+const dialogSchema = require('db/models/dialog');
 
 const path = require('path');
 
 const Database = {};
+
+Array.prototype.unset = (value) => {
+    if(~this.indexOf(value)) {
+        this.splice(this.indexOf(value), 1);
+    }
+}
 
 const create = async () => {
     const uri = path.join(__dirname, '..', '..', 'data', 'gist')
@@ -18,6 +25,12 @@ const create = async () => {
         adapter: 'leveldb'
     });
 
+    await createCollections(db);
+
+    return db;
+};
+
+const createCollections = async (db) => {
     await db.collection({
         name: 'users',
         schema: userSchema,
@@ -47,7 +60,41 @@ const create = async () => {
         }
     });
 
-    return db;
+    await db.collection({
+        name: 'dialogs',
+        schema: dialogSchema,
+        statics: {
+            async addDialog(id, kind, date) {
+                return this.upsert({
+                    id,
+                    kind,
+                    date
+                });
+            },
+            async addMember(id, login) {
+                this.findOne(id)
+                    .exec()
+                    .then(dlg => {
+                        let members = dlg.get('members');
+                        members.push(login);
+                        dlg.set('members', members);
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
+            },
+            async deleteMember(id, login) {
+                this.findOne(id)
+                    .exec()
+                    .then(dlg => {
+                        dlg.set('members', dlg.get('members').unset(login));
+                    })
+                    .catch(error => {
+                        return error;
+                    });
+            }
+        }
+    });
 };
 
 let promise = null;

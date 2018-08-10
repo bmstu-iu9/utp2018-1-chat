@@ -5,7 +5,7 @@ const session = require('auth/session');
 
 const Database = require('db');
 
-module.exports.signIn = async (response, data) => {
+module.exports.signin = async (response, data) => {
     const login = data['user-in[login]'];
 
     const db = await Database.get();

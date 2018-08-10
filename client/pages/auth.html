@@ -2,12 +2,17 @@
 <html lang="ru">
 
 <head>
-    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-language" content="ru"/>
 
-    <title>Gist`</title>
-    <meta name="description" content="">
+    <title>Gist` — Онлайн-чат</title>
+    <meta name="description" content="Учебный проект МГТУ им. Баумана ИУ9 первого курса 2018 г. — онлайн-чат на Node.js">
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="theme-color" content="#db1623">
+
+    <link rel="image_src" href="" /> <!-- TODO -->
 
     <link rel="stylesheet" href="../css/auth.css">
 </head>
@@ -27,7 +32,7 @@
                         Gist<span>`</span>
                     </span>
 
-                    <form action="/api/login" id="signin-form" method="post">
+                    <form action="/api/user/signin" id="signin-form" method="post">
                         <span class="input input_transparent">
                             <input class="input-field input-field_transparent"
                                 type="text"
@@ -68,7 +73,7 @@
                         Gist<span>`</span>
                     </span>
 
-                    <form action="/api/reg" id="signup-form" method="post">
+                    <form action="/api/user/signup" id="signup-form" method="post">
                         <span class="input input_transparent">
                             <input class="input-field input-field_transparent"
                                 type="text"

@@ -3,7 +3,7 @@
 const url = require('url');
 const path = require('path');
 const source = require('router/source');
-const api = require('router/api');
+const api = require('api');
 const session = require('auth/session');
 const cookie = require('cookies');
 
@@ -21,7 +21,9 @@ class Router {
         if (request.url.match(fileExtension)) {
             source.sendAsset(pathName, request, response);
         } else if (request.url.match(/api\/[a-z]/)) {
-            api.handler(this.urlSource, pathName.split('/')[2], request, response);
+            const path = pathName.split('/');
+            path.splice(0, 2);
+            api.handler(path, request, response);
         } else {
             if (pathName === '/') {
                 // TODO : Структура

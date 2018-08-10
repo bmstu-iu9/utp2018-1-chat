@@ -4,7 +4,7 @@ const auth = require('auth');
 
 const Database = require('db');
 
-module.exports.signUp = async (response, data) => {
+module.exports.signup = async (response, data) => {
     const login = data['user-up[login]'];
     const passData = auth.getHashPassword(data['user-up[password]']);
 

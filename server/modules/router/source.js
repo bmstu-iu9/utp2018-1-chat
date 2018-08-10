@@ -49,7 +49,7 @@ class Source {
         const stream = fs.createReadStream(path.resolve(clientPath, 'pages', `${page}.html`));
 
         response.writeHead(200, {
-            'Content-Type': 'text/html'
+            'Content-Type': mimeType['html']
         });
 
         stream.pipe(response);
@@ -59,18 +59,18 @@ class Source {
         });
     }
 
-    sendJSON(resUrl, pathName, response) {
-        response.setHeader('Access-Control-Allow-Origin', resUrl);
+    sendJSON(data, response) {
         response.writeHead(200, {
             'Content-Type': mimeType['json']
         });
 
-        response.end("{\"name\":\"UTP\"}");
+        console.log(JSON.stringify(data));
+        response.end(JSON.stringify(data));
     }
 
     sendError(error, response) {
         response.writeHeader((error.code === 'ENOENT') ? 404 : 500, {
-            'Content-Type': mimeType['txt']
+            'Content-Type': mimeType['html']
         });
 
         response.end(error.message);
@@ -78,9 +78,9 @@ class Source {
 
     send404(response) {
         response.writeHead(404, {
-            'Content-Type': mimeType['txt']
+            'Content-Type': mimeType['html']
         });
-        
+
         response.end('404');
     }
 }
