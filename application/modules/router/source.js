@@ -19,7 +19,7 @@ const mimeType = {
     'mp4': 'video/mp4'
 };
 
-const clientPath = path.join(__dirname, '..', '..', '..', 'client');
+const clientPath = path.join(__dirname, '..', '..', 'public');
 
 class Source {
     constructor() {
