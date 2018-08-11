@@ -2,26 +2,40 @@
     "name": "Gist",
     "version": "0.1.0",
     "description": "",
-    "main": "./server/server.js",
+    "main": "./application/server.js",
     "scripts": {
-        "server": "nodemon ./server/server.js"
+        "dev": "set NODE_ENV=dev && gulp",
+        "build": "set NODE_ENV=production && gulp build",
+        "production": "forever ./application/server.js"
     },
     "author": "",
     "license": "MIT",
     "dependencies": {
         "app-module-path": "^2.2.0",
+        "forever": "^0.15.3",
+        "pouchdb-adapter-leveldb": "^7.0.0",
+        "rxdb": "^7.7.0",
+        "rxjs": "^6.2.2"
+    },
+    "devDependencies": {
         "browser-sync": "^2.24.4",
-        "gulp": "^3.9.1",
+        "gulp": "^4.0.0",
         "gulp-autoprefixer": "^5.0.0",
+        "gulp-cache": "^1.0.2",
+        "gulp-clean": "^0.4.0",
         "gulp-clean-css": "^3.9.4",
         "gulp-concat": "^2.6.1",
+        "gulp-exec": "^3.0.2",
+        "gulp-htmlmin": "^4.0.0",
+        "gulp-hub": "^4.2.0",
+        "gulp-if": "^1.2.5",
+        "gulp-imagemin": "^4.1.0",
+        "gulp-nodemon": "^2.2.1",
         "gulp-notify": "^3.2.0",
         "gulp-rename": "^1.2.2",
         "gulp-sass": "^4.0.1",
         "gulp-uglify": "^3.0.0",
         "nodemon": "^1.18.3",
-        "pouchdb-adapter-leveldb": "^7.0.0",
-        "rxdb": "^7.7.0",
-        "rxjs": "^6.2.2"
+        "require-dir": "^1.0.0"
     }
 }
