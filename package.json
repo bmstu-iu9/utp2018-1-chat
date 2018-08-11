@@ -2,14 +2,26 @@
     "name": "Gist",
     "version": "0.1.0",
     "description": "",
+    "homepage": "https://github.com/bmstu-iu9/utp2018-1-chat",
     "main": "./application/server.js",
     "scripts": {
         "dev": "set NODE_ENV=dev && gulp",
         "build": "set NODE_ENV=production && gulp build",
         "production": "forever ./application/server.js"
     },
-    "author": "",
+    "contributors": [
+        "Arsen Gavrilenko (@senya-g)",
+        "Olga Kotova (@Volhamster)",
+        "Natalia Klimova (@Tataklim)",
+        "Gleb Bakhmetyev (@sk8bored)",
+        "Anton Rostocki (@AntonRostetskiy",
+        "Dmitry Rybakov (@bulletmys)",
+    ],
     "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/bmstu-iu9/utp2018-1-chat.git"
+    },
     "dependencies": {
         "app-module-path": "^2.2.0",
         "forever": "^0.15.3",
