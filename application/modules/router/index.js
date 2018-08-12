@@ -7,7 +7,7 @@ const api = require('api');
 const session = require('auth/session');
 const cookie = require('cookies');
 
-const fileExtension = /.(css|js|png|jpg|gif|svg|mp4)/;
+const fileExtension = /.(css|js|png|jpg|gif|svg|mp4|ttf|woff|eot)/;
 
 // TODO : Организация модуля
 class Router {

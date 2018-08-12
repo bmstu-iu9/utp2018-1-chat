@@ -16,7 +16,11 @@ const mimeType = {
     'md': 'text/markdown',
     'css': 'text/css',
     'js': 'text/javascript',
-    'mp4': 'video/mp4'
+    'mp4': 'video/mp4',
+    'ttf': 'application/x-font-truetype',
+    'eot': 'application/vnd.ms-fontobject',
+    'woff': 'application/font-woff',
+    'woff2': 'application/font-woff2',
 };
 
 const clientPath = path.join(__dirname, '..', '..', 'public');
