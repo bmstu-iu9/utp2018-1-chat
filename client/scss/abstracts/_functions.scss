@@ -1,0 +1,9 @@
+/* === Фукнции для карт === */
+
+@function main-colors($key: 'primary') {
+  @return map-get($main-colors, $key);
+}
+
+@function type-scale($key) {
+  @return map-get($type-scale, $key);
+}
