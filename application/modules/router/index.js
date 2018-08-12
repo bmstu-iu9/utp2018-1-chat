@@ -30,15 +30,13 @@ class Router {
                 session.checkSession(cookie.parse(request).session_token, response)
                     .then(data => {
                         if (data.flag === true) {
-                            source.sendPage('chat_new', data.res);
+                            source.sendPage('chat', data.res);
                         } else {
                             source.sendPage('auth', response);
                         }
                     });
             } else if (pathName === '/chat') {
                 source.sendPage('chat', response);
-            } else if (pathName === '/chat_new') {
-                source.sendPage('chat_new', response);
             } else {
                 source.send404(response);
             }
