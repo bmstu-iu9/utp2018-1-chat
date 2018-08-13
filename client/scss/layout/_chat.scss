@@ -1,0 +1,134 @@
+.chat {
+  grid-column: 4 / -1;
+  display: grid;
+  grid-template: calc(100vh - 140px) 75px/1fr;
+  background: #f3f6f9;
+}
+
+.chat__dialogs-list,
+.chat__dialog,
+.dialog {
+  text-decoration: none;
+  list-style: none;
+}
+
+.chat__dialog {
+  display: none;
+}
+
+.chat__dialog_active {
+  display: block;
+}
+
+.dialog {
+  display: block;
+  padding: 70px 50px;
+}
+
+.dialog__meta {
+  width: 100%;
+  text-align: center;
+}
+
+.dialog__meta span {
+  padding: 5px 15px;
+  background: main-colors('accent');
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.dialog__wrap-msg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.dialog__wrap-msg_incoming {
+  float: left;
+}
+
+.dialog__wrap-msg_sent {
+  float: right;
+}
+
+.dialog__msg {
+  float: inherit;
+  max-width: 60%;
+  min-width: 110px;
+  box-sizing: border-box;
+  height: auto;
+  padding: 5px 10px;
+  margin: 15px 0;
+  border-radius: 10px;
+}
+
+.dialog__msg-text {
+  word-wrap: break-word;
+  vertical-align: baseline;
+  font-weight: 400;
+  font-size: .9rem;
+  line-height: .9rem;
+}
+
+.dialog__msg-meta {
+  display: grid;
+  align-items: center;
+  float: inherit;
+  width: 100px;
+  height: 35px;
+  color: #c1ccd8;
+  font-weight: 600;
+  font-size: 0.7rem;
+  padding: 0 20px;
+  margin: 15px 0;
+}
+
+.dialog__msg-meta_sent {
+  text-align: right;
+}
+
+.dialog__msg_incoming {
+  background: #fff;
+  color: #000;
+}
+
+.dialog__msg_sent {
+  background: main-colors('accent');
+  color: #fff;
+}
+
+.chat__footer {
+  display: grid;
+  grid-template: 75px / 1fr 100px;
+  padding-right: 30px;
+  background: #fff;
+}
+
+.msg-box {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  padding: 10px 30px;
+  position: relative;
+}
+
+.btn-box {
+  display: grid;
+  grid-template: 75px / 1fr 1fr;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-box__icon {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-box__icon img {
+  height: 23px;
+  object-fit: cover;
+}

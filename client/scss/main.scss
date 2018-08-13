@@ -5,9 +5,9 @@
 @import
   'vendors/normalize';
 
-@import,
+@import
   'base/base',
-  'base/fonts'
+  'base/fonts',
   'base/typography';
 
 @import
@@ -21,6 +21,6 @@
   'components/buttons',
   'components/inputs';
 
-@import
-  'themes/colorful',
-  'themes/dark';
+// @import
+//   'themes/colorful',
+//   'themes/dark';

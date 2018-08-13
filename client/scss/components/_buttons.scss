@@ -1,0 +1,113 @@
+.button {
+  display: inline-block;
+  font-family: Rubik, sans-serif;
+  font-size: 16px;
+  line-height: 15px;
+  font-weight: 500;
+  min-width: 75px;
+  min-height: 30px;
+  border-radius: 50px;
+  background: #f6f6fe;
+  color: #000;
+  text-decoration: none;
+  padding: 10px 16px;
+  text-align: center;
+  outline: none;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.button-accent {
+  background: main-colors('accent');
+  color: #000;
+  box-shadow: 0 10px 36px rgba(219, 22, 35, 0.25), 0 5px 25px 0 rgba(219, 22, 35, 0.45);
+}
+
+.button-big {
+  font-size: 16px;
+  font-weight: 500;
+  width: 100%;
+}
+
+.button-circle {
+  border-radius: 50%;
+  min-width: 50px;
+  height: 50px;
+  width: 50px;
+}
+
+.burger-icon {
+  width: 25px;
+  height: 20px;
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.burger-icon__line {
+  width: 100%;
+  height: 4px;
+  display: block;
+  background: #000;
+  position: absolute;
+  border-radius: 3px;
+  transition: 0.3s cubic-bezier(0.8, 0.5, 0.2, 1.4);
+}
+
+.burger-icon .burger-icon__line:nth-child(1) {
+  top: 0px;
+  left: 0px;
+}
+
+.burger-icon .burger-icon__line:nth-child(2) {
+  top: 8px;
+  left: 0px;
+}
+
+.burger-icon .burger-icon__line:nth-child(3) {
+  bottom: 0px;
+  left: 0px;
+}
+
+.burger-icon:not(.click-burger-icon):hover .burger-icon__line:nth-child(1) {
+  width: 100%;
+  height: 4px;
+  display: block;
+  top: -2px;
+  left: 0px;
+  transition: 0.3s cubic-bezier(0.8, 0.5, 0.2, 1.4);
+}
+
+.burger-icon:not(.click-burger-icon):hover .burger-icon__line:nth-child(2) {
+  width: 100%;
+  height: 4px;
+  display: block;
+  top: 8px;
+  left: 0px;
+  transition: 0.4s cubic-bezier(0.8, 0.5, 0.2, 1.4);
+}
+
+.burger-icon:not(.click-burger-icon):hover .burger-icon__line:nth-child(3) {
+  width: 100%;
+  height: 4px;
+  display: block;
+  bottom: -2px;
+  left: 0px;
+  transition: 0.3s cubic-bezier(0.8, 0.5, 0.2, 1.4);
+}
+
+.click-burger-icon .burger-icon__line:nth-child(1) {
+  transform: rotate(45deg);
+  top: 8px;
+}
+
+.click-burger-icon .burger-icon__line:nth-child(2) {
+  transform: scale(0.1);
+}
+
+.click-burger-icon .burger-icon__line:nth-child(3) {
+  transform: rotate(-45deg);
+  top: 8px;
+}
