@@ -1,6 +1,8 @@
 'use strict'
 
-module.exports.parse = (request) => {
+const converter = require('utils/converter')
+
+const parseCookie = (request) => {
     let list = {};
     let cookies = request.headers.cookie;
 
@@ -11,3 +13,10 @@ module.exports.parse = (request) => {
 
     return list;
 }
+
+const parseJointID = (id) => {
+    return converter.toString(id).split(/\s*:\s*/);
+}
+
+module.exports.parseCookie = parseCookie;
+module.exports.parseJointID = parseJointID;

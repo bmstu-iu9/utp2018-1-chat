@@ -5,7 +5,7 @@ const path = require('path');
 const source = require('router/source');
 const api = require('api');
 const session = require('auth/session');
-const cookie = require('cookies');
+const parser = require('utils/parser');
 
 const fileExtension = /.(css|js|png|jpg|gif|svg|mp4|wav|ttf|woff|eot)/;
 
@@ -27,7 +27,7 @@ class Router {
         } else {
             if (pathName === '/') {
                 // TODO : Структура
-                session.checkSession(cookie.parse(request).session_token, response)
+                session.checkSession(parser.parseCookie(request).session_token, response)
                     .then(data => {
                         if (data.flag === true) {
                             source.sendPage('chat', data.res);
