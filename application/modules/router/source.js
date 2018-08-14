@@ -17,6 +17,7 @@ const mimeType = {
     'css': 'text/css',
     'js': 'text/javascript',
     'mp4': 'video/mp4',
+    'wav': 'audio/vnd.wave',
     'ttf': 'application/x-font-truetype',
     'eot': 'application/vnd.ms-fontobject',
     'woff': 'application/font-woff',
