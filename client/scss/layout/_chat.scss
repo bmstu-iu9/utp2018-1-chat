@@ -104,6 +104,8 @@
   grid-template: 75px / 1fr 100px;
   padding-right: 30px;
   background: #fff;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.15);
+  z-index: 5;
 }
 
 .msg-box {
