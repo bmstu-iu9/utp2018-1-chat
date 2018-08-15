@@ -1,6 +1,7 @@
 'use strict'
 
 const qs = require('querystring');
+const cookie = require('cookies');
 
 const receiver = async (methods, request, response) => {
     console.log(methods);
@@ -38,7 +39,6 @@ const receiver = async (methods, request, response) => {
                 }
             });
 
-
         // TODO : task #24.1
 
     } else if (request.method === 'POST') {
@@ -55,7 +55,12 @@ const receiver = async (methods, request, response) => {
         });
 
     } else if (request.method === 'PUT') {
-        // TODO : task #24.4
+        // Не очень поняла, как доставать из куки инфу :(
+
+        const db = await Database.get();
+
+        let person = db.users.findOne(methods[1]);
+
         let data = '';
         request.on('data', (chunk) => {
             data += chunk.toString();
@@ -63,12 +68,24 @@ const receiver = async (methods, request, response) => {
 
         request.on('end', () => {
             data = qs.parse(data);
+            data.on('login', (anotherText1) =>{
+                person.login.type = anotherText1;
+            });
+
+            data.on('password', (anotherText2) =>{
+                person.password = anotherText2;
+            });
+
+            data.on('birthday', (anotherText3) =>{
+                person.birthday = anotherText3;
+            });
+
         });
 
     } else if (request.method === 'DELETE') {
-        // TODI : task #24.5 (дополнить)
-        const db = await Database.get();
 
+        const db = await Database.get();
+        let login = db.users.findOne(methods[1]).login.type;
         db.users.findOne(login)
             .exec()
             .then(async (doc) => {
