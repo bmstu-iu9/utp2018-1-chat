@@ -36,7 +36,7 @@ const receiver = async (methods, request, response) => {
 
         request.on('end', async () => {
             data = qs.parse(data);
-            msg.text = data;
+            msg.item.text = data;
         });
 
     }else if (request.method === 'DELETE'){
