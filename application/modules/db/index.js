@@ -38,10 +38,10 @@ const createCollections = async (db) => {
             /**
              * Добавление пользователя в БД (регистрация)
              *
-             * @param {string} login — индификатор пользователя.
-             * @param {string} password — пароль пользователя.
-             * @param {string} salt — соль.
-             * @param {string} date — дата регистрации (UTC).
+             * @param {string} login Индификатор пользователя.
+             * @param {string} password Пароль пользователя.
+             * @param {string} salt Соль.
+             * @param {string} date Дата регистрации (UTC).
              */
             async addUser(login, password, salt, date) {
                 return this.upsert({
@@ -61,9 +61,9 @@ const createCollections = async (db) => {
             /**
              * Внесение сессии в БД
              *
-             * @param {string} login — индификатор пользователя.
-             * @param {string} token — строка с токеном.
-             * @param {string} expires — дата сгорания сессии (UTC).
+             * @param {string} login Индификатор пользователя.
+             * @param {string} token Строка с токеном.
+             * @param {string} expires Дата сгорания сессии (UTC).
              */
             async addSession(login, token, expires) {
                 return this.upsert({
@@ -82,9 +82,9 @@ const createCollections = async (db) => {
             /**
              * Создние диалога в БД
              *
-             * @param {string} id — ID диалога.
-             * @param {string} kind — тип диалога.
-             * @param {string} date — дата создания диалога (UTC).
+             * @param {string} id ID диалога.
+             * @param {string} kind Тип диалога.
+             * @param {string} date Дата создания диалога (UTC).
              */
             async addDialog(id, kind, date) {
                 return this.upsert({
@@ -97,8 +97,8 @@ const createCollections = async (db) => {
             /**
              * Добавление пользователя в диалог
              *
-             * @param {string} id — ID диалога.
-             * @param {string} login — индификатор пользователя.
+             * @param {string} id ID диалога.
+             * @param {string} login Индификатор пользователя.
              */
             async addMember(id, login) {
                 this.findOne(id)
@@ -117,7 +117,7 @@ const createCollections = async (db) => {
              * Удаление из диалога пользователя
              *
              * @param {string} id — ID диалога.
-             * @param {string} login — индификатор пользователя.
+             * @param {string} login — Индификатор пользователя.
              */
             async deleteMember(id, login) {
                 this.findOne(id)
