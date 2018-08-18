@@ -76,3 +76,6 @@ typings/
 
 # WebStorm project folder
 .idea
+
+# Dist folder
+./application/public
