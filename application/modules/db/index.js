@@ -35,6 +35,14 @@ const createCollections = async (db) => {
         name: 'users',
         schema: userSchema,
         statics: {
+            /**
+             * Добавление пользователя в БД (регистрация)
+             *
+             * @param {string} login — индификатор пользователя.
+             * @param {string} password — пароль пользователя.
+             * @param {string} salt — соль.
+             * @param {string} date — дата регистрации (UTC).
+             */
             async addUser(login, password, salt, date) {
                 return this.upsert({
                     login,
@@ -50,6 +58,13 @@ const createCollections = async (db) => {
         name: 'sessions',
         schema: sessionSchema,
         statics: {
+            /**
+             * Внесение сессии в БД
+             *
+             * @param {string} login — индификатор пользователя.
+             * @param {string} token — строка с токеном.
+             * @param {string} expires — дата сгорания сессии (UTC).
+             */
             async addSession(login, token, expires) {
                 return this.upsert({
                     login,
@@ -64,6 +79,13 @@ const createCollections = async (db) => {
         name: 'dialogs',
         schema: dialogSchema,
         statics: {
+            /**
+             * Создние диалога в БД
+             *
+             * @param {string} id — ID диалога.
+             * @param {string} kind — тип диалога.
+             * @param {string} date — дата создания диалога (UTC).
+             */
             async addDialog(id, kind, date) {
                 return this.upsert({
                     id,
@@ -71,6 +93,13 @@ const createCollections = async (db) => {
                     date
                 });
             },
+
+            /**
+             * Добавление пользователя в диалог
+             *
+             * @param {string} id — ID диалога.
+             * @param {string} login — индификатор пользователя.
+             */
             async addMember(id, login) {
                 this.findOne(id)
                     .exec()
@@ -83,6 +112,13 @@ const createCollections = async (db) => {
                         console.log(error);
                     });
             },
+
+            /**
+             * Удаление из диалога пользователя
+             *
+             * @param {string} id — ID диалога.
+             * @param {string} login — индификатор пользователя.
+             */
             async deleteMember(id, login) {
                 this.findOne(id)
                     .exec()

@@ -4,7 +4,6 @@ const Database = require('db');
 
 module.exports.addSession = async (sessionData) => {
     const db = await Database.get();
-    console.log(sessionData.token);
 
     await db.sessions.addSession(
         sessionData.login,

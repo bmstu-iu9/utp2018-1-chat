@@ -55,8 +55,6 @@ module.exports.signin = async (response, data) => {
 
             await session.addSession(data.json);
 
-            // await db.sessions.dump().then(json => console.dir(json));
-
             response.writeHead(200, {
                 'Set-Cookie': `session_token=${data.json.token}; expires=${data.json.expires}; path=/;`
             });
