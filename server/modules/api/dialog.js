@@ -39,6 +39,7 @@ const receiver = async (methods, request, response) => {
 
             await db.destroy();
         });
+
     } else if (request.method === 'PUT') {
 
         if (!methods[1]) {
@@ -58,14 +59,25 @@ const receiver = async (methods, request, response) => {
         request.on('end', async () => {
             data = qs.parse(data);
 
-            data.on('text', (anotherText) =>{
-                dlg.text = anotherText;
+            data.on('kind', (anotherText1) =>{
+                dlg.kind = anotherText1;
+            });
+            data.on('title', (anotherText2) =>{
+                dlg.title = anotherText2;
+            });
+            data.on('description', (anotherText3) =>{
+                dlg.description = anotherText3;
+            });
+            data.on('avatar', (anotherText4) =>{
+                dlg.avatar = anotherText4;
+            });
+            data.on('members', (anotherText5) =>{
+                dlg.members = anotherText5;
             });
         });
 
         await db.destroy();
 
-        // TODO : Редактирование диалога
     } else if (request.method === 'DELETE') {
 
         if (!methods[1]) {
@@ -84,7 +96,6 @@ const receiver = async (methods, request, response) => {
     } else {
         source.send404(response);
     }
-
 }
 
 const getDialog = async (id) => {

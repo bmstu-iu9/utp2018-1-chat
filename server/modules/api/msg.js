@@ -1,54 +1,33 @@
 'use strict'
 
 const source = require('router/source');
+const parser = require('utils/parser')
 const qs = require('querystring');
 
 const Database = require('db');
 
 const receiver = async (methods, request, response) => {
-    console.log(methods);
-
     if (request.method === 'GET') {
         if (!methods[1]) {
             console.log('err');
             source.send404(response);
         }
 
-        let dlg = await getDialog(methods[1]);
+        let msg = await getMsg(methods[1]);
 
-        if (dlg) {
-            source.sendJSON(dlg, response);
+        if (msg) {
+            source.sendJSON(msg, response);
         }
 
-    } else if (request.method === 'POST') {
-        let data = '';
-        request.on('data', (chunk) => {
-            data += chunk.toString();
-        });
+    } else if (request.method === 'POST'){
 
-        request.on('end', async () => {
-            data = qs.parse(data);
-
-            const db = await Database.get();
-
-            await db.dialogs.addDialog(
-                data.id,
-                data.kind,
-                new Date().toUTCString()
-            );
-
-            await db.destroy();
-        });
-    } else if (request.method === 'PUT') {
-
+    } else if (request.method === 'PUT'){
         if (!methods[1]) {
             console.log('err');
             source.send404(response);
         }
 
-        const db = await Database.get();
-
-        let dlg = await db.dialogs.findOne(methods[1]);
+        let msg = await getMsg(methods[1]);
 
         let data = '';
         request.on('data', (chunk) => {
@@ -57,46 +36,45 @@ const receiver = async (methods, request, response) => {
 
         request.on('end', async () => {
             data = qs.parse(data);
+            msg.item.text = data;
+        });
 
-            data.on('text', (anotherText) =>{
-                dlg.text = anotherText;
+    }else if (request.method === 'DELETE'){
+        if (!methods[1]) {
+            console.log('err');
+            source.send404(response);
+        }
+
+        const dlgID = parser.parseJointID(methods[1]);
+        const db = await Database.get();
+
+        db.dialogs.findOne(dlgID)
+            .exec()
+            .then(async (doc) => {
+                if (!doc) {
+                    console.log('err');
+                    source.send404(response);
+                    });
+                } else {
+                    await doc.remove();
+                }
             });
-        });
 
         await db.destroy();
 
-        // TODO : Редактирование диалога
-    } else if (request.method === 'DELETE') {
-
-        if (!methods[1]) {
-            console.log('err');
-            source.send404(response);
-        }
-
-        const db = await Database.get();
-
-        let dlg = await db.dialogs.findOne(methods[1]);
-
-        await dlg.remove()
-
-        await db.destroy();
-
-    } else {
+    }else {
         source.send404(response);
-    }
+    };
 
 }
 
-const getDialog = async (id) => {
+const getMsg = async (id) => {
+    const dlgID = parser.parseJointID(id)[0];
+    const msgID = parser.parseJointID(id)[1];
+
     const db = await Database.get();
 
-    await db.dialogs.addMember(id, 'lelkeklol');
-
-    return db.dialogs.findOne(id)
-        .exec()
-        .then(async (doc) => {
-            return doc;
-        });
+    return await db.dialogs.getMsg(dlgID, msgID);
 };
 
 module.exports.receiver = receiver;
