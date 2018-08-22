@@ -563,6 +563,14 @@ body {
     font-weight: 500;
 }
 
+.dialog .dialog-header /*.dialog-header-wrap*/  .message-search  .s-btn{
+    background:url(../img/search3.png) no-repeat;
+    position: relative;
+    border: none;
+    padding: 24px 24px 24px 24px;
+    cursor: pointer; 
+}
+
 .dialog .dialog-chat {
     padding: 30px;
     border-bottom: 1px solid rgba(102, 102, 111, 0.3);
