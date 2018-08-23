@@ -1,7 +1,6 @@
 'use strict'
 
 const qs = require('querystring');
-const cookie = require('cookies');
 
 const Database = require('db');
 
@@ -9,7 +8,6 @@ const receiver = async (methods, request, response) => {
     console.log(methods);
 
     if (request.method === 'GET') {
-<<<<<<< HEAD:server/modules/api/user.js
         if (!methods[1])
             console.log('err');
 
@@ -41,11 +39,6 @@ const receiver = async (methods, request, response) => {
                     response.end(JSON.stringify(userr))
                 }
             });
-=======
-        if (!methods[2] || methods[2][0] !== ':') console.log('err');
-
-        let userInfo = getUserInfo(methods[2].slice(1));
->>>>>>> origin/develop:application/modules/api/user.js
 
         // TODO : task #24.1
 
