@@ -1,0 +1,34 @@
+input[type=search] {
+  -webkit-appearance: none;
+}
+
+.sidebar-search__input {
+  height: 36px;
+  width: 100%;
+  outline: none;
+  border-radius: 17px;
+  border: 2px solid #d9e0e7;
+  padding: 0 20px;
+  line-height: 36px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.msg-box__input {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 35px;
+  width: calc(100% - 60px);
+  outline: none;
+  background: #fff;
+  border-radius: 17px;
+  border: 2px solid main-colors("primary");
+  font-size: 0.9em;
+  font-weight: 500;
+  margin: auto auto;
+  padding: 10px 20px;
+  color: #000;
+}

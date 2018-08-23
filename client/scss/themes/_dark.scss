@@ -1,0 +1,40 @@
+.header {
+  background: #1a1a1d;
+}
+
+.header-menu__logo {
+  color: #fff;
+}
+
+.burger-icon__line {
+  background: #fff;
+}
+
+.sidebar,
+.chat {
+  background: #000;
+}
+
+.dlg-item,
+.dialogs-list__dlg {
+  background: #2f2f2f;
+}
+
+.dialogs-list__dlg_newest {
+  box-shadow: 0 8px 24px rgba(149, 148, 153, 0);
+}
+
+.dlg-item__meta,
+.dlg-item__short-text {
+  color: #959499;
+}
+
+.dlg-item__title {
+  color: #fff;
+}
+
+.sidebar-search__input {
+  background: #272729;
+  color: #959499;
+  border-color: #272729;
+}

@@ -1,7 +1,7 @@
 'use strict'
 
 const tit = document.title;
-let snd = new Audio("./sound/notify.wav");
+let snd = new Audio("../media/notify.wav");
 
 let changeTitle = function() {
     this.title = function () {

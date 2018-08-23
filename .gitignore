@@ -1,4 +1,4 @@
-# source — github.com/github/gitignore
+﻿# source — github.com/github/gitignore
 
 # Logs
 logs
@@ -73,3 +73,9 @@ typings/
 
 # Serverless directories
 .serverless
+
+# WebStorm project folder
+.idea
+
+# Dist folder
+./application/public
