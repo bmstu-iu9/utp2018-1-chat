@@ -18,9 +18,53 @@ const receiver = async (methods, request, response) => {
         if (msg) {
             source.sendJSON(msg, response);
         }
-    } else {
+
+    } else if (request.method === 'POST'){
+
+    } else if (request.method === 'PUT'){
+        if (!methods[1]) {
+            console.log('err');
+            source.send404(response);
+        }
+
+        let msg = await getMsg(methods[1]);
+
+        let data = '';
+        request.on('data', (chunk) => {
+            data += chunk.toString();
+        });
+
+        request.on('end', async () => {
+            data = qs.parse(data);
+            msg.item.text = data;
+        });
+
+    }else if (request.method === 'DELETE'){
+        if (!methods[1]) {
+            console.log('err');
+            source.send404(response);
+        }
+
+        const dlgID = parser.parseJointID(methods[1]);
+        const db = await Database.get();
+
+        db.dialogs.findOne(dlgID)
+            .exec()
+            .then(async (doc) => {
+                if (!doc) {
+                    console.log('err');
+                    source.send404(response);
+                    });
+                } else {
+                    await doc.remove();
+                }
+            });
+
+        await db.destroy();
+
+    }else {
         source.send404(response);
-    }
+    };
 
 }
 
