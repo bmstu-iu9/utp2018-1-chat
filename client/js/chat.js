@@ -22,16 +22,19 @@ function json(response) {
 }
 
 function sendMessage() {
-    const msg = document.forms['messageField'].elements['message'].value;
+    const msg = document.querySelector(".msg-box .msg-box__input").value;
 
     if (msg == '') {
         alert('Нельзя отправить пустое сообщение');
         return;
     }
 
-    let kind = 'txt';
+    alert(msg);
 
-    fetch('/api/sendMessage', {
+    let kind = 'txt';
+    let dlgID = '543142';
+
+    fetch(`/api/msg/${dlgID}`, {
         method: 'POST',
         headers: {
             "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
@@ -46,7 +49,7 @@ function sendMessage() {
         console.log('Request failed', error);
     });
 
-    renderMessage(msg, kind);
+    // renderMessage(msg, kind);
 }
 
 function renderMessage(text, kind, status) {

@@ -69,7 +69,6 @@ class Source {
             'Content-Type': mimeType['json']
         });
 
-        console.log(JSON.stringify(data));
         response.end(JSON.stringify(data));
     }
 

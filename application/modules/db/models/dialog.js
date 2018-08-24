@@ -39,7 +39,7 @@ const dialogSchema = {
                 type: 'object',
                 properties: {
                     id: {
-                        type: 'number'
+                        type: 'string'
                     },
                     kind: {
                         type: 'string'
@@ -55,7 +55,8 @@ const dialogSchema = {
                         }
                     }
                 }
-            }
+            },
+            default: []
         },
         pinned: {
             type: 'number'

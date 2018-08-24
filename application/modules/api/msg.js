@@ -5,11 +5,12 @@ const parser = require('utils/parser')
 const qs = require('querystring');
 
 const Database = require('db');
+const status = require('db/status');
 
 const receiver = async (methods, request, response) => {
     if (request.method === 'GET') {
         if (!methods[1]) {
-            console.log('err');
+            console.log('Не указан id');
             source.send404(response);
         }
 
@@ -19,9 +20,25 @@ const receiver = async (methods, request, response) => {
             source.sendJSON(msg, response);
         }
 
-    } else if (request.method === 'POST'){
+    } else if (request.method === 'POST')
+        if (!methods[1]) {
+            console.log('Не указан dlgID');
+            source.send404(response);
+        }
 
-    } else if (request.method === 'PUT'){
+        const dlgID = methods[1];
+
+        let data = '';
+        request.on('data', (chunk) => {
+            data += chunk.toString();
+        });
+
+        request.on('end', () => {
+            const dbResponse = addMsg(dlgID, qs.parse(data));
+            source.sendJSON(JSON.stringify({ status: dbResponse }), response);
+        });
+
+    } else if (request.method === 'PUT') {
         if (!methods[1]) {
             console.log('err');
             source.send404(response);
@@ -54,7 +71,6 @@ const receiver = async (methods, request, response) => {
                 if (!doc) {
                     console.log('err');
                     source.send404(response);
-                    });
                 } else {
                     await doc.remove();
                 }
@@ -62,7 +78,7 @@ const receiver = async (methods, request, response) => {
 
         await db.destroy();
 
-    }else {
+    } else {
         source.send404(response);
     };
 
@@ -75,6 +91,12 @@ const getMsg = async (id) => {
     const db = await Database.get();
 
     return await db.dialogs.getMsg(dlgID, msgID);
+};
+
+const addMsg = async (dlgID, msgData) => {
+    const db = await Database.get();
+    
+    return await db.dialogs.addMsg(dlgID, msgData);
 };
 
 module.exports.receiver = receiver;
