@@ -1,5 +1,74 @@
 'use strict'
 
+function isDefined (variable, dlft) {
+    return typeof variable === 'undefined' ? dlft : variable;
+}
+
+let Chat = (function () {
+    let chat = {};
+
+    let _dialogs = [];
+
+    const _addDialogToDB = function () {
+
+    };
+
+    chat.createDialog = function (kind, title, description, avatar, members) {
+        if (arguments.length !== 5)
+            throw new Error('Недопустимое число аргументов');
+        /*
+        const newDialog = Dialog.create({
+            kind: this.kind,
+            title: this.title,
+            description: this.description,
+            avatar: this.avatar,
+            date: new Date().toUTCString(),
+            members: this.members
+        });
+
+        body: `kind=${newDialog.get('kind')}&
+               title=${newDialog.get('title')}&
+               description=${newDialog.get('description')}&
+               avatar=${newDialog.get('avatar')}&
+               date=${newDialog.get('date')}&
+               members=${newDialog.get('members')}&`
+        */
+
+        const newDialog = {
+            kind: kind,
+            title: title,
+            description: description,
+            avatar: avatar,
+            date: new Date().toUTCString(),
+            members: members
+        };
+        console.log(JSON.stringify(newDialog));
+        fetch(`/api/dialog`, {
+            method: 'POST',
+            headers: {
+                "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+            },
+            body: `kind=${newDialog['kind']}&
+                   title=${newDialog['title']}&
+                   description=${newDialog['description']}&
+                   avatar=${newDialog['avatar']}&
+                   date=${newDialog['date']}&
+                   members=${newDialog['members']}&`
+        })
+        .then(json)
+        .then(data => {
+            console.log('Request succeeded', data);
+        })
+        .catch(error => {
+            throw new Error(`Request failed: ${error}`);
+        });
+
+        _dialogs.push(newDialog);
+    };
+
+    return chat;
+})();
+
 function switchDialog(evt, dlg) {
     let tabContent = document.getElementsByClassName('tab-content');
     for (let i = 0; i < tabContent.length; i++)
@@ -22,7 +91,7 @@ function json(response) {
 }
 
 function sendMessage() {
-    const msg = document.forms['messageField'].elements['message'].value;
+    const msg = document.querySelector(".msg-box .msg-box__input").value;
 
     if (msg == '') {
         alert('Нельзя отправить пустое сообщение');
@@ -30,8 +99,9 @@ function sendMessage() {
     }
 
     let kind = 'txt';
+    let dlgID = '543142';
 
-    fetch('/api/sendMessage', {
+    fetch(`/api/msg/${dlgID}`, {
         method: 'POST',
         headers: {
             "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
@@ -46,7 +116,7 @@ function sendMessage() {
         console.log('Request failed', error);
     });
 
-    renderMessage(msg, kind);
+    // renderMessage(msg, kind);
 }
 
 function renderMessage(text, kind, status) {

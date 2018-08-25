@@ -1,13 +1,18 @@
 'use strict'
 
+const path = require('path');
+
 const RxDB = require('rxdb');
 RxDB.plugin(require('pouchdb-adapter-leveldb'));
+
+const status = require('db/status');
 
 const userSchema = require('db/models/user');
 const sessionSchema = require('db/models/session');
 const dialogSchema = require('db/models/dialog');
 
-const path = require('path');
+const source = require('router/source');
+const generator = require('utils/generator');
 
 const Database = {};
 
@@ -35,14 +40,6 @@ const createCollections = async (db) => {
         name: 'users',
         schema: userSchema,
         statics: {
-            /**
-             * Добавление пользователя в БД (регистрация)
-             *
-             * @param {string} login Индификатор пользователя.
-             * @param {string} password Пароль пользователя.
-             * @param {string} salt Соль.
-             * @param {string} date Дата регистрации (UTC).
-             */
             async addUser(login, password, salt, date) {
                 return this.upsert({
                     login,
@@ -58,13 +55,6 @@ const createCollections = async (db) => {
         name: 'sessions',
         schema: sessionSchema,
         statics: {
-            /**
-             * Внесение сессии в БД
-             *
-             * @param {string} login Индификатор пользователя.
-             * @param {string} token Строка с токеном.
-             * @param {string} expires Дата сгорания сессии (UTC).
-             */
             async addSession(login, token, expires) {
                 return this.upsert({
                     login,
@@ -79,27 +69,14 @@ const createCollections = async (db) => {
         name: 'dialogs',
         schema: dialogSchema,
         statics: {
-            /**
-             * Создние диалога в БД
-             *
-             * @param {string} id ID диалога.
-             * @param {string} kind Тип диалога.
-             * @param {string} date Дата создания диалога (UTC).
-             */
-            async addDialog(id, kind, date) {
+            async addDialog(kind, date) {
                 return this.upsert({
-                    id,
+                    id: generator.genDialogID(),
                     kind,
                     date
                 });
             },
 
-            /**
-             * Добавление пользователя в диалог
-             *
-             * @param {string} id ID диалога.
-             * @param {string} login Индификатор пользователя.
-             */
             async addMember(id, login) {
                 this.findOne(id)
                     .exec()
@@ -113,12 +90,6 @@ const createCollections = async (db) => {
                     });
             },
 
-            /**
-             * Удаление из диалога пользователя
-             *
-             * @param {string} id — ID диалога.
-             * @param {string} login — Индификатор пользователя.
-             */
             async deleteMember(id, login) {
                 this.findOne(id)
                     .exec()
@@ -127,6 +98,33 @@ const createCollections = async (db) => {
                     })
                     .catch(error => {
                         return error;
+                    });
+            },
+
+            async addMsg(dlgID, msgData) {
+                return this.findOne(dlgID)
+                    .exec()
+                    .then(dlg => {
+                        if (!dlg) {
+                            return status.NON_EXISTENT_OBJ;
+                        } else {
+                            let messages = dlg.get('messages');
+
+                            const msg = {
+                                id: generator.genMsgID(dlgID),
+                                kind: msgData['kind'],
+                                text: msgData['text'],
+                                options: msgData['options']
+                            };
+
+                            messages.push(msg);
+                            dlg.set('messages', messages);
+
+                            return status.SUCCESS;
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
                     });
             }
         }

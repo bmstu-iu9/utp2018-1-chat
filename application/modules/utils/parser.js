@@ -1,6 +1,6 @@
 'use strict'
 
-const converter = require('utils/converter')
+const converter = require('utils/converter');
 
 /**
  * Конвертирует строку в Base64

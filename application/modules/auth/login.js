@@ -32,7 +32,7 @@ module.exports.signin = async (response, data) => {
                     flag: true,
                     json: {
                         login: login,
-                        expires: new Date(now.getTime() + 30 * 60000).toUTCString(),
+                        expires: new Date(now.getTime() + 30 * 11160000).toUTCString(),
                         token: auth.getHashPassword(now.toUTCString()).passHash
                     }
                 }

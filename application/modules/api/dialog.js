@@ -4,6 +4,7 @@ const source = require('router/source');
 const qs = require('querystring');
 
 const Database = require('db');
+const status = require('db/status');
 
 const receiver = async (methods, request, response) => {
     console.log(methods);
@@ -31,28 +32,80 @@ const receiver = async (methods, request, response) => {
 
             const db = await Database.get();
 
-            await db.dialogs.addDialog(
-                data.id,
+            const newDialog = await db.dialogs.addDialog(
                 data.kind,
                 new Date().toUTCString()
             );
 
+            if (newDialog) {
+                source.sendJSON(JSON.stringify({ status: 0 }), response);
+            } else {
+                source.sendJSON(JSON.stringify({ status: 1 }), response);
+            }
+
             await db.destroy();
         });
+
     } else if (request.method === 'PUT') {
-        // TODO : Редактирование диалога
+
+        if (!methods[1]) {
+            console.log('err');
+            source.send404(response);
+        }
+
+        const db = await Database.get();
+
+        let dlg = await db.dialogs.findOne(methods[1]);
+
+        let data = '';
+        request.on('data', (chunk) => {
+            data += chunk.toString();
+        });
+
+        request.on('end', async () => {
+            data = qs.parse(data);
+
+            data.on('kind', (anotherText1) =>{
+                dlg.kind = anotherText1;
+            });
+            data.on('title', (anotherText2) =>{
+                dlg.title = anotherText2;
+            });
+            data.on('description', (anotherText3) =>{
+                dlg.description = anotherText3;
+            });
+            data.on('avatar', (anotherText4) =>{
+                dlg.avatar = anotherText4;
+            });
+            data.on('members', (anotherText5) =>{
+                dlg.members = anotherText5;
+            });
+        });
+
+        await db.destroy();
+
     } else if (request.method === 'DELETE') {
-        // TODO : Удаление диалога
+
+        if (!methods[1]) {
+            console.log('err');
+            source.send404(response);
+        }
+
+        const db = await Database.get();
+
+        let dlg = await db.dialogs.findOne(methods[1]);
+
+        await dlg.remove()
+
+        await db.destroy();
+
     } else {
         source.send404(response);
     }
-
 }
 
 const getDialog = async (id) => {
     const db = await Database.get();
-
-    await db.dialogs.addMember(id, 'lelkeklol');
 
     return db.dialogs.findOne(id)
         .exec()
