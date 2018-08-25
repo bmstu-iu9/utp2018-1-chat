@@ -4,6 +4,7 @@ const source = require('router/source');
 const qs = require('querystring');
 
 const Database = require('db');
+const status = require('db/status');
 
 const receiver = async (methods, request, response) => {
     console.log(methods);
@@ -31,11 +32,16 @@ const receiver = async (methods, request, response) => {
 
             const db = await Database.get();
 
-            await db.dialogs.addDialog(
-                data.id,
+            const newDialog = await db.dialogs.addDialog(
                 data.kind,
                 new Date().toUTCString()
             );
+
+            if (newDialog) {
+                source.sendJSON(JSON.stringify({ status: 0 }), response);
+            } else {
+                source.sendJSON(JSON.stringify({ status: 1 }), response);
+            }
 
             await db.destroy();
         });
@@ -100,8 +106,6 @@ const receiver = async (methods, request, response) => {
 
 const getDialog = async (id) => {
     const db = await Database.get();
-
-    await db.dialogs.addMember(id, 'lelkeklol');
 
     return db.dialogs.findOne(id)
         .exec()

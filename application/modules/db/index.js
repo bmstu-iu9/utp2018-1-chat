@@ -69,9 +69,9 @@ const createCollections = async (db) => {
         name: 'dialogs',
         schema: dialogSchema,
         statics: {
-            async addDialog(id, kind, date) {
+            async addDialog(kind, date) {
                 return this.upsert({
-                    id,
+                    id: generator.genDialogID(),
                     kind,
                     date
                 });
@@ -111,7 +111,7 @@ const createCollections = async (db) => {
                             let messages = dlg.get('messages');
 
                             const msg = {
-                                id: generator.genMsgID(),
+                                id: generator.genMsgID(dlgID),
                                 kind: msgData['kind'],
                                 text: msgData['text'],
                                 options: msgData['options']
