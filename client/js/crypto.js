@@ -2,7 +2,7 @@ let Crypto = (function () {
     let crypto = {};
 
     crypto.sha512hex = function (str) {
-        return _rstrToHex(_sha512(this.strToRstr(str)));
+        return _rstrToHex(_sha512(crypto.strToRstr(str)));
     }
 
     crypto.rstrToBin = function (rstr) {
