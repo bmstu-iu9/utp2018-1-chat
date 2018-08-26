@@ -2,11 +2,24 @@ let Crypto = (function () {
     let crypto = {};
 
     crypto.sha512hex = function (str) {
-        return _rstrToHex(_sha512(strToRstr(str)));
+        return _rstrToHex(_sha512(this.strToRstr(str)));
     }
 
-    function _sha512(str) {
-        return _binToRstr(_sha512FromBin(rstrToBin(str), str.length * 8));
+    crypto.rstrToBin = function (rstr) {
+        let out = Array(rstr.length >> 2);
+        for (let i = 0; i < out.length; i++) {
+            out[i] = 0;
+        }
+
+        for (let i = 0; i < rstr.length * 8; i += 8) {
+            out[i >> 5] |= (rstr.charCodeAt(i / 8) & 0xFF) << (24 - i % 32);
+        }
+
+        return out;
+    }
+
+    function _sha512(rstr) {
+        return _binToRstr(_sha512FromBin(crypto.rstrToBin(rstr), rstr.length * 8));
     }
 
     function _rstrToHex(rstr) {
@@ -51,19 +64,7 @@ let Crypto = (function () {
                     0x80 | ((x >>> 12) & 0x3F),
                     0x80 | ((x >>> 6) & 0x3F),
                     0x80 | (x & 0x3F));
-        }
-
-        return out;
-    }
-
-    crypto.rstrToBin = function (rstr) {
-        let out = Array(rstr.length >> 2);
-        for (let i = 0; i < out.length; i++) {
-            out[i] = 0;
-        }
-
-        for (let i = 0; i < rstr.length * 8; i += 8) {
-            out[i >> 5] |= (rstr.charCodeAt(i / 8) & 0xFF) << (24 - i % 32);
+            }
         }
 
         return out;
