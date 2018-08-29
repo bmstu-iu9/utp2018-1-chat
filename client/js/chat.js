@@ -161,5 +161,5 @@ function renderMessage(text, kind, status) {
 }
 
 function func() {
-    document.querySelector(‘#dialog_window’).click();
+    document.querySelector('#dialog_window').click();
 }
