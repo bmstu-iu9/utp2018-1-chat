@@ -9,6 +9,16 @@ let Chat = (function () {
 
     let _dialogs = [];
 
+    const _getDialogs = function () {
+        // TODO : Получение диалогов из БД
+    };
+
+    const _renderDialogs = function () {
+        // TODO : Отрисовка диалогов
+        // - Список диалогов
+        // - Сообщения в диалоге
+    };
+
     chat.createDialog = function (kind, title, description, avatar, members) {
         if (arguments.length !== 5)
             throw new Error('Недопустимое число аргументов');
@@ -27,7 +37,7 @@ let Chat = (function () {
         })
         .then(json)
         .then(data => {
-            return data;
+            console.log(data);
         })
         .catch(error => {
             throw new Error(`Request failed: ${error}`);
