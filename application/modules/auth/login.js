@@ -8,7 +8,7 @@ const session = require('auth/session');
 const Database = require('db');
 
 module.exports.signin = async (response, data) => {
-    const login = data['user-in[login]'];
+    const login = data['in-login'];
 
     const db = await Database.get();
 
@@ -23,7 +23,7 @@ module.exports.signin = async (response, data) => {
             }
 
             const postPassData = auth.getHashPassword(
-                data['user-in[password]'],
+                data['in-password'],
                 doc.get('salt')
             );
 

@@ -1,3 +1,23 @@
+document.addEventListener('DOMContentLoaded', function () {
+    /* === Событие нажатия на кнопку входа === */
+    document.querySelector('#sign-in').onclick = () => {
+        Auth.singin(
+            document.querySelector('#in-login').value,
+            document.querySelector('#in-password').value
+        );
+    };
+
+    /* === Событие нажатия на кнопку регистрации === */
+    document.querySelector('#sign-up').onclick = () => {
+        Auth.singup(
+            document.querySelector('#up-login').value,
+            document.querySelector('#up-password').value,
+            document.querySelector('#up-confirm').value
+        );
+    };
+});
+
+/* === Перключение формы авторизации === */
 function flip () {
     const content = document.querySelector('.content');
     const flip__content = document.querySelector('.flip__content');
@@ -36,7 +56,7 @@ let Auth = (function () {
             headers: {
                 "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
             },
-            body: `user-in[login]=${login}&user-in[password]=${password}`
+            body: `in-login=${login}&in-password=${password}`
         })
         .then(response => {
             if (!response.ok)
@@ -69,7 +89,7 @@ let Auth = (function () {
             headers: {
                 "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
             },
-            body: `user-up[login]=${login}&user-up[password]=${password}&user-up[confirm]=${cpassword}`
+            body: `up-login=${login}&up-password=${password}&up-confirm=${cpassword}`
         })
         .then(response => {
             if (!response.ok)
@@ -79,7 +99,7 @@ let Auth = (function () {
                 if (status === 'SUCCESS') {
                     window.location.href = "http://localhost:8080";
                 } else {
-                    alert(status);
+                    alert(JSON.stringify(status));
                 }
             });
         })
