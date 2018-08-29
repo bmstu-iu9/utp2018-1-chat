@@ -159,3 +159,7 @@ function renderMessage(text, kind, status) {
 
     console.log('Добавлено сообщение ', test);
 }
+
+function func() {
+    document.querySelector(‘#dialog_window’).click();
+}

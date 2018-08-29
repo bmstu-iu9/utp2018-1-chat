@@ -194,10 +194,13 @@
             <input type="text" class="msg-box__input">
           </div>
 
+
           <div class="btn-box">
-            <a href="#" class="btn-box__icon">
-              <img src="img/icons/attachment.png" alt="Добавить вложение">
+            <a class="btn-box__icon" id="ph" onclick="func()">
+                <img src="img/icons/attachment.png" alt="Добавить вложение">
             </a>
+            <input type="file" id="dialog_window" name="photo" multiple accept="image/*, image/jpeg">
+
 
             <a href="#" class="btn-box__icon">
               <img src="img/icons/voice.png" alt="Запись голосового сообщения">
