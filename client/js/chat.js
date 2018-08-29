@@ -9,61 +9,43 @@ let Chat = (function () {
 
     let _dialogs = [];
 
-    const _addDialogToDB = function () {
+    const _getDialogs = function () {
+        // TODO : Получение диалогов из БД
+    };
 
+    const _renderDialogs = function () {
+        // TODO : Отрисовка диалогов
+        // - Список диалогов
+        // - Сообщения в диалоге
     };
 
     chat.createDialog = function (kind, title, description, avatar, members) {
         if (arguments.length !== 5)
             throw new Error('Недопустимое число аргументов');
-        /*
-        const newDialog = Dialog.create({
-            kind: this.kind,
-            title: this.title,
-            description: this.description,
-            avatar: this.avatar,
-            date: new Date().toUTCString(),
-            members: this.members
-        });
 
-        body: `kind=${newDialog.get('kind')}&
-               title=${newDialog.get('title')}&
-               description=${newDialog.get('description')}&
-               avatar=${newDialog.get('avatar')}&
-               date=${newDialog.get('date')}&
-               members=${newDialog.get('members')}&`
-        */
-
-        const newDialog = {
-            kind: kind,
-            title: title,
-            description: description,
-            avatar: avatar,
-            date: new Date().toUTCString(),
-            members: members
-        };
-        console.log(JSON.stringify(newDialog));
-        fetch(`/api/dialog`, {
+        let newDialog = fetch(`/api/dialog`, {
             method: 'POST',
             headers: {
                 "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
             },
-            body: `kind=${newDialog['kind']}&
-                   title=${newDialog['title']}&
-                   description=${newDialog['description']}&
-                   avatar=${newDialog['avatar']}&
-                   date=${newDialog['date']}&
-                   members=${newDialog['members']}&`
+            body: `kind=${kind}&
+                   title=${title}&
+                   description=${description}&
+                   avatar=${avatar}&
+                   date=${new Date().toUTCString()}&
+                   members=${members}&`
         })
         .then(json)
         .then(data => {
-            console.log('Request succeeded', data);
+            console.log(data);
         })
         .catch(error => {
             throw new Error(`Request failed: ${error}`);
         });
 
-        _dialogs.push(newDialog);
+        newDialog.then(data => {
+            _dialogs.push(Dialog.create(data));
+        });
     };
 
     return chat;

@@ -26,17 +26,31 @@ class Router {
             api.handler(path, request, response);
         } else {
             if (pathName === '/') {
-                // TODO : Структура
                 session.checkSession(parser.parseCookie(request).session_token, response)
-                    .then(data => {
-                        if (data.flag === true) {
-                            source.sendPage('chat', data.res);
-                        } else {
-                            source.sendPage('auth', response);
-                        }
-                    });
+                .then(data => {
+                    if (data.flag === true) {
+                        response.writeHead(302, {
+                          'Location': '/chat'
+                        });
+
+                        response.end();
+                    } else {
+                        source.sendPage('auth', response);
+                    }
+                });
             } else if (pathName === '/chat') {
-                source.sendPage('chat', response);
+                session.checkSession(parser.parseCookie(request).session_token, response)
+                .then(data => {
+                    if (data.flag === true) {
+                        source.sendPage('chat', response);
+                    } else {
+                        response.writeHead(302, {
+                          'Location': '/'
+                        });
+
+                        response.end();
+                    }
+                });
             } else {
                 source.send404(response);
             }
