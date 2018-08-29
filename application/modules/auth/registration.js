@@ -1,11 +1,14 @@
 'use strict'
 
+const source = require('router/source');
+
 const auth = require('auth');
 
 const Database = require('db');
 
 module.exports.signup = async (response, data) => {
     const login = data['user-up[login]'];
+    console.log(data);
     const passData = auth.getHashPassword(data['user-up[password]']);
 
     const db = await Database.get();
@@ -18,11 +21,7 @@ module.exports.signup = async (response, data) => {
         })
         .then(async (val) => {
             if (val === true) {
-                response.writeHead(422, {
-                    'Content-Type': 'text/html'
-                });
-
-                response.end('Login is already taken')
+                source.sendJSON(JSON.stringify({ status: 'Login is already taken' }), response);
             } else {
                 await db.users.addUser(
                     login,
@@ -31,11 +30,7 @@ module.exports.signup = async (response, data) => {
                     new Date().toUTCString()
                 );
 
-                response.writeHead(200, {
-                    'Content-Type': 'text/html'
-                });
-
-                response.end(`ADD user ${login}`);
+                response.end(JSON.stringify({ status: `SUCCESS` }));
             }
         });
 };
