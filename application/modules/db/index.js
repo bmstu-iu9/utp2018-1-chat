@@ -69,9 +69,9 @@ const createCollections = async (db) => {
         name: 'dialogs',
         schema: dialogSchema,
         statics: {
-            async addDialog(kind, date) {
+            async addDialog(id, kind, date) {
                 return this.upsert({
-                    id: generator.genDialogID(),
+                    id,
                     kind,
                     date
                 });

@@ -55,15 +55,6 @@ function addCssToDom(url) {
 
 /* === END Смена стиля == */
 
-/* === Авторизация === */
-function auth(event) {
-    if (event.currentTarget.id === 'sign-up') {
-        document.getElementById('signup-submit').click();
-    } else if (event.currentTarget.id === 'sign-in') {
-        document.getElementById('signin-submit').click();
-    }
-}
-
 /* === Преключение формы === */
 function flip() {
     const flipper = document.getElementById('auth-flip');

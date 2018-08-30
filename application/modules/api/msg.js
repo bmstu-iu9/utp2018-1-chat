@@ -95,7 +95,7 @@ const getMsg = async (id) => {
 
 const addMsg = async (dlgID, msgData) => {
     const db = await Database.get();
-    
+
     return await db.dialogs.addMsg(dlgID, msgData);
 };
 
