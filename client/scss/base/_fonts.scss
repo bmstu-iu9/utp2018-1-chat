@@ -1,14 +1,16 @@
-@include font-face('SF UI Display', '../fonts/SFUIText-HeavyItalic', 300, italic, eot ttf woff);
-@include font-face('SF UI Display', '../fonts/SFUIText-LightItalic', 200, italic, eot ttf woff);
-@include font-face('SF UI Display', '../fonts/SFUIText-MediumItalic', 500, italic, eot ttf woff);
-@include font-face('SF UI Display', '../fonts/SFUIText-Semibold', 600, normal, eot ttf woff);
-@include font-face('SF UI Display', '../fonts/SFUIText-SemiboldItalic', 600, italic, eot ttf woff);
-@include font-face('SF UI Display', '../fonts/SFUIText-BoldItalic', bold, italic, eot ttf woff);
-@include font-face('SF UI Display', '../fonts/SFUIText-Bold', bold, normal, eot ttf woff);
-@include font-face('SF UI Display', '../fonts/SFUIText-Italic', normal, italic, eot ttf woff);
+@include font-face('Roboto', '../fonts/Roboto/Roboto-Thin', 100, normal, ttf);
+@include font-face('Roboto', '../fonts/Roboto/Roboto-ThinItalic', 100, italic, ttf);
 
-@include font-face('SF UI Display', '../fonts/SFUIDisplay-Heavy', 900, normal, eot ttf woff);
-@include font-face('SF UI Display', '../fonts/SFUIDisplay-Medium', 500, normal, eot ttf woff);
-@include font-face('SF UI Display', '../fonts/SFUIDisplay-Regular', normal, normal, eot ttf woff);
-@include font-face('SF UI Display', '../fonts/SFUIDisplay-Light', 300, normal, eot ttf woff);
-@include font-face('SF UI Display', '../fonts/SFUIDisplay-Thin', 100, normal, eot ttf woff);
+@include font-face('Roboto', '../fonts/Roboto/Roboto-Light', 300, normal, ttf);
+@include font-face('Roboto', '../fonts/Roboto/Roboto-LightItalic', 300, italic, ttf);
+
+@include font-face('Roboto', '../fonts/Roboto/Roboto-Regular', 400, normal, ttf);
+
+@include font-face('Roboto', '../fonts/Roboto/Roboto-Medium', 500, normal, ttf);
+@include font-face('Roboto', '../fonts/Roboto/Roboto-MediumItalic', 500, italic, ttf);
+
+@include font-face('Roboto', '../fonts/Roboto/Roboto-Bold', 700, normal, ttf);
+@include font-face('Roboto', '../fonts/Roboto/Roboto-BoldItalic', 700, italic, ttf);
+
+@include font-face('Roboto', '../fonts/Roboto/Roboto-Black', 900, normal, ttf);
+@include font-face('Roboto', '../fonts/Roboto/Roboto-BlackItalic', 900, italic, ttf);
