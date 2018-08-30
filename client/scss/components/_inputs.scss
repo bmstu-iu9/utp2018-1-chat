@@ -7,10 +7,11 @@ input[type=search] {
   width: 100%;
   outline: none;
   border-radius: 5px;
-  border: 2px solid #d9e0e7;
+  border: none;
   padding: 0 20px;
   line-height: 36px;
   font-weight: 400;
+  background-color: #f1f1f1;
 }
 
 .msg-box__input {
