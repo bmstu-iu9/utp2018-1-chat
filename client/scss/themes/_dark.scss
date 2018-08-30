@@ -1,5 +1,13 @@
+::selection {
+  background: #737373;
+}
+::-moz-selection {
+  background: #737373;
+}
+
 .header {
-  background: #1a1a1d;
+  background-color: #2a292b;
+  border-color: #222222;
 }
 
 .header-menu__logo {
@@ -7,34 +15,78 @@
 }
 
 .burger-icon__line {
-  background: #fff;
+  background-color: #fff;
 }
 
 .sidebar,
+.chat__footer,
+.msg-box {
+  background-color: #2a292b;
+}
+
 .chat {
-  background: #000;
+  background-color: #141414;
+}
+
+.sidebar {
+  border-color: #222222;
 }
 
 .dlg-item,
 .dialogs-list__dlg {
-  background: #2f2f2f;
+  background-color: #2a292b;
 }
 
-.dialogs-list__dlg_newest {
-  box-shadow: 0 8px 24px rgba(149, 148, 153, 0);
+.dlg-item:hover,
+.dialogs-list__dlg_newest .dlg-item:hover {
+  background: #1f1f1f;
 }
 
-.dlg-item__meta,
+.dialogs-list__dlg_newest .dlg-item {
+  background-color: #2a292b;
+}
+
+.dlg-item__meta{
+  color: #989898;
+}
+
 .dlg-item__short-text {
-  color: #959499;
+  color: #888888;
 }
 
 .dlg-item__title {
-  color: #fff;
+  color: #d2d6d5;
+}
+
+.dlg-item__label {
+  background-color: #f1f1f1;
+  color: #363636;
 }
 
 .sidebar-search__input {
-  background: #272729;
-  color: #959499;
-  border-color: #272729;
+  background-color: #363636;
+  color: #fff;
+  border-color: none;
+}
+
+.dialog__meta span {
+  background-color: #4b4b4b;
+}
+
+.dialog__msg_incoming {
+  background-color: #2a292b;
+  color: #c9cdcc;
+}
+
+.dialog__msg_sent {
+  background-color: #3a3a3a;
+  color: #c9cdcc;
+}
+
+.dialog__msg-meta {
+  color: #989898;
+}
+
+.msg-box__input {
+  color: #fff;
 }
