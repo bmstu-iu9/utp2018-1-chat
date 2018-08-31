@@ -103,9 +103,12 @@
   font-family: 'Roboto', sans-serif;
 }
 
-.auth__logo b {
-  color: #db1623;
-  font-family: 'Roboto', sans-serif;
+.auth__logo img {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  width: 200px;
+  vertical-align: top;
 }
 
 //
@@ -267,9 +270,9 @@
 }
 
 .button-accent {
-  background: #db1623;
+  background: #1586fd;
   color: #fff;
-  box-shadow: 0 10px 36px rgba(219, 22, 35, 0.25), 0 4px 24px 0 rgba(219, 22, 35, 0.45);
+  box-shadow: 0 10px 36px rgba(21, 134, 253, 0.25), 0 4px 24px 0 rgba(21, 134, 253, 0.45);
 }
 
 .button-big {
