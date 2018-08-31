@@ -142,5 +142,18 @@ function renderMessage(text, kind, status) {
     console.log('Добавлено сообщение ', test);
 }
 
+//Скрипты поиска временно будут здесь
+
+function goSearch() {
+    const req = document.getElementById('myDiv').value;
+  
+    if (req === '') {
+      alert("пустой поисковый запрос");
+    }
+    else {
+  
+    }
+  }
+
 
 
