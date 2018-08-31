@@ -1,7 +1,7 @@
 .chat {
   grid-column: 4 / -1;
   display: grid;
-  grid-template: calc(100vh - 140px) 75px/1fr;
+  grid-template: 8vh calc(92vh - 140px) 75px/1fr;
   background: #f3f6f9;
 }
 
@@ -116,6 +116,27 @@
 .dialog__msg_sent {
   background: main-colors('accent');
   color: #fff;
+}
+
+.chat .chat__header {
+  display: inline-grid;
+  grid-template-columns: repeat(12, 1fr);
+  height: calc(8vh);
+  position: relative;
+  padding-right: 30px;
+  background: #fff;
+  border-top: 1px solid #c5cfd9;
+  border-right: 1px solid #c5cfd9;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.15);
+  z-index: 3;
+} 
+
+.chat .chat__header .message-search{
+  grid-column-start: 6;  
+  grid-column-end: 12;
+
+  display: inline-grid;
+  grid-template-columns: repeat(5, 1fr);
 }
 
 .chat__footer {

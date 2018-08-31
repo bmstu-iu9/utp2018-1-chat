@@ -141,3 +141,6 @@ function renderMessage(text, kind, status) {
 
     console.log('Добавлено сообщение ', test);
 }
+
+
+
