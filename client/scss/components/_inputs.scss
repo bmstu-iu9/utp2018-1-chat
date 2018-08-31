@@ -6,12 +6,12 @@ input[type=search] {
   height: 36px;
   width: 100%;
   outline: none;
-  border-radius: 17px;
-  border: 2px solid #d9e0e7;
+  border-radius: 5px;
+  border: none;
   padding: 0 20px;
   line-height: 36px;
   font-weight: 400;
-  text-align: center;
+  background-color: #f1f1f1;
 }
 
 .msg-box__input {
@@ -23,12 +23,11 @@ input[type=search] {
   height: 35px;
   width: calc(100% - 60px);
   outline: none;
-  background: #fff;
-  border-radius: 17px;
-  border: 2px solid main-colors("primary");
+  background: transparent;
+  border: none;
   font-size: 0.9em;
-  font-weight: 500;
+  font-weight: 400;
   margin: auto auto;
-  padding: 10px 20px;
-  color: #000;
+  padding: 10px 0;
+  color: #222;
 }
