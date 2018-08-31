@@ -139,6 +139,14 @@
   grid-template-columns: repeat(5, 1fr);
 }
 
+.chat-search__input{
+  grid-column-start: 1;
+  grid-column-end: 5;
+  border-radius: 5px;
+  float: right;
+  //display: none;
+}
+
 .chat__footer {
   display: grid;
   grid-template: 75px / 1fr 100px;
