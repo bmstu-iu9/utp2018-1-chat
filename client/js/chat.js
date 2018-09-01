@@ -8,6 +8,7 @@ let Chat = (function () {
     let chat = {};
 
     let _dialogs = [];
+    let _activeDialogID = '';
 
     const _getDialogs = function () {
         return fetch(`/api/dialog/*`, {
@@ -115,6 +116,26 @@ let Chat = (function () {
         });
     };
 
+    chat.setActiveDialogID = function (dlg) {
+        _activeDialogID = dlg;
+    }
+
+    chat.getActiveDialogID = function (dlg) {
+        return _activeDialogID;
+    }
+
+    chat.sendMessage = function () {
+        let dialog;
+
+        _dialogs.forEach(dlg => {
+            if (dlg.get('id') === _activeDialogID) {
+                dialog = dlg;
+            }
+        });
+
+        dialog.send();
+    }
+
     chat.start = async function () {
         await _getDialogs().then(dialogs => {
             dialogs.forEach(data => {
@@ -123,6 +144,7 @@ let Chat = (function () {
         });
 
         _renderDialogs();
+        _activeDialogID = _dialogs[0];
 
     };
 
@@ -140,6 +162,8 @@ function switchDialog(evt, dlg) {
 
     document.getElementById(dlg).style.display = 'block';
     evt.currentTarget.className += ' focus';
+
+    Chat.setActiveDialogID(dlg);
 
     // document.forms['messageField'].elements['message'].value = '';
 }
@@ -215,3 +239,13 @@ function renderMessage(text, kind, status) {
 
     chatScroll.scrollTop = chatScroll.scrollHeight - chatScroll.clientHeight;
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    document.onkeyup = function(event) {
+        if (document.querySelector('.msg-box .msg-box__input') === document.activeElement) {
+            if (event.keyCode == 13) {
+                Chat.sendMessage();
+            }
+        }
+    }
+});
