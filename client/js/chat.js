@@ -144,16 +144,41 @@ function renderMessage(text, kind, status) {
 
 //Скрипты поиска временно будут здесь
 
+
 function goSearch() {
-    const req = document.getElementById('myDiv').value;
+    const req = document.getElementById('myDiv').value.toLowerCase();
   
     if (req === '') {
       alert("пустой поисковый запрос");
     }
     else {
-  
+        const in_msgs = document.getElementsByClassName("dialog__wrap-msg dialog__wrap-msg_incoming");
+        const sent_msgs = document.getElementsByClassName("dialog__wrap-msg dialog__wrap-msg_sent");
+
+        let counter = 0;
+
+        Array.from(in_msgs).forEach(function(e){
+            const text = e.children[0].children[0].textContent.toLowerCase();
+            if(text.indexOf(req) == -1){
+                e.style.display = 'none';
+            }
+            else{
+                counter++;
+            }
+        });
+    
+        Array.from(sent_msgs).forEach(function(e){
+            const text = e.children[0].children[0].textContent.toLowerCase();
+            if(text.indexOf(req) == -1){
+                e.style.display = 'none';
+            }
+            else{
+                counter++;
+            }
+        });
+        
     }
-  }
+}
 
 
 
