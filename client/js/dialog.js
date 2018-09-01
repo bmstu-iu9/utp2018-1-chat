@@ -44,7 +44,7 @@ class Dialog {
                 'text'
             ),
             text: input,
-            options: []
+            options: [`${new Date().toUTCString()}`]
         };
 
         if (msg.kind === 'test' && !msg.text) {
