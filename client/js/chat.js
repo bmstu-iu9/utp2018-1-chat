@@ -8,15 +8,86 @@ let Chat = (function () {
     let chat = {};
 
     let _dialogs = [];
+    let _activeDialogID = '';
 
     const _getDialogs = function () {
-        // TODO : Получение диалогов из БД
+        return fetch(`/api/dialog/*`, {
+            method: 'GET'
+        })
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {
+            return data;
+        })
+        .catch(error => {
+            throw new Error(`Request failed: ${error}`);
+        });
     };
 
+    const _renderDialog = function (dlg) {
+        const dlgItemDOM = document.createElement('li');
+        dlgItemDOM.className = 'dialogs-list__dlg';
+
+        dlgItemDOM.onclick = function () {
+            switchDialog(event, dlg.get('id'));
+        };
+
+        dlgItemDOM.innerHTML = `\
+            <a class="dlg-item"> \
+                <div class="dlg-item__meta"> \
+                    21:50 \
+                </div> \
+                \
+                <div class="dlg-item__photo"> \
+                    <img src="img/user.jpg" alt="" class="dlg-item__photo-img">  \
+                </div> \
+                \
+                <div class="dlg-item__msg-wrap"> \
+                    <div class="dlg-item__peer"> \
+                      <span class="dlg-item__title"> \
+                        ${dlg.get('title')} \
+                      </span> \
+                    </div> \
+                    \
+                    <div class="dlg-item__msg"> \
+                      <span class="dlg-item__short-text"> \
+                        ${
+                            (dlg.get('messages')[dlg.get('messages').length - 1]) ? (
+                                dlg.get('messages')[dlg.get('messages').length - 1]
+                            ) : (
+                                ''
+                            )
+                        } \
+                      </span> \
+                    </div> \
+                </div> \
+                \
+                <div class="dlg-item__label"> \
+                    5 \
+                </div> \
+            </a>`;
+
+        document
+            .getElementsByClassName('dialogs-list')
+            .item(0)
+            .appendChild(dlgItemDOM);
+
+        const dlgChatDOM = document.createElement('li');
+        dlgChatDOM.className = 'chat-list__item';
+        dlgChatDOM.id = dlg.get('id');
+
+        dlgChatDOM.innerHTML = `<ul class="chat__dialogs-list"></ul>`;
+
+        let el = document
+            .getElementsByClassName('chat-list')
+            .item(0)
+            .appendChild(dlgChatDOM);
+    }
+
     const _renderDialogs = function () {
-        // TODO : Отрисовка диалогов
-        // - Список диалогов
-        // - Сообщения в диалоге
+        console.log(_dialogs);
+        _dialogs.forEach(dlg => _renderDialog(dlg));
     };
 
     chat.createDialog = function (kind, title, description, avatar, members) {
@@ -28,44 +99,73 @@ let Chat = (function () {
             headers: {
                 "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
             },
-            body: `kind=${kind}&
-                   title=${title}&
-                   description=${description}&
-                   avatar=${avatar}&
-                   date=${new Date().toUTCString()}&
-                   members=${members}&`
+            body: `kind=${kind}&title=${title}&description=${description}&avatar=${avatar}&date=${new Date().toUTCString()}&members=${members}&`
         })
         .then(json)
         .then(data => {
-            console.log(data);
+            return data;
         })
         .catch(error => {
             throw new Error(`Request failed: ${error}`);
         });
 
         newDialog.then(data => {
-            _dialogs.push(Dialog.create(data));
+            const nDlg = new Dialog(data);
+            _dialogs.push(nDlg);
+            _renderDialog(nDlg);
         });
+    };
+
+    chat.setActiveDialogID = function (dlg) {
+        _activeDialogID = dlg;
+    }
+
+    chat.getActiveDialogID = function (dlg) {
+        return _activeDialogID;
+    }
+
+    chat.sendMessage = function () {
+        let dialog;
+
+        _dialogs.forEach(dlg => {
+            if (dlg.get('id') === _activeDialogID) {
+                dialog = dlg;
+            }
+        });
+
+        dialog.send();
+    }
+
+    chat.start = async function () {
+        await _getDialogs().then(dialogs => {
+            dialogs.forEach(data => {
+                _dialogs.push(new Dialog(JSON.stringify(data)));
+            });
+        });
+
+        _renderDialogs();
+        _activeDialogID = _dialogs[0];
+
     };
 
     return chat;
 })();
 
 function switchDialog(evt, dlg) {
-    let tabContent = document.getElementsByClassName('tab-content');
+    let tabContent = document.getElementsByClassName('chat-list__item');
     for (let i = 0; i < tabContent.length; i++)
         tabContent[i].style.display = 'none';
 
-    let tabLinks = document.getElementsByClassName('tab-links');
+    let tabLinks = document.getElementsByClassName('dialogs-list__dlg');
     for (let i = 0; i < tabLinks.length; i++)
         tabLinks[i].className = tabLinks[i].className.replace(' focus', '');
 
     document.getElementById(dlg).style.display = 'block';
     evt.currentTarget.className += ' focus';
 
-    document.forms['messageField'].elements['message'].value = '';
+    Chat.setActiveDialogID(dlg);
 
-    console.log('Переключено на ', evt.currentTarget);
+    // document.forms['messageField'].elements['message'].value = '';
 }
 
 function json(response) {
@@ -138,6 +238,14 @@ function renderMessage(text, kind, status) {
                             .querySelector('.chat-messages');
 
     chatScroll.scrollTop = chatScroll.scrollHeight - chatScroll.clientHeight;
-
-    console.log('Добавлено сообщение ', test);
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    document.onkeyup = function(event) {
+        if (document.querySelector('.msg-box .msg-box__input') === document.activeElement) {
+            if (event.keyCode == 13) {
+                Chat.sendMessage();
+            }
+        }
+    }
+});

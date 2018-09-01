@@ -10,7 +10,15 @@
   <meta name="description" content="Учебный проект МГТУ им. Баумана ИУ9 первого курса 2018 г. — онлайн-чат на Node.js">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-  <meta name="theme-color" content="#db1623">
+
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+  <link rel="manifest" href="img/favicon/site.webmanifest">
+  <link rel="mask-icon" href="img/favicon/safari-pinned-tab.svg" color="#5bbad5">
 
   <link rel="image_src" href="" /> <!-- TODO -->
 
@@ -38,160 +46,27 @@
     </div>
 
     <div class="content">
+      <button id="dlg-conv-open" type="button" name="button">Создать диалог</button>
+
       <div class="sidebar">
         <div class="sidebar-search">
           <input type="search" class="sidebar-search__input" placeholder="Поиск">
         </div>
 
         <ul class="dialogs-list">
-          <li class="dialogs-list__dlg dialogs-list__dlg_newest">
-            <a class="dlg-item">
-              <div class="dlg-item__meta">
-                21:50
-              </div>
 
-              <div class="dlg-item__photo">
-                <img src="img/user.jpg" alt="" class="dlg-item__photo-img">
-              </div>
-
-              <div class="dlg-item__msg-wrap">
-                <div class="dlg-item__peer">
-                  <span class="dlg-item__title">
-                    Брендан Эйх
-                  </span>
-                </div>
-
-                <div class="dlg-item__msg">
-                  <span class="dlg-item__short-text">
-                    Привет! Как дела?
-                  </span>
-                </div>
-              </div>
-
-              <div class="dlg-item__label">
-                5
-              </div>
-            </a>
-          </li>
-
-          <li class="dialogs-list__dlg dialogs-list__dlg_newest">
-            <a class="dlg-item">
-              <div class="dlg-item__meta">
-                21:50
-              </div>
-
-              <div class="dlg-item__photo">
-                <img src="img/user.jpg" alt="" class="dlg-item__photo-img">
-              </div>
-
-              <div class="dlg-item__msg-wrap">
-                <div class="dlg-item__peer">
-                  <span class="dlg-item__title">
-                    Брендан Эйх
-                  </span>
-                </div>
-
-                <div class="dlg-item__msg">
-                  <span class="dlg-item__short-text">
-                    Привет! Как дела?
-                  </span>
-                </div>
-              </div>
-            </a>
-          </li>
-
-          <li class="dialogs-list__dlg">
-            <a class="dlg-item">
-              <div class="dlg-item__meta">
-                21:50
-              </div>
-
-              <div class="dlg-item__photo">
-                <img src="img/user.jpg" alt="" class="dlg-item__photo-img">
-              </div>
-
-              <div class="dlg-item__msg-wrap">
-                <div class="dlg-item__peer">
-                  <span class="dlg-item__title">
-                    Брендан Эйх
-                  </span>
-                </div>
-
-                <div class="dlg-item__msg">
-                  <span class="dlg-item__short-text">
-                    Привет! Как дела?
-                  </span>
-                </div>
-              </div>
-            </a>
-          </li>
-
-          <li class="dialogs-list__dlg">
-            <a class="dlg-item">
-              <div class="dlg-item__meta">
-                21:50
-              </div>
-
-              <div class="dlg-item__photo">
-                <img src="img/user.jpg" alt="" class="dlg-item__photo-img">
-              </div>
-
-              <div class="dlg-item__msg-wrap">
-                <div class="dlg-item__peer">
-                  <span class="dlg-item__title">
-                    Брендан Эйх
-                  </span>
-                </div>
-
-                <div class="dlg-item__msg">
-                  <span class="dlg-item__short-text">
-                    Привет! Как дела?
-                  </span>
-                </div>
-              </div>
-            </a>
-          </li>
         </ul>
       </div>
 
       <div class="chat">
-        <ul class="chat__dialogs-list">
-          <li class="chat__dialog chat__dialog_active">
-            <ul class="dialog">
-              <li class="dialog__meta">
-                <span>Сегодня</span>
-              </li>
+        <ul class="chat-list">
 
-              <li class="dialog__wrap-msg dialog__wrap-msg_incoming">
-                <div class="dialog__msg dialog__msg_incoming">
-                  <span class="dialog__msg-text">
-                    Привет! Идешь на пары сегодня?
-                  </span>
-                </div>
-
-                <div class="dialog__msg-meta">
-                  <span>15:42</span>
-                </div>
-              </li>
-
-              <li class="dialog__wrap-msg dialog__wrap-msg_sent">
-                <div class="dialog__msg dialog__msg_sent">
-                  <span class="dialog__msg-text">
-                    Неа, лень :)
-                  </span>
-                </div>
-
-                <div class="dialog__msg-meta dialog__msg-meta_sent">
-                  <span>15:42</span>
-                </div>
-              </li>
-            </ul>
-          </li>
         </ul>
 
         <div class="chat__footer">
           <div class="msg-box">
-            <input type="text" class="msg-box__input">
+            <input type="text" class="msg-box__input"
+              placeholder="Введите сообщение...">
           </div>
 
           <div class="btn-box">
@@ -208,6 +83,52 @@
 
       <div class="profile">
 
+      </div>
+
+      <div id="dlg-conv-modal" class="modal">
+        <div class="modal-content">
+          <span class="input input_primary">
+            <input class="input-field input-field_primary"
+              id="dlg-conv-title"
+              type="text"
+              minlength=1
+              maxlength=20
+              required />
+            <label class="input-label input-label_primary">
+              <span class="input-label-content input-label-content_primary">Название беседы</span>
+            </label>
+          </span>
+
+          <span class="input input_primary">
+            <input class="input-field input-field_primary"
+              id="dlg-conv-description"
+              type="text"
+              minlength=4
+              required />
+            <label class="input-label input-label_primary">
+              <span class="input-label-content input-label-content_primary">Описание</span>
+            </label>
+          </span>
+
+          <span class="input input_primary">
+            <input class="input-field input-field_primary"
+              id="dlg-conv-members"
+              type="text"
+              minlength=4
+              required />
+            <label class="input-label input-label_primary">
+              <span class="input-label-content input-label-content_primary">Участники (через пробел)</span>
+            </label>
+          </span>
+
+          <span class="input input_transparent">
+            <a class="button button-accent button-big" id="dlg-conv-btn-create">Создать</a>
+          </span>
+
+          <span class="input input_transparent">
+            <a class="button button-accent button-big button-solid" id="dlg-conv-btn-cancel">Отменить</a>
+          </span>
+        </div>
       </div>
 
     </div>

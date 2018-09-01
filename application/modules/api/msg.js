@@ -20,9 +20,9 @@ const receiver = async (methods, request, response) => {
             source.sendJSON(msg, response);
         }
 
-    } else if (request.method === 'POST')
+    } else if (request.method === 'POST') {
         if (!methods[1]) {
-            console.log('Не указан dlgID');
+            console.log('Не указан ID диалога');
             source.send404(response);
         }
 

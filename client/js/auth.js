@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    /* === Событие нажатия на кнопку входа === */
+    /* === Событие нажатия на кнопку входа ===
     document.querySelector('#sign-in').onclick = () => {
         Auth.singin(
             document.querySelector('#in-login').value,
@@ -7,14 +7,14 @@ document.addEventListener('DOMContentLoaded', function () {
         );
     };
 
-    /* === Событие нажатия на кнопку регистрации === */
+    /* === Событие нажатия на кнопку регистрации ===
     document.querySelector('#sign-up').onclick = () => {
         Auth.singup(
             document.querySelector('#up-login').value,
             document.querySelector('#up-password').value,
             document.querySelector('#up-confirm').value
         );
-    };
+    };*/
 });
 
 /* === Перключение формы авторизации === */

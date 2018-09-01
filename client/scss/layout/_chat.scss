@@ -12,6 +12,15 @@
   list-style: none;
 }
 
+.chat-list__item {
+  display: none;
+  animation: fadeEffect 1.5s;
+}
+
+.chat-list__item:first-child {
+  display: block;
+}
+
 .chat__dialog {
   display: none;
 }
@@ -22,12 +31,17 @@
 
 .dialog {
   display: block;
-  padding: 70px 50px;
+  padding: 0px 30px;
+}
+
+.dialog li:first-child {
+  margin-top: 30px;
 }
 
 .dialog__meta {
   width: 100%;
   text-align: center;
+  margin: 30px 0;
 }
 
 .dialog__meta span {
@@ -40,28 +54,38 @@
 }
 
 .dialog__wrap-msg {
-  display: block;
+  display: grid;
+  grid-template: auto / auto auto;
+  grid-auto-flow: dense;
+  align-items: center;
+
   width: 100%;
   height: auto;
 }
 
 .dialog__wrap-msg_incoming {
+  justify-content: start;
   float: left;
 }
 
 .dialog__wrap-msg_sent {
-  float: right;
+  justify-content: end;
+  //float: right;
 }
 
 .dialog__msg {
   float: inherit;
-  max-width: 60%;
+  max-width: 100%;
   min-width: 110px;
   box-sizing: border-box;
   height: auto;
   padding: 5px 10px;
-  margin: 15px 0;
+  //margin: 15px 0;
   border-radius: 10px;
+}
+
+.dialog__wrap-msg_sent .dialog__msg {
+  grid-column: 2;
 }
 
 .dialog__msg-text {
@@ -77,12 +101,16 @@
   align-items: center;
   float: inherit;
   width: 100px;
-  height: 35px;
+  height: 33px;
   color: #c1ccd8;
   font-weight: 600;
   font-size: 0.7rem;
   padding: 0 20px;
-  margin: 15px 0;
+  //margin: 15px 0;
+}
+
+.dialog__wrap-msg_sent .dialog__msg-meta {
+  grid-column: 1;
 }
 
 .dialog__msg-meta_sent {

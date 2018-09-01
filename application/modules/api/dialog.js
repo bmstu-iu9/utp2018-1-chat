@@ -17,7 +17,12 @@ const receiver = async (methods, request, response) => {
             source.send404(response);
         }
 
-        source.sendJSON(await getDialog(methods[1]), response);
+        if (methods[1] === '*') {
+            const db = await Database.get();
+            source.sendJSON(await db.dialogs.getDialogs(), response);
+        } else {
+            source.sendJSON(await getDialog(methods[1]), response);
+        }
     } else if (request.method === 'POST') {
         let data = '';
         request.on('data', (chunk) => {
@@ -34,6 +39,10 @@ const receiver = async (methods, request, response) => {
             const newDialog = await db.dialogs.addDialog(
                 id,
                 data.kind,
+                data.title,
+                data.description,
+                data.avatar,
+                data.members.split(' '),
                 new Date().toUTCString()
             );
 

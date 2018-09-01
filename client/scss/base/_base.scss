@@ -1,3 +1,10 @@
+::selection {
+  background: #c2dcf2;
+}
+::-moz-selection {
+  background: #c2dcf2;
+}
+
 * {
   margin: 0;
   padding: 0;
