@@ -129,6 +129,7 @@ const createCollections = async (db) => {
                                 id: generator.genMsgID(dlgID),
                                 kind: msgData['kind'],
                                 text: msgData['text'],
+                                author: msgData['author'],
                                 options: msgData['options']
                             };
 

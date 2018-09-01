@@ -48,6 +48,9 @@ const dialogSchema = {
                     kind: {
                         type: 'string'
                     },
+                    author: {
+                        type: 'string'
+                    },
                     text: {
                         type: 'string'
                     },
