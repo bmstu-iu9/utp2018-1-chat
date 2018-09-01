@@ -83,6 +83,49 @@ let Chat = (function () {
             .getElementsByClassName('chat-list')
             .item(0)
             .appendChild(dlgChatDOM);
+
+        Chat.getThisUserByToken().then(author => {
+
+            dlg.get('messages').forEach(msg => {
+                let isSent;
+                if (msg['author'] !== author['login']) {
+                    isSent = false;
+                } else {
+                    isSent = true;
+                }
+
+                const msgChatDOM = document.createElement('li');
+                msgChatDOM.className = isSent ? (
+                    'dialog__wrap-msg dialog__wrap-msg_sent'
+                ) : (
+                    'dialog__wrap-msg dialog__wrap-msg_incoming'
+                );
+
+                msgChatDOM.id = msg['id'];
+
+                msgChatDOM.innerHTML = `\
+                    ${isSent ? (
+                        '<div class="dialog__msg dialog__msg_sent">'
+                    ) : (
+                        '<div class="dialog__msg dialog__msg_incoming">'
+                    )} \
+                        <span class="dialog__msg-text"> \
+                            ${msg['text']} \
+                        </span> \
+                    </div> \
+                    \
+                    <div class="dialog__msg-meta"> \
+                      <span>${msg.options}</span> \
+                    </div>`;
+
+                let el = document
+                    .getElementById(`${dlg.get('id')}`)
+                    .getElementsByClassName('chat__dialogs-list')
+                    .item(0)
+                    .appendChild(msgChatDOM);
+
+            });
+        });
     }
 
     const _renderDialogs = function () {
