@@ -65,3 +65,7 @@ function flip() {
         cssClasses.add(document.getElementById('auth-flip'), 'flip-on')
     }
 }
+
+function json(response) {
+    return response.json()
+}
