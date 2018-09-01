@@ -18,11 +18,17 @@
   background-color: #fff;
 }
 
+.header-settings__link {
+  color: #fff;
+}
+
 .sidebar,
 .chat__footer,
-.msg-box {
+.msg-box,
+.msg-box__input {
   background-color: #17212b;
 }
+
 
 .chat {
   background-color: #0e1621;
