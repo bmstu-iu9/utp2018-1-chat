@@ -202,3 +202,25 @@ function inline(source) {
 
     return out;
 }
+
+
+function htmlEncode(str) {
+    return str.replace(/&/g, '&amp;')
+              .replace(/</g, '&lt;')
+              .replace(/>/g, '&gt;')
+              .replace(/"/g, '&quot;')
+              .replace(/'/g, '&#x27;')
+              .replace(/\//g, '&#x2F;');
+}
+
+function trim(str) {
+    return str.replace(/\t/g, '    ')
+              .replace(/\u00a0/g, ' ')
+              .replace(/\u3000/g, ' ')
+              .replace(/\r/g, '\n')
+              .replace(/\f/g, '\n')
+}
+
+function markdown(md) {
+    return parse(md);
+}
