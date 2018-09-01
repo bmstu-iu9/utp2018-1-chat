@@ -15,15 +15,55 @@ module.exports.info = async (msg) => {
         console.log ( '%c [Info]', 'color: green; font: 1.2rem/1 Tahoma;', new Date().toUTCString(), msg );
 
     } else if (config['method'] == 'file'){
-        var now =
-        fs.writeFile(config['wayForFile'], await format('info', new Date().toUTCString(),msg), function(error){
+        fs.writeFile(config['wayForFile', '/n'];
+        fs.writeFile(config['wayForFile'], await format('Info', new Date().toUTCString(),msg), function(error){
                 if(error) throw error;
 });
     } else {
         //Запись в БД
     }
+};
 
+module.exports.error = async (msg) => {
+    if (config['method'] == 'console'){
+        console.log ( '%c [Error]', 'color: red; font: 1.2rem/1 Tahoma;', new Date().toUTCString(), msg );
 
+    } else if (config['method'] == 'file'){
+        fs.writeFile(config['wayForFile', '/n'];
+        fs.writeFile(config['wayForFile'], await format('Error', new Date().toUTCString(),msg), function(error){
+                if(error) throw error;
+});
+    } else {
+        //Запись в БД
+    }
+};
+
+module.exports.warning = async (msg) => {
+    if (config['method'] == 'console'){
+        console.log ( '%c [Warning]', 'color: orange; font: 1.2rem/1 Tahoma;', new Date().toUTCString(), msg );
+
+    } else if (config['method'] == 'file'){
+        fs.writeFile(config['wayForFile', '/n'];
+        fs.writeFile(config['wayForFile'], await format('Warning', new Date().toUTCString(),msg), function(error){
+                if(error) throw error;
+});
+    } else {
+        //Запись в БД
+    }
+};
+
+module.exports.trace= async (msg) => {
+    if (config['method'] == 'console'){
+        console.log ( '%c [Trace]', 'font: 1.2rem/1 Tahoma;', new Date().toUTCString(), msg );
+
+    } else if (config['method'] == 'file'){
+        fs.writeFile(config['wayForFile', '/n'];
+        fs.writeFile(config['wayForFile'], await format('Warning', new Date().toUTCString(),msg), function(error){
+                if(error) throw error;
+});
+    } else {
+        //Запись в БД
+    }
 };
 
 /*
