@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById("dlg-conv-btn-create").onclick = function () {
             const dlgctitle = document.getElementById("dlg-conv-title").value;
             const dlgcdescription = document.getElementById("dlg-conv-description").value;
-            const dlgcmembers = document.getElementById("dlg-conv-members").value;
+            const dlgcmembers = document.getElementById("dlg-conv-members").value + ` ${Chat.getThisUserByToken()}`;
 
             Chat.createDialog('conversation', dlgctitle, dlgcdescription, '', dlgcmembers);
         }
