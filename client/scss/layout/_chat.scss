@@ -12,6 +12,15 @@
   list-style: none;
 }
 
+.chat-list__item {
+  display: none;
+  animation: fadeEffect 1.5s;
+}
+
+.chat-list__item:first-child {
+  display: block;
+}
+
 .chat__dialog {
   display: none;
 }

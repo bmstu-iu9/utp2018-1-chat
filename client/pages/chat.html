@@ -52,7 +52,7 @@
         </div>
 
         <ul class="dialogs-list">
-          <li class="dialogs-list__dlg dialogs-list__dlg_newest">
+          <li class="dialogs-list__dlg dialogs-list__dlg_newest" onclick="switchDialog(event, '1');">
             <a class="dlg-item">
               <div class="dlg-item__meta">
                 21:50
@@ -82,7 +82,7 @@
             </a>
           </li>
 
-          <li class="dialogs-list__dlg dialogs-list__dlg_newest">
+          <li class="dialogs-list__dlg dialogs-list__dlg_newest" onclick="switchDialog(event, '2');">
             <a class="dlg-item">
               <div class="dlg-item__meta">
                 21:50
@@ -163,35 +163,75 @@
       </div>
 
       <div class="chat">
-        <ul class="chat__dialogs-list">
-          <li class="chat__dialog chat__dialog_active">
-            <ul class="dialog">
-              <li class="dialog__meta">
-                <span>Сегодня</span>
+        <ul class="chat-list">
+          <li class="chat-list__item" id="1">
+            <ul class="chat__dialogs-list">
+              <li class="chat__dialog chat__dialog_active">
+                <ul class="dialog">
+                  <li class="dialog__meta">
+                    <span>Сегодня</span>
+                  </li>
+
+                  <li class="dialog__wrap-msg dialog__wrap-msg_incoming">
+                    <div class="dialog__msg dialog__msg_incoming">
+                      <span class="dialog__msg-text">
+                        Привет! Идешь на пары сегодня?
+                      </span>
+                    </div>
+
+                    <div class="dialog__msg-meta">
+                      <span>15:42</span>
+                    </div>
+                  </li>
+
+                  <li class="dialog__wrap-msg dialog__wrap-msg_sent">
+                    <div class="dialog__msg dialog__msg_sent">
+                      <span class="dialog__msg-text">
+                        Неа, лень :)
+                      </span>
+                    </div>
+
+                    <div class="dialog__msg-meta dialog__msg-meta_sent">
+                      <span>15:42</span>
+                    </div>
+                  </li>
+                </ul>
               </li>
+            </ul>
+          </li>
 
-              <li class="dialog__wrap-msg dialog__wrap-msg_incoming">
-                <div class="dialog__msg dialog__msg_incoming">
-                  <span class="dialog__msg-text">
-                    Привет! Идешь на пары сегодня?
-                  </span>
-                </div>
+          <li class="chat-list__item" id="2">
+            <ul class="chat__dialogs-list">
+              <li class="chat__dialog chat__dialog_active">
+                <ul class="dialog">
+                  <li class="dialog__meta">
+                    <span>Вчера</span>
+                  </li>
 
-                <div class="dialog__msg-meta">
-                  <span>15:42</span>
-                </div>
-              </li>
+                  <li class="dialog__wrap-msg dialog__wrap-msg_incoming">
+                    <div class="dialog__msg dialog__msg_incoming">
+                      <span class="dialog__msg-text">
+                        Привет! Идешь на пары сегодня?
+                      </span>
+                    </div>
 
-              <li class="dialog__wrap-msg dialog__wrap-msg_sent">
-                <div class="dialog__msg dialog__msg_sent">
-                  <span class="dialog__msg-text">
-                    Неа, лень :)
-                  </span>
-                </div>
+                    <div class="dialog__msg-meta">
+                      <span>15:42</span>
+                    </div>
+                  </li>
 
-                <div class="dialog__msg-meta dialog__msg-meta_sent">
-                  <span>15:42</span>
-                </div>
+                  <li class="dialog__wrap-msg dialog__wrap-msg_sent">
+                    <div class="dialog__msg dialog__msg_sent">
+                      <span class="dialog__msg-text">
+                        Неа, лень :)
+                      </span>
+                    </div>
+
+                    <div class="dialog__msg-meta dialog__msg-meta_sent">
+                      <span>15:42</span>
+                    </div>
+                  </li>
+                </ul>
               </li>
             </ul>
           </li>
