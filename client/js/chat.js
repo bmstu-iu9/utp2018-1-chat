@@ -44,7 +44,7 @@ let Chat = (function () {
         });
 
         newDialog.then(data => {
-            _dialogs.push(Dialog.create(data));
+            _dialogs.push(new Dialog(data));
         });
     };
 

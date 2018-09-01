@@ -1,38 +1,73 @@
-let Dialog = (function () {
-    let dialog = {};
+class Dialog {
+    constructor(data) {
+        this.data = JSON.parse(data);
+    }
 
-    dialog.create = function (data) {
-        let newDialog = {
-            _dialogData: data,
+    get(key) {
+        return this.data[key];
+    }
 
-            get: function (key) {
-                return JSON.parse(this._dialogData)[key];
-            },
+    set(key, value) {
+        this.data[key] = value;
+    }
 
-            set: function (key, value) {
-                this._dialogData[key] = value;
-            },
-
-            update: function () {
-                return fetch(
-                    `/api/dialog/${JSON.parse(this._dialogData)['id']}`,
-                    { method: 'GET' }
-                )
-                .then(json)
-                .then(data => {
-                    if (data) {
-                        return Crypto.sha512hex(JSON.stringify(data))
-                            === Crypto.sha512hex(this._dialogData);
-                    }
-                })
-                .catch(error => {
-                    throw new Error(`Request failed: ${error}`);
-                });
+    update() {
+        return fetch(
+            `/api/dialog/${this.data['id']}`,
+            { method: 'GET' }
+        )
+        .then(json)
+        .then(data => {
+            if (data) {
+                return Crypto.sha512hex(JSON.stringify(data))
+                    === Crypto.sha512hex(JSON.stringify(this.data));
             }
+        })
+        .catch(error => {
+            throw new Error(`Request failed: ${error}`);
+        });
+    }
+
+    send() {
+        const input = document.querySelector(".msg-box .msg-box__input").value;
+        const hasAttachment = false;
+
+        let msg = {
+            id: '',
+            kind: (hasAttachment) ? (
+                (!input) ? 'attachment' : 'text&attachment'
+            ) : (
+                'text'
+            ),
+            text: input,
+            options: []
         };
 
-        return newDialog;
-    };
+        if (msg.kind === 'test' && !msg.text) {
+            alert('Нельзя отправить пустое сообщение!');
+            return;
+        }
 
-    return dialog;
-})();
+        if (msg.kind === 'text') {
+            const resStatus = fetch(
+                `/api/msg/${this.data['id']}`,
+                { method: 'POST' }
+            )
+            .then(json)
+            .then(response => {
+                return response['status'];
+            })
+            .catch(error => {
+                throw new Error(`Request failed: ${error}`);
+            });
+
+            if (resStatus === 0) {
+                render(msg);
+            }
+        }
+    }
+
+    render(msg) {
+
+    }
+}
