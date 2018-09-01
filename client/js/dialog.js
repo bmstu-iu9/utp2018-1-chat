@@ -23,7 +23,56 @@ class Dialog {
                     === Crypto.sha512hex(JSON.stringify(this.data));
 
                 if (!hashCheck) {
+                    this.data = data;
+                    
+                    var dlgMode = document
+                                        .getElementById(`${this.data['id']}`)
+                                        .querySelector('.chat__dialogs-list');
+                    while (dlgMode.firstChild) {
+                        dlgMode.removeChild(dlgMode.firstChild);
+                    }
 
+                    Chat.getThisUserByToken().then(author => {
+
+                        this.data['messages'].forEach(msg => {
+                            let isSent;
+                            if (msg['author'] !== author['login']) {
+                                isSent = false;
+                            } else {
+                                isSent = true;
+                            }
+
+                            const msgChatDOM = document.createElement('li');
+                            msgChatDOM.className = isSent ? (
+                                'dialog__wrap-msg dialog__wrap-msg_sent'
+                            ) : (
+                                'dialog__wrap-msg dialog__wrap-msg_incoming'
+                            );
+
+                            msgChatDOM.id = msg['id'];
+
+                            msgChatDOM.innerHTML = `\
+                                ${isSent ? (
+                                    '<div class="dialog__msg dialog__msg_sent">'
+                                ) : (
+                                    '<div class="dialog__msg dialog__msg_incoming">'
+                                )} \
+                                    <span class="dialog__msg-text"> \
+                                        ${msg['text']} \
+                                    </span> \
+                                </div> \
+                                \
+                                <div class="dialog__msg-meta"> \
+                                  <span>${msg.options.split(' ')[4].slice(0, -3)}</span> \
+                                </div>`;
+
+                            let el = document
+                                .getElementById(`${this.data['id']}`)
+                                .getElementsByClassName('chat__dialogs-list')
+                                .item(0)
+                                .appendChild(msgChatDOM);
+                        });
+                    });
                 }
             }
         })

@@ -218,6 +218,11 @@ let Chat = (function () {
         _renderDialogs();
         _activeDialogID = _dialogs[0];
 
+        let updateDialogs = setInterval(() => {
+            _dialogs.forEach(dlg => {
+                dlg.update();
+            });
+        }, 2500);
     };
 
     return chat;
