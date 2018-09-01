@@ -6,6 +6,7 @@
 
   border-right: 1px solid #e8e8e8;
   background: #fff;
+  position: relative;
 }
 
 .sidebar-search {
@@ -13,6 +14,12 @@
   align-items: center;
 
   padding: 0 16px;
+}
+
+.sidebar__btn {
+  position: absolute;
+  bottom: 45px;
+  left: 30px;
 }
 
 .dialogs-list {
