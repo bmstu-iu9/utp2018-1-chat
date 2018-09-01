@@ -38,7 +38,7 @@ class Dialog {
 
         let msg = {
             id: '',
-            kind: (hasAttachment) ? (
+            kind: (hasAttachment === true) ? (
                 (!input) ? 'attachment' : 'text&attachment'
             ) : (
                 'text'
@@ -60,7 +60,7 @@ class Dialog {
                     headers: {
                         "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
                     },
-                    body: `kind=${msg['king']}&text=${msg['text']}&author=${author['login']}&options=${msg['options']}`
+                    body: `kind=${msg['kind']}&text=${msg['text']}&author=${author['login']}&options=${msg['options']}`
                 })
                 .then(json)
                 .then(response => {
