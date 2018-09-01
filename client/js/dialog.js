@@ -97,7 +97,5 @@ class Dialog {
             .getElementsByClassName('dialog')
             .item(0)
             .appendChild(msgDOM);
-
-        console.log('Добавлено сообщение:\n', el);
     }
 }
