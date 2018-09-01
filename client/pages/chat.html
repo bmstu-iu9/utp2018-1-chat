@@ -46,6 +46,8 @@
     </div>
 
     <div class="content">
+      <button id="myBtn" type="button" name="button">Создать диалог</button>
+
       <div class="sidebar">
         <div class="sidebar-search">
           <input type="search" class="sidebar-search__input" placeholder="Поиск">
@@ -257,6 +259,41 @@
 
       <div class="profile">
 
+      </div>
+
+      <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+
+          <span class="input input_primary">
+            <input class="input-field input-field_primary"
+              type="text"
+              minlength=1
+              maxlength=20
+              required />
+            <label class="input-label input-label_primary">
+              <span class="input-label-content input-label-content_primary">Название беседы</span>
+            </label>
+          </span>
+
+          <span class="input input_primary">
+            <input class="input-field input-field_primary"
+              type="text"
+              minlength=4
+              required />
+            <label class="input-label input-label_primary">
+              <span class="input-label-content input-label-content_primary">Участники (через пробел)</span>
+            </label>
+          </span>
+
+          <span class="input input_transparent">
+            <a class="button button-accent button-big" href="#">Создать</a>
+          </span>
+
+          <span class="input input_transparent">
+            <a class="button button-accent button-big button-solid" href="#">Отменить</a>
+          </span>
+        </div>
       </div>
 
     </div>
