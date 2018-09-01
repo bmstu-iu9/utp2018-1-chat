@@ -69,12 +69,27 @@ const createCollections = async (db) => {
         name: 'dialogs',
         schema: dialogSchema,
         statics: {
-            async addDialog(id, kind, date) {
+            async addDialog(id, kind, title, description, avatar, members, date) {
                 return this.upsert({
                     id,
                     kind,
+                    title,
+                    description,
+                    avatar,
+                    members,
                     date
                 });
+            },
+
+            async getDialogs() {
+                return this.find()
+                    .exec()
+                    .then(dialogs => {
+                        return dialogs;
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
             },
 
             async addMember(id, login) {

@@ -68,7 +68,7 @@ const dialogSchema = {
         }
 
     },
-    required: ['id', 'kind', 'date']
+    required: ['id', 'kind', 'title', 'description', 'avatar', 'members',  'date']
 };
 
 module.exports = dialogSchema;
