@@ -115,7 +115,7 @@ let Chat = (function () {
                     </div> \
                     \
                     <div class="dialog__msg-meta"> \
-                      <span>${msg.options}</span> \
+                      <span>${msg.options.split(' ')[4].slice(0, -3)}</span> \
                     </div>`;
 
                 let el = document
