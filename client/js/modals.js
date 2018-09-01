@@ -1,21 +1,33 @@
 document.addEventListener('DOMContentLoaded', function () {
-    var modal = document.getElementById('myModal');
 
-    var btn = document.getElementById("myBtn");
+    /* === Окон создания новой беседы === */
+    (function () {
+        let dlgcm = document.getElementById('dlg-conv-modal');
 
-    var span = document.getElementsByClassName("close")[0];
+        let dlgcopen = document.getElementById("dlg-conv-open");
 
-    btn.onclick = function() {
-        modal.style.display = "block";
-    }
+        let dlgccancel = document.getElementById("dlg-conv-btn-cancel");
 
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
-
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
+        dlgcopen.onclick = function () {
+            dlgcm.style.display = "block";
         }
-    }
+
+        dlgccancel.onclick = function () {
+            dlgcm.style.display = "none";
+        }
+
+        window.onclick = function (event) {
+            if (event.target == dlgcm) {
+                dlgcm.style.display = "none";
+            }
+        }
+
+        document.getElementById("dlg-conv-btn-create").onclick = function () {
+            const dlgctitle = document.getElementById("dlg-conv-title").value;
+            const dlgcdescription = document.getElementById("dlg-conv-description").value;
+            const dlgcmembers = document.getElementById("dlg-conv-members").value;
+
+            Chat.createDialog('conversation', dlgctitle, dlgcdescription, '', dlgcmembers);
+        }
+    })();
 });
