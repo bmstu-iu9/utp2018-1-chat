@@ -1,6 +1,6 @@
 .button {
   display: inline-block;
-  font-family: Rubik, sans-serif;
+  font-family: $font-stack;
   font-size: 16px;
   line-height: 14px;
   font-weight: 500;
@@ -13,6 +13,7 @@
   padding: 10px 16px;
   text-align: center;
   outline: none;
+  cursor: pointer;
 }
 
 .button:hover {
