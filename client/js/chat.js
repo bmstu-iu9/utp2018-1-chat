@@ -142,9 +142,6 @@ function renderMessage(text, kind, status) {
     console.log('Добавлено сообщение ', test);
 }
 
-//Скрипты поиска временно будут здесь
-
-
 function goSearch() {
     const req = document.getElementById('myDiv').value.toLowerCase();
   
@@ -180,5 +177,12 @@ function goSearch() {
     }
 }
 
+function endSearch(){
+    const in_msgs = document.getElementsByClassName("dialog__wrap-msg dialog__wrap-msg_incoming");
+    const sent_msgs = document.getElementsByClassName("dialog__wrap-msg dialog__wrap-msg_sent");
+    
+    Array.from(in_msgs).forEach(e => e.style.display = '');
 
+    Array.from(sent_msgs).forEach(e => e.style.display = '');
+}
 
