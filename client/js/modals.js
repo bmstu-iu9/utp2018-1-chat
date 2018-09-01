@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let dlgccancel = document.getElementById("dlg-conv-btn-cancel");
 
         dlgcopen.onclick = function () {
-            dlgcm.style.display = "block";
+            dlgcm.style.display = "grid";
         }
 
         dlgccancel.onclick = function () {
@@ -28,6 +28,29 @@ document.addEventListener('DOMContentLoaded', function () {
             const dlgcmembers = document.getElementById("dlg-conv-members").value + ` ${Chat.getThisUserByToken()}`;
 
             Chat.createDialog('conversation', dlgctitle, dlgcdescription, 'default.jpg', dlgcmembers);
+        }
+    })();
+
+    /* === Окон настроек === */
+    (function () {
+        let setm = document.getElementById('settings-modal');
+
+        let setopen = document.querySelector('.header-settings__link');
+
+        let setcancel = document.getElementById('settings-btn-cancel');
+
+        setopen.onclick = function () {
+            setm.style.display = "grid";
+        }
+
+        setcancel.onclick = function () {
+            setm.style.display = "none";
+        }
+
+        window.onclick = function (event) {
+            if (event.target == setm) {
+                setm.style.display = "none";
+            }
         }
     })();
 });
