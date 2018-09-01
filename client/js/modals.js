@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let dlgccancel = document.getElementById("dlg-conv-btn-cancel");
 
         dlgcopen.onclick = function () {
-            dlgcm.style.display = "block";
+            dlgcm.style.display = "grid";
         }
 
         dlgccancel.onclick = function () {
