@@ -38,13 +38,13 @@ class Dialog {
 
         let msg = {
             id: '',
-            kind: (hasAttachment) ? (
+            kind: (hasAttachment === true) ? (
                 (!input) ? 'attachment' : 'text&attachment'
             ) : (
                 'text'
             ),
             text: input,
-            options: []
+            options: [`${new Date().toUTCString()}`]
         };
 
         if (msg.kind === 'test' && !msg.text) {
@@ -53,31 +53,33 @@ class Dialog {
         }
 
         if (msg.kind === 'text') {
-            const resStatus = fetch(`/api/msg/${this.data['id']}`, {
-                method: 'POST',
-                headers: {
-                    "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
-                },
-                body: `kind=${msg['king']}&text=${msg['text']}&options=${msg['options']}`
-            })
-            .then(json)
-            .then(response => {
-                return response['status'];
-            })
-            .catch(error => {
-                throw new Error(`Request failed: ${error}`);
-            });
+            Chat.getThisUserByToken().then(author => {
 
-            if (resStatus === 0) {
-                render(msg);
-            }
+                const resStatus = fetch(`/api/msg/${this.data['id']}`, {
+                    method: 'POST',
+                    headers: {
+                        "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+                    },
+                    body: `kind=${msg['kind']}&text=${msg['text']}&author=${author['login']}&options=${msg['options']}`
+                })
+                .then(json)
+                .then(response => {
+                    return response['status'];
+                })
+                .catch(error => {
+                    throw new Error(`Request failed: ${error}`);
+                });
+
+                if (resStatus === 0) {
+                    render(msg);
+                }
+            });
         }
     }
 
     render(msg) {
         const dialogDOM = document.querySelector(`#${this.data['id']}`);
 
-        // Составление HTML кода для вставки
         const msgDOM = document.createElement('li');
         msgDOM.className = 'dialog__wrap-msg dialog__wrap-msg_sent';
 

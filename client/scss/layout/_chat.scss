@@ -12,6 +12,18 @@
   list-style: none;
 }
 
+.chat__dialogs-list {
+  position: relative;
+}
+
+.chat__dialogs-list:empty:after {
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  content: 'Нет сообщений';
+  margin-top: 35%;
+}
+
 .chat-list__item {
   display: none;
   animation: fadeEffect 1.5s;
