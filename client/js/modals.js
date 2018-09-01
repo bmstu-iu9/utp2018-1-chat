@@ -30,4 +30,27 @@ document.addEventListener('DOMContentLoaded', function () {
             Chat.createDialog('conversation', dlgctitle, dlgcdescription, 'default.jpg', dlgcmembers);
         }
     })();
+
+    /* === Окон настроек === */
+    (function () {
+        let setm = document.getElementById('settings-modal');
+
+        let setopen = document.querySelector('.header-settings__link');
+
+        let setcancel = document.getElementById('settings-btn-cancel');
+
+        setopen.onclick = function () {
+            setm.style.display = "grid";
+        }
+
+        setcancel.onclick = function () {
+            setm.style.display = "none";
+        }
+
+        window.onclick = function (event) {
+            if (event.target == setm) {
+                setm.style.display = "none";
+            }
+        }
+    })();
 });
