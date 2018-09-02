@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     /* === Событие нажатия на кнопку входа === */
     document.querySelector('#sign-in').onclick = () => {
         Auth.singin(
