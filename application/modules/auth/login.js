@@ -2,6 +2,8 @@
 
 const source = require('router/source');
 
+const log = require('log');
+
 const auth = require('auth');
 const session = require('auth/session');
 
@@ -47,6 +49,7 @@ module.exports.signin = async (response, data) => {
         })
         .then(async (data) => {
             if (!data.flag || !data.json) {
+                log.info(`Неудачная попытка авторизации (${request.url})`);
                 source.sendJSON(JSON.stringify({ status: 'Invalid password' }), response);
                 return;
             }
@@ -57,6 +60,7 @@ module.exports.signin = async (response, data) => {
                 'Set-Cookie': `session_token=${data.json.token}; expires=${data.json.expires}; path=/;`
             });
 
+            log.info(`Успешная авторизация пользователя (${request.url})(${data.json.login})`);
             response.end(JSON.stringify({ status: `SUCCESS` }));
         })
         .catch(

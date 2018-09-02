@@ -4,8 +4,6 @@ const source = require('router/source');
 const qs = require('querystring');
 
 const handler = (methods, request, response) => {
-    console.log(request.method);
-
     switch (methods[0]) {
         case 'user':
             require('api/user').receiver(methods, request, response);
