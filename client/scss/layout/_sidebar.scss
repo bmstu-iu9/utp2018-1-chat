@@ -43,11 +43,13 @@
 .dialogs-list__dlg {
   display: block;
   height: 75px;
-  background: #fff;
+}
+
+.dialogs-list__dlg_active {
+  background-color: #f1f1f1;
 }
 
 .dlg-item:hover {
-  background: #f1f1f1;
   cursor: pointer;
 }
 

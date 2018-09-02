@@ -37,18 +37,16 @@
   border-color: #222222;
 }
 
-.dlg-item,
 .dialogs-list__dlg {
   background-color: #2a292b;
 }
 
-.dlg-item:hover,
-.dialogs-list__dlg_newest .dlg-item:hover {
+.dialogs-list__dlg:hover {
   background: #1f1f1f;
 }
 
-.dialogs-list__dlg_newest .dlg-item {
-  background-color: #2a292b;
+.dialogs-list__dlg_active {
+  background-color: #1f1f1f;
 }
 
 .dlg-item__meta{

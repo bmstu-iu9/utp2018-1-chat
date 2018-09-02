@@ -29,7 +29,6 @@
   background-color: #17212b;
 }
 
-
 .chat {
   background-color: #0e1621;
 }
@@ -38,18 +37,16 @@
   border-color: #101921;
 }
 
-.dlg-item,
 .dialogs-list__dlg {
   background-color: #17212b;
 }
 
-.dlg-item:hover,
-.dialogs-list__dlg_newest .dlg-item:hover {
+.dialogs-list__dlg:hover {
   background: #202b36;
 }
 
-.dialogs-list__dlg_newest .dlg-item {
-  background-color: #17212b;
+.dialogs-list__dlg_active {
+  background-color: #202b36;
 }
 
 .dlg-item__meta{
