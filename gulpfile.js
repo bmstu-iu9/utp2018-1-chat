@@ -6,7 +6,7 @@ let gulp        = require('gulp'),
 
 requireDir('./lib/gulp/tasks', { recurse: true });
 
-global.isProduction = process.env.NODE_ENV === 'production';
+global.isProduction = false;
 
 gulp.task('dev', gulp.series('clean', 'server', 'watch'));
 gulp.task('build', gulp.series('clean', 'styles', 'scripts', 'images', 'html'));
