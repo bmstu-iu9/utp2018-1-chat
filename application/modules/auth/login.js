@@ -1,12 +1,14 @@
 'use strict'
 
+const source = require('router/source');
+
 const auth = require('auth');
 const session = require('auth/session');
 
 const Database = require('db');
 
 module.exports.signin = async (response, data) => {
-    const login = data['user-in[login]'];
+    const login = data['in-login'];
 
     const db = await Database.get();
 
@@ -21,7 +23,7 @@ module.exports.signin = async (response, data) => {
             }
 
             const postPassData = auth.getHashPassword(
-                data['user-in[password]'],
+                data['in-password'],
                 doc.get('salt')
             );
 
@@ -45,11 +47,7 @@ module.exports.signin = async (response, data) => {
         })
         .then(async (data) => {
             if (!data.flag || !data.json) {
-                response.writeHead(422, {
-                    'Content-Type': 'text/html'
-                });
-
-                response.end('Invalid password');
+                source.sendJSON(JSON.stringify({ status: 'Invalid password' }), response);
                 return;
             }
 
@@ -59,7 +57,7 @@ module.exports.signin = async (response, data) => {
                 'Set-Cookie': `session_token=${data.json.token}; expires=${data.json.expires}; path=/;`
             });
 
-            response.end(`Hello, ${login}!`);
+            response.end(JSON.stringify({ status: `SUCCESS` }));
         })
         .catch(
             // TODO : Error handler

@@ -1,0 +1,104 @@
+::selection {
+  background: #2e70a5;
+}
+::-moz-selection {
+  background: #2e70a5;
+}
+
+.header {
+  background-color: #17212b;
+  border-color: #101921;
+}
+
+.header-menu__logo {
+  color: #fff;
+}
+
+.burger-icon__line {
+  background-color: #fff;
+}
+
+.header-settings__link {
+  color: #fff;
+}
+
+.sidebar,
+.chat__footer,
+.msg-box,
+.msg-box__input {
+  background-color: #17212b;
+}
+
+.chat {
+  background-color: #0e1621;
+}
+
+.sidebar {
+  border-color: #101921;
+}
+
+.dialogs-list__dlg {
+  background-color: #17212b;
+}
+
+.dialogs-list__dlg:hover {
+  background: #202b36;
+}
+
+.dialogs-list__dlg_active {
+  background-color: #202b36;
+}
+
+.dlg-item__meta{
+  color: #778697;
+}
+
+.dlg-item__short-text {
+  color: #718293;
+}
+
+.dlg-item__title {
+  color: #f5f5f5;
+}
+
+.dlg-item__label {
+  background-color: #58a0d9;
+  color: #17212b;
+}
+
+.sidebar-search__input {
+  background-color: #242f3d;
+  color: #fff;
+  border-color: none;
+}
+
+.dialog__meta span {
+  background-color: #1d2c3a;
+}
+
+.dialog__msg_incoming {
+  background-color: #182533;
+  color: #f5f5f5;
+}
+
+.dialog__msg_sent {
+  background-color: #2b5278;
+  color: #f5f5f5;
+}
+
+.dialog__msg-meta {
+  color: #778697;
+}
+
+.msg-box__input {
+  color: #fff;
+}
+
+.modal {
+  background-color: rgba(14, 22, 33, 0.4);
+}
+
+.modal-content {
+  background-color: #101921;
+  border-color: #0e1621;
+}

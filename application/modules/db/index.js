@@ -69,21 +69,37 @@ const createCollections = async (db) => {
         name: 'dialogs',
         schema: dialogSchema,
         statics: {
-            async addDialog(kind, date) {
+            async addDialog(id, kind, title, description, avatar, members, date) {
                 return this.upsert({
-                    id: generator.genDialogID(),
+                    id,
                     kind,
+                    title,
+                    description,
+                    avatar,
+                    members,
                     date
                 });
+            },
+
+            async getDialogs() {
+                return this.find()
+                    .exec()
+                    .then(dialogs => {
+                        return dialogs;
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
             },
 
             async addMember(id, login) {
                 this.findOne(id)
                     .exec()
-                    .then(dlg => {
+                    .then(async (dlg) => {
                         let members = dlg.get('members');
                         members.push(login);
                         dlg.set('members', members);
+                        await dlg.save();
                     })
                     .catch(error => {
                         console.log(error);
@@ -93,8 +109,9 @@ const createCollections = async (db) => {
             async deleteMember(id, login) {
                 this.findOne(id)
                     .exec()
-                    .then(dlg => {
+                    .then(async (dlg) => {
                         dlg.set('members', dlg.get('members').unset(login));
+                        await dlg.save();
                     })
                     .catch(error => {
                         return error;
@@ -104,7 +121,7 @@ const createCollections = async (db) => {
             async addMsg(dlgID, msgData) {
                 return this.findOne(dlgID)
                     .exec()
-                    .then(dlg => {
+                    .then(async (dlg) => {
                         if (!dlg) {
                             return status.NON_EXISTENT_OBJ;
                         } else {
@@ -114,11 +131,13 @@ const createCollections = async (db) => {
                                 id: generator.genMsgID(dlgID),
                                 kind: msgData['kind'],
                                 text: msgData['text'],
+                                author: msgData['author'],
                                 options: msgData['options']
                             };
 
                             messages.push(msg);
                             dlg.set('messages', messages);
+                            await dlg.save();
 
                             return status.SUCCESS;
                         }

@@ -6,6 +6,8 @@ const qs = require('querystring');
 const Database = require('db');
 const status = require('db/status');
 
+const generator = require('utils/generator');
+
 const receiver = async (methods, request, response) => {
     console.log(methods);
 
@@ -15,12 +17,12 @@ const receiver = async (methods, request, response) => {
             source.send404(response);
         }
 
-        let dlg = await getDialog(methods[1]);
-
-        if (dlg) {
-            source.sendJSON(dlg, response);
+        if (methods[1] === '*') {
+            const db = await Database.get();
+            source.sendJSON(await db.dialogs.getDialogs(), response);
+        } else {
+            source.sendJSON(await getDialog(methods[1]), response);
         }
-
     } else if (request.method === 'POST') {
         let data = '';
         request.on('data', (chunk) => {
@@ -32,18 +34,19 @@ const receiver = async (methods, request, response) => {
 
             const db = await Database.get();
 
+            const id = generator.genDialogID();
+
             const newDialog = await db.dialogs.addDialog(
+                id,
                 data.kind,
+                data.title,
+                data.description,
+                data.avatar,
+                data.members.split(' '),
                 new Date().toUTCString()
             );
 
-            if (newDialog) {
-                source.sendJSON(JSON.stringify({ status: 0 }), response);
-            } else {
-                source.sendJSON(JSON.stringify({ status: 1 }), response);
-            }
-
-            await db.destroy();
+            source.sendJSON(JSON.stringify(newDialog), response);
         });
 
     } else if (request.method === 'PUT') {

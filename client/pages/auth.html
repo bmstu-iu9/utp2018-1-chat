@@ -2,128 +2,139 @@
 <html lang="ru">
 
 <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-    <meta http-equiv="Content-language" content="ru"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-language" content="ru"/>
 
-    <title>Gist` — Онлайн-чат</title>
-    <meta name="description" content="Учебный проект МГТУ им. Баумана ИУ9 первого курса 2018 г. — онлайн-чат на Node.js">
+  <title>Gist` — Онлайн-чат</title>
+  <meta name="description" content="Учебный проект МГТУ им. Баумана ИУ9 первого курса 2018 г. — онлайн-чат на Node.js">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="theme-color" content="#db1623">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 
-    <link rel="image_src" href="" /> <!-- TODO -->
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
 
-    <link rel="stylesheet" href="../css/auth.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+  <link rel="manifest" href="img/favicon/site.webmanifest">
+  <link rel="mask-icon" href="img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+
+  <link rel="image_src" href="" /> <!-- TODO -->
+
+  <link rel="stylesheet" href="css/auth.min.css">
+
+  <script src="js/auth.min.js"></script>
 </head>
 
 <body>
-    <div class="video">
-        <video class="bg-video" autoplay loop muted playsinline>
-            <source src="../media/bg.mp4" type="video/mp4">
-        </video>
+  <div class="root">
+    <div class="bg-video">
+      <video class="video__source" autoplay loop muted playsinline>
+        <source src="media/bg.mp4" type="video/mp4">
+      </video>
     </div>
 
     <div class="content">
-        <div class="flip-container" ontouchstart="">
-            <div class="flipper" id="auth-flip">
-                <div class="auth auth-signin front">
-                    <span class="logo">
-                        Gist<span>`</span>
-                    </span>
-
-                    <form action="/api/user/signin" id="signin-form" method="post">
-                        <span class="input input_transparent">
-                            <input class="input-field input-field_transparent"
-                                type="text"
-                                name="user-in[login]"
-                                minlength=4
-                                maxlength=24
-                                required />
-                            <label class="input-label input-label_transparent">
-                                <span class="input-label-content input-label-content_transparent">Логин</span>
-                            </label>
-                        </span>
-
-                        <span class="input input_transparent">
-                            <input class="input-field input-field_transparent"
-                                type="password"
-                                name="user-in[password]"
-                                minlength=4
-                                maxlength=30
-                                required />
-                            <label class="input-label input-label_transparent">
-                                <span class="input-label-content input-label-content_transparent">Пароль</span>
-                            </label>
-                        </span>
-
-                        <span class="input input_transparent">
-                            <a class="button button-accent button-big" href="#" onclick="auth(event);" id="sign-in">Войти</a>
-                        </span>
-
-                        <span class="input input_transparent">
-                            <a class="button button-accent button-big button-solid" href="#" onclick="flip();">Регистрация</a>
-                        </span>
-                        <button type="submit" style="display: none;" id="signin-submit"></button>
-                    </form>
-                </div>
-
-                <div class="auth auth-up back">
-                    <span class="logo">
-                        Gist<span>`</span>
-                    </span>
-
-                    <form action="/api/user/signup" id="signup-form" method="post">
-                        <span class="input input_transparent">
-                            <input class="input-field input-field_transparent"
-                                type="text"
-                                name="user-up[login]"
-                                minlength=4
-                                maxlength=24
-                                required />
-                            <label class="input-label input-label_transparent">
-                                <span class="input-label-content input-label-content_transparent">Логин</span>
-                            </label>
-                        </span>
-
-                        <span class="input input_transparent">
-                            <input class="input-field input-field_transparent"
-                                type="password"
-                                name="user-up[password]"
-                                minlength=4
-                                maxlength=30
-                                required />
-                            <label class="input-label input-label_transparent">
-                                <span class="input-label-content input-label-content_transparent">Пароль</span>
-                            </label>
-                        </span>
-
-                        <span class="input input_transparent">
-                            <input class="input-field input-field_transparent"
-                                type="password"
-                                name="user-up[confirm]"
-                                minlength=4
-                                maxlength=30
-                                required />
-                            <label class="input-label input-label_transparent">
-                                <span class="input-label-content input-label-content_transparent">Подтверждение пороля</span>
-                            </label>
-                        </span>
-
-                        <span class="input input_transparent">
-                            <a class="button button-accent button-big" href="#" onclick="auth(event);" id="sign-up">Зарегистрироваться</a>
-                        </span>
-
-                        <span class="input input_transparent">
-                            <a class="button button-accent button-big button-solid" href="#" onclick="flip();">Уже есть аккаут?</a>
-                        </span>
-                        <button type="submit" style="display: none;" id="signup-submit"></button>
-                    </form>
-                </div>
+      <div class="flip">
+        <div class="flip__content">
+          <div class="flip__content_front auth auth_signin">
+            <div class="auth__logo">
+              <img src="img/logo/logo-full-right.png" class="logo">
             </div>
-        </div>
-    </div>
 
-    <script src="../js/scripts.min.js"></script>
+            <form class="auth__signin-form">
+              <span class="input input_transparent">
+                <input class="input-field input-field_transparent"
+                  type="text"
+                  id="in-login"
+                  minlength=4
+                  maxlength=15
+                  required />
+                <label class="input-label input-label_transparent">
+                  <span class="input-label-content input-label-content_transparent">Логин</span>
+                </label>
+              </span>
+
+              <span class="input input_transparent">
+                <input class="input-field input-field_transparent"
+                  type="password"
+                  id="in-password"
+                  minlength=4
+                  maxlength=30
+                  required />
+                <label class="input-label input-label_transparent">
+                  <span class="input-label-content input-label-content_transparent">Пароль</span>
+                </label>
+              </span>
+
+              <span class="input input_transparent">
+                <a class="button button-accent button-big" href="#" id="sign-in">Войти</a>
+              </span>
+
+              <span class="input input_transparent">
+                <a class="button button-accent button-big button-solid" href="#" onclick="flip();">Регистрация</a>
+              </span>
+              <button type="submit" style="display: none;" id="signin-submit"></button>
+            </form>
+          </div>
+
+          <div class="flip__content_back auth auth_signup">
+            <div class="auth__logo">
+              <img src="img/logo/logo-full-right.png" class="logo">
+            </div>
+
+            <form class="auth__signup-form">
+              <span class="input input_transparent">
+                <input class="input-field input-field_transparent"
+                  type="text"
+                  id="up-login"
+                  minlength=4
+                  maxlength=15
+                  required />
+                <label class="input-label input-label_transparent">
+                  <span class="input-label-content input-label-content_transparent">Логин</span>
+                </label>
+              </span>
+
+              <span class="input input_transparent">
+                <input class="input-field input-field_transparent"
+                  type="password"
+                  id="up-password"
+                  minlength=4
+                  maxlength=30
+                  required />
+                <label class="input-label input-label_transparent">
+                  <span class="input-label-content input-label-content_transparent">Пароль</span>
+                </label>
+              </span>
+
+              <span class="input input_transparent">
+                <input class="input-field input-field_transparent"
+                  type="password"
+                  id="up-confirm"
+                  minlength=4
+                  maxlength=30
+                  required />
+                <label class="input-label input-label_transparent">
+                  <span class="input-label-content input-label-content_transparent">Подтверждение пороля</span>
+                </label>
+              </span>
+
+              <span class="input input_transparent">
+                <a class="button button-accent button-big" href="#" id="sign-up">Зарегистрироваться</a>
+              </span>
+
+              <span class="input input_transparent">
+                <a class="button button-accent button-big button-solid" href="#" onclick="flip();">Уже есть аккаунт</a>
+              </span>
+              <button type="submit" style="display: none;" id="signup-submit"></button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
+
 </html>

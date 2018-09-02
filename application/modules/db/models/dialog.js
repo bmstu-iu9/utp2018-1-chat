@@ -10,16 +10,20 @@ const dialogSchema = {
             primary: true
         },
         kind: {
-            type: 'string'
+            type: 'string',
+            default: 'personal'
         },
         title: {
-            type: 'string'
+            type: 'string',
+            default: 'New dialog'
         },
         description: {
-            type: 'string'
+            type: 'string',
+            default: ''
         },
         avatar: {
-            type: 'string'
+            type: 'string',
+            default: 'default.jpg'
         },
         date: {
             type: 'string'
@@ -44,6 +48,9 @@ const dialogSchema = {
                     kind: {
                         type: 'string'
                     },
+                    author: {
+                        type: 'string'
+                    },
                     text: {
                         type: 'string'
                     },
@@ -59,11 +66,12 @@ const dialogSchema = {
             default: []
         },
         pinned: {
-            type: 'number'
+            type: 'number',
+            default: -1
         }
 
     },
-    required: ['id', 'kind', 'date']
+    required: ['id', 'kind', 'title', 'description', 'avatar', 'members',  'date']
 };
 
 module.exports = dialogSchema;

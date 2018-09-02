@@ -4,20 +4,26 @@
   display: grid;
   grid-template: 70px 1fr / 1fr;
 
-  border-right: 1px solid #c5cfd9;
-  background: #f3f6f9;
+  border-right: 1px solid #e8e8e8;
+  background: #fff;
+  position: relative;
 }
 
 .sidebar-search {
   display: grid;
   align-items: center;
 
-  padding: 0 25px;
+  padding: 0 16px;
+}
+
+.sidebar__btn {
+  position: absolute;
+  bottom: 45px;
+  left: 30px;
 }
 
 .dialogs-list {
   height: calc(100vh - 115px);
-  padding: 0 25px;
   overflow-y: scroll;
 }
 
@@ -27,7 +33,6 @@
 
 .dialogs-list__dlg {
   list-style: none;
-  margin: 25px 0;
 }
 
 .dialogs-list__dlg:first-child {
@@ -38,17 +43,18 @@
 .dialogs-list__dlg {
   display: block;
   height: 75px;
-  border-radius: 10px;
-  background: #fff;
 }
 
-.dialogs-list__dlg:hover {
-  background: #f1f1f1;
+.dialogs-list__dlg_active {
+  background-color: #f1f1f1;
+}
+
+.dlg-item:hover {
   cursor: pointer;
 }
 
 .dialogs-list__dlg_newest {
-  box-shadow: 0 8px 24px rgba(197, 207, 217, 0.8);
+  // box-shadow: 0 8px 24px rgba(197, 207, 217, 0.8);
 }
 
 .dlg-item {
@@ -64,7 +70,7 @@
   text-align: right;
   font-size: 0.65rem;
   font-weight: 600;
-  color: #c1ccd8;
+  color: #9b9b9b;
 }
 
 div .dlg-item__photo {
@@ -90,13 +96,13 @@ div .dlg-item__photo {
 .dlg-item__title {
   font-size: 0.9rem;
   font-weight: bold;
-  color: #000;
+  color: #222;
 }
 
 .dlg-item__short-text {
   font-size: .8rem;
   font-weight: 600;
-  color: #c1ccd8;
+  color: #a1a1a1;
 }
 
 .dlg-item__label {

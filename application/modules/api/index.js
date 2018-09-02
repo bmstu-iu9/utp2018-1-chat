@@ -19,8 +19,8 @@ const handler = (methods, request, response) => {
             require('api/dialog').receiver(methods, request, response);
             break;
 
-        case 'chart':
-            // require('api/chart').receiver(methods, request, response);
+        case 'session':
+            require('api/session').receiver(methods, request, response);
             break;
 
         default:
