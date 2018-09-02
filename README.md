@@ -2,7 +2,8 @@
    <a href="https://github.com/webpack/webpack">
       <img width="400" src="https://image.ibb.co/nfm5vK/logo_full_black_blue.jpg" alt="Gist">
    </a>
-
+   <br>
+   <br>
    <p>
       Клиент-серверное приложение «Онлайн-чат», реализованное в рамках учебной практики, студентами первого курса кафедры ИУ9 МГТУ им. Баумана.
    </p>
