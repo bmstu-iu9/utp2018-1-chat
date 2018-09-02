@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-  <meta http-equiv="Content-language" content="ru"/>
+  <meta http-equiv="Content-language" content="ru" />
 
   <title>Gist` — Онлайн-чат</title>
   <meta name="description" content="Учебный проект МГТУ им. Баумана ИУ9 первого курса 2018 г. — онлайн-чат на Node.js">
@@ -31,23 +31,17 @@
   <div class="root">
     <div class="header">
       <div class="header-menu">
-        <div class="header-menu__toggle">
-          <div class="burger-icon">
-            <span class="burger-icon__line"></span>
-            <span class="burger-icon__line"></span>
-            <span class="burger-icon__line"></span>
-          </div>
-        </div>
-
         <div class="header-menu__logo">
-          <span>Gist`</span>
+          <img src="img/logo/logo-full-black-blue.jpg" alt="">
         </div>
+      </div>
+
+      <div class="header-settings">
+        <a class="header-settings__link"><i class="fas fa-cog"></i></a>
       </div>
     </div>
 
     <div class="content">
-      <button id="dlg-conv-open" type="button" name="button">Создать диалог</button>
-
       <div class="sidebar">
         <div class="sidebar-search">
           <input type="search" class="sidebar-search__input" placeholder="Поиск">
@@ -56,26 +50,30 @@
         <ul class="dialogs-list">
 
         </ul>
+
+        <span class="sidebar__btn">
+          <a class="button button-accent button-big button-circle" id="dlg-conv-open"><i class="fas fa-plus"></i></a>
+        </span>
       </div>
 
       <div class="chat">
-        <ul class="chat-list">
-
-        </ul>
+        <ul class="chat-list"></ul>
 
         <div class="chat__footer">
           <div class="msg-box">
-            <input type="text" class="msg-box__input"
-              placeholder="Введите сообщение...">
+            <input type="text" class="msg-box__input" 
+                   placeholder="Введите сообщение...">
           </div>
 
+
           <div class="btn-box">
-            <a href="#" class="btn-box__icon">
-              <img src="img/icons/attachment.png" alt="Добавить вложение">
+            <a href="#" class="btn-box__icon" onclick="func()">
+              <i class="far fa-smile"></i>
             </a>
+            <input type="file" id="dialog_window" name="photo" multiple accept="image/*, image/jpeg">
 
             <a href="#" class="btn-box__icon">
-              <img src="img/icons/voice.png" alt="Запись голосового сообщения">
+              <i class="fas fa-plus"></i>
             </a>
           </div>
         </div>
@@ -85,7 +83,7 @@
 
       </div>
 
-      <div id="dlg-conv-modal" class="modal">
+      <div id="dlg-conv-modal" class="modal modal_conv">
         <div class="modal-content">
           <span class="input input_primary">
             <input class="input-field input-field_primary"
@@ -131,6 +129,20 @@
         </div>
       </div>
 
+      <div id="settings-modal" class="modal modal_set">
+        <div class="modal-content">
+          <span class="settings__label">
+            Тема оформления:
+          </span>
+
+          <div class="setm-themes">
+            <a class="button button-solid" id="dlg-conv-btn-create" onclick="changeStyle('light');">Светлая</a>
+            <a class="button button-solid" id="dlg-conv-btn-create">Цветная</a>
+            <a class="button button-solid" id="dlg-conv-btn-create" onclick="changeStyle('dark');">Темная</a>
+            <a class="button button-solid" id="dlg-conv-btn-create" onclick="changeStyle('dark-blue');">Темно-синяя</a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </body>

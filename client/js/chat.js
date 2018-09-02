@@ -10,6 +10,8 @@ let Chat = (function () {
     let _dialogs = [];
     let _activeDialogID = '';
 
+    let _dialogsInputs = [];
+
     const _getDialogs = function () {
         return fetch(`/api/dialog/*`, {
             method: 'GET'
@@ -36,7 +38,7 @@ let Chat = (function () {
         dlgItemDOM.innerHTML = `\
             <a class="dlg-item"> \
                 <div class="dlg-item__meta"> \
-                    21:50 \
+                    ${dlg.get('messages')[dlg.get('messages').length - 1].options.split(' ')[4].slice(0, -3)} \
                 </div> \
                 \
                 <div class="dlg-item__photo"> \
@@ -54,17 +56,13 @@ let Chat = (function () {
                       <span class="dlg-item__short-text"> \
                         ${
                             (dlg.get('messages')[dlg.get('messages').length - 1]) ? (
-                                dlg.get('messages')[dlg.get('messages').length - 1]
+                                dlg.get('messages')[dlg.get('messages').length - 1]['text']
                             ) : (
                                 ''
                             )
                         } \
                       </span> \
                     </div> \
-                </div> \
-                \
-                <div class="dlg-item__label"> \
-                    5 \
                 </div> \
             </a>`;
 
@@ -83,6 +81,49 @@ let Chat = (function () {
             .getElementsByClassName('chat-list')
             .item(0)
             .appendChild(dlgChatDOM);
+
+        Chat.getThisUserByToken().then(author => {
+
+            dlg.get('messages').forEach(msg => {
+                let isSent;
+                if (msg['author'] !== author['login']) {
+                    isSent = false;
+                } else {
+                    isSent = true;
+                }
+
+                const msgChatDOM = document.createElement('li');
+                msgChatDOM.className = isSent ? (
+                    'dialog__wrap-msg dialog__wrap-msg_sent'
+                ) : (
+                    'dialog__wrap-msg dialog__wrap-msg_incoming'
+                );
+
+                msgChatDOM.id = msg['id'];
+
+                msgChatDOM.innerHTML = `\
+                    ${isSent ? (
+                        '<div class="dialog__msg dialog__msg_sent">'
+                    ) : (
+                        '<div class="dialog__msg dialog__msg_incoming">'
+                    )} \
+                        <span class="dialog__msg-text"> \
+                            ${msg['text']} \
+                        </span> \
+                    </div> \
+                    \
+                    <div class="dialog__msg-meta"> \
+                      <span>${msg.options.split(' ')[4].slice(0, -3)}</span> \
+                    </div>`;
+
+                let el = document
+                    .getElementById(`${dlg.get('id')}`)
+                    .getElementsByClassName('chat__dialogs-list')
+                    .item(0)
+                    .appendChild(msgChatDOM);
+
+            });
+        });
     }
 
     const _renderDialogs = function () {
@@ -112,6 +153,11 @@ let Chat = (function () {
         newDialog.then(data => {
             const nDlg = new Dialog(data);
             _dialogs.push(nDlg);
+            _dialogsInputs.push({
+                id: data['id'],
+                text: ''
+            });
+
             _renderDialog(nDlg);
         });
     };
@@ -136,111 +182,118 @@ let Chat = (function () {
         dialog.send();
     }
 
+    chat.getCookie = function (name) {
+        let matches = document.cookie.match(new RegExp(
+            "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+        ));
+
+        return matches ? decodeURIComponent(matches[1]) : undefined;
+    }
+
+    chat.getThisUserByToken = async function () {
+        const token = chat.getCookie('session_token');
+
+        if (!token) {
+            throw Error('Отсутствует токен сессии.');
+        }
+
+        return await fetch(`/api/session/${token}`, {
+            method: 'GET',
+        })
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {
+            return data;
+        })
+        .catch(error => {
+            console.log('Request failed', error);
+        });
+    };
+
+    chat.getDialogsInput = function (id) {
+        let res;
+        _dialogsInputs.forEach(input => {
+            if (input['id'] === id) {
+                console.log(input['id'], input['text']);
+                res = input['text'];
+            }
+        });
+
+        return res;
+    };
+
+    chat.getDialogsI = function () {
+
+        return _dialogsInputs;
+    };
+
+    chat.updateDialogsInputs = function (id, value) {
+        console.log(id, value);
+        _dialogsInputs.forEach(input => {
+            if (input['id'] === id) {
+                input.text = value;
+            }
+        });
+    };
+
     chat.start = async function () {
         await _getDialogs().then(dialogs => {
             dialogs.forEach(data => {
                 _dialogs.push(new Dialog(JSON.stringify(data)));
+                _dialogsInputs.push({
+                    id: data['id'],
+                    text: ''
+                });
             });
         });
 
         _renderDialogs();
         _activeDialogID = _dialogs[0];
 
+        cssClasses.add(document.querySelector('.dialogs-list__dlg'), 'dialogs-list__dlg_active');
+
+        let updateDialogs = setInterval(() => {
+            _dialogs.forEach(dlg => {
+                dlg.update();
+            });
+        }, 2500);
     };
 
     return chat;
 })();
 
 function switchDialog(evt, dlg) {
+    Chat.updateDialogsInputs(
+        Chat.getActiveDialogID(),
+        document.querySelector('.msg-box .msg-box__input').value
+    );
+
+    Chat.setActiveDialogID(dlg);
+
+    console.log(Chat.getDialogsI());
     let tabContent = document.getElementsByClassName('chat-list__item');
     for (let i = 0; i < tabContent.length; i++)
         tabContent[i].style.display = 'none';
 
     let tabLinks = document.getElementsByClassName('dialogs-list__dlg');
     for (let i = 0; i < tabLinks.length; i++)
-        tabLinks[i].className = tabLinks[i].className.replace(' focus', '');
+        tabLinks[i].className = tabLinks[i].className.replace(' dialogs-list__dlg_active', '');
 
     document.getElementById(dlg).style.display = 'block';
-    evt.currentTarget.className += ' focus';
+    evt.currentTarget.className += ' dialogs-list__dlg_active';
 
-    Chat.setActiveDialogID(dlg);
-
-    // document.forms['messageField'].elements['message'].value = '';
-}
-
-function json(response) {
-    return response.json()
-}
-
-function sendMessage() {
-    const msg = document.querySelector(".msg-box .msg-box__input").value;
-
-    if (msg == '') {
-        alert('Нельзя отправить пустое сообщение');
-        return;
-    }
-
-    let kind = 'txt';
-    let dlgID = '543142';
-
-    fetch(`/api/msg/${dlgID}`, {
-        method: 'POST',
-        headers: {
-            "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
-        },
-        body: `text=${msg}&kind=${kind}&date=${new Date().toUTCString()}`
-    })
-    .then(json)
-    .then(data => {
-        console.log('Request succeeded', data);
-    })
-    .catch(error => {
-        console.log('Request failed', error);
-    });
-
-    // renderMessage(msg, kind);
-}
-
-function renderMessage(text, kind, status) {
-    // Поиск выбранного диалога
-    let tabContent = document.getElementsByClassName('tab-content');
-    let num = 0;
-    for (let i = 0; i < tabContent.length; i++) {
-        if (tabContent[i].style.display === 'block') {
-            num = i + 1;
-            break;
-        }
-    }
-
-    // Если пользователь не переключал диалоги, то нужно выбрать тот,
-    // который загружается по умолчанию
-    if (num === 0)
-        num = 1;
-
-    // Составление HTML кода для вставки
-    const newLi = document.createElement('li');
-    newLi.className = 'sent';
-    newLi.innerHTML = '<div class="msg"><div class="msg-header">'
-        + new Date()
-        + '</div><div class="msg-content text">'
-        + text
-        + '</div></div><div class="profile"><img src="img/user6.jpg"></div>';
-
-    // Вставка HTML кода
-    let test = document
-        .getElementById(num.toString())
-        .getElementsByClassName('chat-messages')
-        .item(0)
-        .appendChild(newLi);
-
-    // Опускаем scrollbar вниз
-    let chatScroll = document.getElementById(num.toString())
-                            .querySelector('.chat-messages');
-
-    chatScroll.scrollTop = chatScroll.scrollHeight - chatScroll.clientHeight;
+    const inputText = Chat.getDialogsInput(Chat.getActiveDialogID());
+    document.querySelector('.msg-box .msg-box__input').value = !inputText ? (
+        ''
+    ) : (
+        inputText
+    );
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+    Chat.start();
+
     document.onkeyup = function(event) {
         if (document.querySelector('.msg-box .msg-box__input') === document.activeElement) {
             if (event.keyCode == 13) {
@@ -249,3 +302,48 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 });
+
+function goSearch() {
+    const req = document.getElementById('myDiv').value.toLowerCase();
+
+    if (req === '') {
+        alert("пустой поисковый запрос");
+    } else {
+        const in_msgs = document.getElementsByClassName("dialog__wrap-msg dialog__wrap-msg_incoming");
+        const sent_msgs = document.getElementsByClassName("dialog__wrap-msg dialog__wrap-msg_sent");
+
+        let counter = 0;
+
+        Array.from(in_msgs).forEach(function(e) {
+            const text = e.children[0].children[0].textContent.toLowerCase();
+            if (text.indexOf(req) == -1) {
+                e.style.display = 'none';
+            } else {
+                counter++;
+            }
+        });
+
+        Array.from(sent_msgs).forEach(function(e) {
+            const text = e.children[0].children[0].textContent.toLowerCase();
+            if (text.indexOf(req) == -1) {
+                e.style.display = 'none';
+            } else {
+                counter++;
+            }
+        });
+
+    }
+}
+
+function endSearch() {
+    const in_msgs = document.getElementsByClassName("dialog__wrap-msg dialog__wrap-msg_incoming");
+    const sent_msgs = document.getElementsByClassName("dialog__wrap-msg dialog__wrap-msg_sent");
+
+    Array.from(in_msgs).forEach(e => e.style.display = '');
+
+    Array.from(sent_msgs).forEach(e => e.style.display = '');
+}
+
+function func() {
+    document.querySelector('#dialog_window').click();
+}

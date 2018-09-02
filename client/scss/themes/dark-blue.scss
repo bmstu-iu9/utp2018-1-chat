@@ -18,9 +18,14 @@
   background-color: #fff;
 }
 
+.header-settings__link {
+  color: #fff;
+}
+
 .sidebar,
 .chat__footer,
-.msg-box {
+.msg-box,
+.msg-box__input {
   background-color: #17212b;
 }
 
@@ -32,18 +37,16 @@
   border-color: #101921;
 }
 
-.dlg-item,
 .dialogs-list__dlg {
   background-color: #17212b;
 }
 
-.dlg-item:hover,
-.dialogs-list__dlg_newest .dlg-item:hover {
+.dialogs-list__dlg:hover {
   background: #202b36;
 }
 
-.dialogs-list__dlg_newest .dlg-item {
-  background-color: #17212b;
+.dialogs-list__dlg_active {
+  background-color: #202b36;
 }
 
 .dlg-item__meta{
@@ -89,4 +92,13 @@
 
 .msg-box__input {
   color: #fff;
+}
+
+.modal {
+  background-color: rgba(14, 22, 33, 0.4);
+}
+
+.modal-content {
+  background-color: #101921;
+  border-color: #0e1621;
 }

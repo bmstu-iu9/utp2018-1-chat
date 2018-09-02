@@ -60,7 +60,7 @@ class Source {
         stream.pipe(response);
 
         stream.on('error', (error) => {
-            sendError(error, response);
+            this.sendError(error, response);
         });
     }
 

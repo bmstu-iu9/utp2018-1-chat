@@ -1,7 +1,7 @@
 .chat {
   grid-column: 4 / -1;
   display: grid;
-  grid-template: calc(100vh - 140px) 75px/1fr;
+  grid-template: 6vh calc(94vh - 140px) 75px/1fr;
   background: #f3f6f9;
 }
 
@@ -12,9 +12,22 @@
   list-style: none;
 }
 
+.chat__dialogs-list {
+  position: relative;
+}
+
+.chat__dialogs-list:empty:after {
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  content: 'Нет сообщений';
+  margin-top: 150px;
+}
+
 .chat-list__item {
   display: none;
   animation: fadeEffect 1.5s;
+  padding: 0 30px;
 }
 
 .chat-list__item:first-child {
@@ -61,6 +74,7 @@
 
   width: 100%;
   height: auto;
+  margin: 10px 0;
 }
 
 .dialog__wrap-msg_incoming {
@@ -111,6 +125,7 @@
 
 .dialog__wrap-msg_sent .dialog__msg-meta {
   grid-column: 1;
+  justify-content: end;
 }
 
 .dialog__msg-meta_sent {
@@ -125,6 +140,68 @@
 .dialog__msg_sent {
   background: main-colors('accent');
   color: #fff;
+}
+
+.chat .chat__header {
+  display: inline-grid;
+  grid-template-columns: repeat(12, 1fr);
+  height: calc(6vh);
+  position: relative;
+  background: #fff;
+  border-top: 1px solid #c5cfd9;
+  border-right: 1px solid #c5cfd9;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.15);
+  z-index: 3;
+} 
+
+.chat .chat__header .message-search{
+  grid-column-start: 6;  
+  grid-column-end: 13;
+
+  display: inline-grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.chat-search__input{
+  display: block;
+  height: calc(4vh);
+  margin-top: calc(1vh); 
+  grid-column-start: 1;
+  grid-column-end: 4;
+  border-radius: 15px;
+  float: right;
+}
+
+.chat-seach__run{
+  position: relative;
+  padding: 24px;
+  margin-top: 2px;
+  margin-left: 24px;
+  background:url(../img/search3.png) no-repeat;
+  border: none;
+
+  cursor: pointer; 
+}
+
+.chat-seach__end{
+  position: relative;
+  padding: 18px;
+  margin-top: 8px;
+
+  background:url(../img/button1.png) no-repeat;
+  border: none;
+
+  cursor: pointer; 
+}
+
+.chat-seach__run:hover{
+  box-shadow: 0 0 5px 0px rgba(0, 0, 0, 1);
+  border-radius: 12px;
+}
+
+.chat-seach__end:hover{
+  box-shadow: 0 0 5px 0px rgba(0, 0, 0, 1);
+  border-radius: 8px;
 }
 
 .chat__footer {
@@ -156,9 +233,12 @@
   display: grid;
   align-items: center;
   justify-content: center;
+
+  font-size: 24px;
+  text-decoration: none;
+  color: #9b9b9b;
 }
 
-.btn-box__icon img {
-  height: 23px;
-  object-fit: cover;
+#dialog_window{
+    display: none;
 }
