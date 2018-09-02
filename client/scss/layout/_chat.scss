@@ -12,6 +12,28 @@
   list-style: none;
 }
 
+.chat__dialogs-list {
+  position: relative;
+}
+
+.chat__dialogs-list:empty:after {
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  content: 'Нет сообщений';
+  margin-top: 150px;
+}
+
+.chat-list__item {
+  display: none;
+  animation: fadeEffect 1.5s;
+  padding: 0 30px;
+}
+
+.chat-list__item:first-child {
+  display: block;
+}
+
 .chat__dialog {
   display: none;
 }
@@ -52,6 +74,7 @@
 
   width: 100%;
   height: auto;
+  margin: 10px 0;
 }
 
 .dialog__wrap-msg_incoming {
@@ -102,6 +125,7 @@
 
 .dialog__wrap-msg_sent .dialog__msg-meta {
   grid-column: 1;
+  justify-content: end;
 }
 
 .dialog__msg-meta_sent {
@@ -209,9 +233,8 @@
   display: grid;
   align-items: center;
   justify-content: center;
-}
 
-.btn-box__icon img {
-  height: 23px;
-  object-fit: cover;
+  font-size: 24px;
+  text-decoration: none;
+  color: #9b9b9b;
 }

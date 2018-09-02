@@ -1,10 +1,12 @@
 @import
   'abstracts/vars',
   'abstracts/mixins',
-  'abstracts/functions';
+  'abstracts/functions',
+  'abstracts/keyframes';
 
 @import
-  'vendors/normalize';
+  'vendors/normalize',
+  'vendors/fontawesome';
 
 @import
   'base/base',
@@ -20,7 +22,8 @@
 
 @import
   'components/buttons',
-  'components/inputs';
+  'components/inputs',
+  'components/modals';
 
 // @import
 //   'themes/colorful',

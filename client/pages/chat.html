@@ -32,17 +32,13 @@
   <div class="root">
     <div class="header">
       <div class="header-menu">
-        <div class="header-menu__toggle">
-          <div class="burger-icon">
-            <span class="burger-icon__line"></span>
-            <span class="burger-icon__line"></span>
-            <span class="burger-icon__line"></span>
-          </div>
-        </div>
-
         <div class="header-menu__logo">
-          <span>Gist`</span>
+          <img src="img/logo/logo-full-black-blue.jpg" alt="">
         </div>
+      </div>
+
+      <div class="header-settings">
+        <a class="header-settings__link"><i class="fas fa-cog"></i></a>
       </div>
     </div>
 
@@ -53,162 +49,16 @@
         </div>
 
         <ul class="dialogs-list">
-          <li class="dialogs-list__dlg dialogs-list__dlg_newest">
-            <a class="dlg-item">
-              <div class="dlg-item__meta">
-                21:50
-              </div>
 
-              <div class="dlg-item__photo">
-                <img src="img/user.jpg" alt="" class="dlg-item__photo-img">
-              </div>
-
-              <div class="dlg-item__msg-wrap">
-                <div class="dlg-item__peer">
-                  <span class="dlg-item__title">
-                    Брендан Эйх
-                  </span>
-                </div>
-
-                <div class="dlg-item__msg">
-                  <span class="dlg-item__short-text">
-                    Привет! Как дела?
-                  </span>
-                </div>
-              </div>
-
-              <div class="dlg-item__label">
-                5
-              </div>
-            </a>
-          </li>
-
-          <li class="dialogs-list__dlg dialogs-list__dlg_newest">
-            <a class="dlg-item">
-              <div class="dlg-item__meta">
-                21:50
-              </div>
-
-              <div class="dlg-item__photo">
-                <img src="img/user.jpg" alt="" class="dlg-item__photo-img">
-              </div>
-
-              <div class="dlg-item__msg-wrap">
-                <div class="dlg-item__peer">
-                  <span class="dlg-item__title">
-                    Брендан Эйх
-                  </span>
-                </div>
-
-                <div class="dlg-item__msg">
-                  <span class="dlg-item__short-text">
-                    Привет! Как дела?
-                  </span>
-                </div>
-              </div>
-            </a>
-          </li>
-
-          <li class="dialogs-list__dlg">
-            <a class="dlg-item">
-              <div class="dlg-item__meta">
-                21:50
-              </div>
-
-              <div class="dlg-item__photo">
-                <img src="img/user.jpg" alt="" class="dlg-item__photo-img">
-              </div>
-
-              <div class="dlg-item__msg-wrap">
-                <div class="dlg-item__peer">
-                  <span class="dlg-item__title">
-                    Брендан Эйх
-                  </span>
-                </div>
-
-                <div class="dlg-item__msg">
-                  <span class="dlg-item__short-text">
-                    Привет! Как дела?
-                  </span>
-                </div>
-              </div>
-            </a>
-          </li>
-
-          <li class="dialogs-list__dlg">
-            <a class="dlg-item">
-              <div class="dlg-item__meta">
-                21:50
-              </div>
-
-              <div class="dlg-item__photo">
-                <img src="img/user.jpg" alt="" class="dlg-item__photo-img">
-              </div>
-
-              <div class="dlg-item__msg-wrap">
-                <div class="dlg-item__peer">
-                  <span class="dlg-item__title">
-                    Брендан Эйх
-                  </span>
-                </div>
-
-                <div class="dlg-item__msg">
-                  <span class="dlg-item__short-text">
-                    Привет! Как дела?
-                  </span>
-                </div>
-              </div>
-            </a>
-          </li>
         </ul>
+
+        <span class="sidebar__btn">
+          <a class="button button-accent button-big button-circle" id="dlg-conv-open"><i class="fas fa-plus"></i></a>
+        </span>
       </div>
 
       <div class="chat">
-        <div class="chat__header">
-          <div class="message-search">
-            <input class="chat-search__input" type="search" id="myDiv" placeholder="Поиск по истории сообщений" />
-            <div class="sbtn-box">
-              <button class="chat-seach__run" id="s-go" onclick="goSearch()"></button>
-            </div>
-            <div class="cbtn-box">
-              <button class="chat-seach__end" onclick="endSearch(); document.getElementById('myDiv').value = '';"></button>
-            </div>
-          </div>
-        </div>
-
-        <ul class="chat__dialogs-list">
-          <li class="chat__dialog chat__dialog_active">
-            <ul class="dialog">
-              <li class="dialog__meta">
-                <span>Сегодня</span>
-              </li>
-
-              <li class="dialog__wrap-msg dialog__wrap-msg_incoming">
-                <div class="dialog__msg dialog__msg_incoming">
-                  <span class="dialog__msg-text">
-                    Привет! Идешь на пары сегодня?
-                  </span>
-                </div>
-
-                <div class="dialog__msg-meta">
-                  <span>15:42</span>
-                </div>
-              </li>
-
-              <li class="dialog__wrap-msg dialog__wrap-msg_sent">
-                <div class="dialog__msg dialog__msg_sent">
-                  <span class="dialog__msg-text">
-                    Неа, лень :)
-                  </span>
-                </div>
-
-                <div class="dialog__msg-meta dialog__msg-meta_sent">
-                  <span>15:42</span>
-                </div>
-              </li>
-            </ul>
-          </li>
-        </ul>
+        <ul class="chat-list"></ul>
 
         <div class="chat__footer">
           <div class="msg-box">
@@ -217,11 +67,11 @@
 
           <div class="btn-box">
             <a href="#" class="btn-box__icon">
-              <img src="img/icons/attachment.png" alt="Добавить вложение">
+              <i class="far fa-smile"></i>
             </a>
 
             <a href="#" class="btn-box__icon">
-              <img src="img/icons/voice.png" alt="Запись голосового сообщения">
+              <i class="fas fa-plus"></i>
             </a>
           </div>
         </div>
@@ -231,6 +81,66 @@
 
       </div>
 
+      <div id="dlg-conv-modal" class="modal modal_conv">
+        <div class="modal-content">
+          <span class="input input_primary">
+            <input class="input-field input-field_primary"
+              id="dlg-conv-title"
+              type="text"
+              minlength=1
+              maxlength=20
+              required />
+            <label class="input-label input-label_primary">
+              <span class="input-label-content input-label-content_primary">Название беседы</span>
+            </label>
+          </span>
+
+          <span class="input input_primary">
+            <input class="input-field input-field_primary"
+              id="dlg-conv-description"
+              type="text"
+              minlength=4
+              required />
+            <label class="input-label input-label_primary">
+              <span class="input-label-content input-label-content_primary">Описание</span>
+            </label>
+          </span>
+
+          <span class="input input_primary">
+            <input class="input-field input-field_primary"
+              id="dlg-conv-members"
+              type="text"
+              minlength=4
+              required />
+            <label class="input-label input-label_primary">
+              <span class="input-label-content input-label-content_primary">Участники (через пробел)</span>
+            </label>
+          </span>
+
+          <span class="input input_transparent">
+            <a class="button button-accent button-big" id="dlg-conv-btn-create">Создать</a>
+          </span>
+
+          <span class="input input_transparent">
+            <a class="button button-accent button-big button-solid" id="dlg-conv-btn-cancel">Отменить</a>
+          </span>
+        </div>
+      </div>
+
+      <div id="settings-modal" class="modal modal_set">
+        <div class="modal-content">
+          <span class="settings__label">
+            Тема оформления:
+          </span>
+
+          <div class="setm-themes">
+            <a class="button button-solid" id="dlg-conv-btn-create" onclick="changeStyle('light');">Светлая</a>
+            <a class="button button-solid" id="dlg-conv-btn-create">Цветная</a>
+            <a class="button button-solid" id="dlg-conv-btn-create" onclick="changeStyle('dark');">Темная</a>
+            <a class="button button-solid" id="dlg-conv-btn-create" onclick="changeStyle('dark-blue');">Темно-синяя</a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </body>

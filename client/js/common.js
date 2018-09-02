@@ -34,15 +34,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 /* === Смена стиля == */
-function changeStyle() {
+function changeStyle(theme) {
+    let src;
+
+    if (theme === 'light') src = '';
+    else if (theme === 'dark') src = '/css/dark.min.css';
+    else if (theme === 'dark-blue') src = '/css/dark-blue.min.css'
+
     let p = document.head.getElementsByTagName('link');
     for (let i = 0; i < p.length; i++) {
-        if (p[i].href.indexOf('/css/darkStyle.css') !== -1) {
+        if (p[i].href.indexOf('/css/dark.min.css') !== -1
+            || p[i].href.indexOf('/css/dark-blue.min.css') !== -1) {
             document.head.removeChild(p[i]);
-            return;
+            break;
         }
     }
-    addCssToDom("../css/darkStyle.css")
+
+    if (src === '') {
+        return;
+    }
+
+    addCssToDom(src)
 }
 
 function addCssToDom(url) {
@@ -64,4 +76,8 @@ function flip() {
     } else {
         cssClasses.add(document.getElementById('auth-flip'), 'flip-on')
     }
+}
+
+function json(response) {
+    return response.json()
 }

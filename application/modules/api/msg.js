@@ -20,9 +20,9 @@ const receiver = async (methods, request, response) => {
             source.sendJSON(msg, response);
         }
 
-    } else if (request.method === 'POST')
+    } else if (request.method === 'POST') {
         if (!methods[1]) {
-            console.log('Не указан dlgID');
+            console.log('Не указан ID диалога');
             source.send404(response);
         }
 
@@ -56,7 +56,7 @@ const receiver = async (methods, request, response) => {
             msg.item.text = data;
         });
 
-    }else if (request.method === 'DELETE'){
+    } else if (request.method === 'DELETE'){
         if (!methods[1]) {
             console.log('err');
             source.send404(response);
