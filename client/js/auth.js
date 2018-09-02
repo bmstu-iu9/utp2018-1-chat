@@ -1,21 +1,21 @@
-// document.addEventListener('DOMContentLoaded', function () {
-//     /* === Событие нажатия на кнопку входа === */
-//     document.querySelector('#sign-in').onclick = () => {
-//         Auth.singin(
-//             document.querySelector('#in-login').value,
-//             document.querySelector('#in-password').value
-//         );
-//     };
+document.addEventListener('DOMContentLoaded', function() {
+    /* === Событие нажатия на кнопку входа === */
+    document.querySelector('#sign-in').onclick = () => {
+        Auth.singin(
+            document.querySelector('#in-login').value,
+            document.querySelector('#in-password').value
+        );
+    };
 
-//     /* === Событие нажатия на кнопку регистрации === */
-//     document.querySelector('#sign-up').onclick = () => {
-//         Auth.singup(
-//             document.querySelector('#up-login').value,
-//             document.querySelector('#up-password').value,
-//             document.querySelector('#up-confirm').value
-//         );
-//     };
-// });
+    /* === Событие нажатия на кнопку регистрации === */
+    document.querySelector('#sign-up').onclick = () => {
+        Auth.singup(
+            document.querySelector('#up-login').value,
+            document.querySelector('#up-password').value,
+            document.querySelector('#up-confirm').value
+        );
+    };
+});
 
 /* === Перключение формы авторизации === */
 function flip () {
