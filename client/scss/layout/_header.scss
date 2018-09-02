@@ -19,6 +19,7 @@
   display: grid;
   // grid-template: 1fr / 1fr;
   justify-content: center;
+  align-items: center;
 }
 
 .header-menu__toggle,
@@ -32,11 +33,10 @@
 }
 
 .header-menu__logo {
-  // width: 150px;
-}
-
-.header-menu__logo img {
-  height: 40px;
+  height: 45px;
+  width: 150px;
+  background: url(/img/logo/logo-full-black-blue.jpg) no-repeat center center;
+  background-size: cover;
 }
 
 .header-settings {
