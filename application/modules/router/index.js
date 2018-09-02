@@ -7,7 +7,7 @@ const api = require('api');
 const session = require('auth/session');
 const parser = require('utils/parser');
 
-const fileExtension = /.(css|js|png|jpg|gif|svg|mp4|wav|ttf|woff|eot)/;
+const fileExtension = /.(css|js|png|jpg|gif|svg|mp4|wav|ttf|woff|eot|otf)/;
 
 // TODO : Организация модуля
 class Router {
