@@ -3,9 +3,12 @@
 const source = require('router/source');
 const qs = require('querystring');
 
+const session = require('auth/session');
+
 const Database = require('db');
 const status = require('db/status');
 
+const parser = require('utils/parser');
 const generator = require('utils/generator');
 
 const receiver = async (methods, request, response) => {
@@ -19,7 +22,23 @@ const receiver = async (methods, request, response) => {
 
         if (methods[1] === '*') {
             const db = await Database.get();
-            source.sendJSON(await db.dialogs.getDialogs(), response);
+
+            let allDlgs = await db.dialogs.getDialogs();
+            let userDlgs = [];
+
+            session.checkSession(parser.parseCookie(request).session_token, response)
+            .then(data => {
+                if (data.flag === true) {
+                    allDlgs.forEach(dlg => {
+                        if (dlg.get('members').indexOf(data.login) != -1) {
+                            console.log('kek');
+                            userDlgs.push(dlg);
+                        }
+                    });
+                }
+
+                source.sendJSON(userDlgs, response);
+            });
         } else {
             source.sendJSON(await getDialog(methods[1]), response);
         }

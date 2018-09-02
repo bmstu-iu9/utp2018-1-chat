@@ -30,6 +30,7 @@ module.exports.checkSession = async (token, response) => {
 
             if (new Date().getTime() < new Date(doc.get('expires')).getTime()) {
                 return {
+                    login: doc.get('login'),
                     flag: true,
                     res: response
                 };
