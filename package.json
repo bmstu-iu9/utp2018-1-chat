@@ -5,9 +5,10 @@
     "homepage": "https://github.com/bmstu-iu9/utp2018-1-chat",
     "main": "./application/server.js",
     "scripts": {
-        "dev": "set NODE_ENV=dev && gulp",
+        "gulp": "gulp",
         "build": "set NODE_ENV=production && gulp build",
-        "production": "forever ./application/server.js"
+        "production": "forever ./application/server.js",
+        "start": "forever ./application/server.js",
     },
     "contributors": [
         "Arsen Gavrilenko (@senya-g)",

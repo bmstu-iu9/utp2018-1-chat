@@ -32,6 +32,12 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 }, false);
 
+function showSidebar() {
+    if (!cssClasses.has(document.querySelector('.sidebar'), 'sidebar_showed'))
+        cssClasses.add(document.querySelector('.sidebar'), 'sidebar_showed');
+    else
+        cssClasses.remove(document.querySelector('.sidebar'), 'sidebar_showed');
+}
 
 /* === Смена стиля == */
 function changeStyle(theme) {
