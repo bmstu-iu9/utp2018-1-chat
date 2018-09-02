@@ -1,0 +1,11 @@
+@media screen and (max-width: 440px) {
+  .header-menu {
+    grid-column: 2 / 7;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .header-menu {
+    grid-column: 2 / 8;
+  }
+}

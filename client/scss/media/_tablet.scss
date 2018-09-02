@@ -1,0 +1,46 @@
+@media screen and (max-width: 960px) {
+  .header-menu__toggle {
+    grid-column: 1 / 2;
+    display: grid;
+  }
+
+  .header-menu {
+    grid-column: 2 / 4;
+  }
+
+  .sidebar {
+    display: none;
+    grid-column: none;
+    position: absolute;
+    top: 65px;
+    left: 0;
+  }
+
+  .sidebar.sidebar_showed {
+    display: grid;
+  }
+
+  .sidebar__btn {
+    bottom: 110px;
+  }
+
+  .chat {
+    grid-column: 1 / -1;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .header-menu {
+    grid-column: 2 / 5;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .header-menu {
+    grid-column: 2 / 6;
+  }
+
+  .header-settings {
+    margin-right: 15px;
+  }
+}
