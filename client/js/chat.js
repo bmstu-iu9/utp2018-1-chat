@@ -14,17 +14,17 @@ let Chat = (function() {
 
     const _getDialogs = function() {
         return fetch(`/api/dialog/*`, {
-                method: 'GET'
-            })
-            .then(response => {
-                return response.json();
-            })
-            .then(data => {
-                return data;
-            })
-            .catch(error => {
-                throw new Error(`Request failed: ${error}`);
-            });
+            method: 'GET'
+        })
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {
+            return data;
+        })
+        .catch(error => {
+            throw new Error(`Request failed: ${error}`);
+        });
     };
 
     const _renderDialog = function(dlg) {
