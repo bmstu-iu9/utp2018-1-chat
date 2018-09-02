@@ -2,14 +2,16 @@
 
 <div align="center">
    <a href="https://github.com/webpack/webpack">
-     <img width="200" src="https://image.ibb.co/nfm5vK/logo_full_black_blue.jpg" alt="Gist">
-  </a>
+      <img width="200" src="https://image.ibb.co/nfm5vK/logo_full_black_blue.jpg" alt="Gist">
+   </a>
+   
+   <h1>Gist</h1>
+   <p>
+      Клиент-серверное приложение «Онлайн-чат», реализованное в рамках учебной практики, студентами первого курса кафедры ИУ9 МГТУ им. Баумана.
+   </p>
 </div>
 
-## Описание
-Клиент-серверное приложение «Онлайн-чат», реализованное в рамках учебной практики, студентами первого курса кафедры ИУ9 МГТУ им. Баумана.
-
-## Разработчики
+<h2 align="center">Разработчики</h2>
 * [Гавриленко Арсен](https://github.com/senya-g) (старший)
 * [Котова Ольга](https://github.com/volhamster)
 * [Климова Наталия](https://github.com/tataklim)
@@ -17,6 +19,28 @@
 * [Ростецкий Антон](https://github.com/AntonRostetskiy)
 * [Рыбаков Дмитрий](https://github.com/bulletmys)
 
-## Документация
+<h2 align="center">Документация</h2>
+<div align="center">
+   [Перейти на страницу с документацией](https://bmstu-iu9.github.io/utp2018-1-chat)
+</div>
 
-[Перейти на страницу с документацией](https://bmstu-iu9.github.io/utp2018-1-chat)
+<h2 align="center">Установка и использование</h2>
+Установка зависимостей
+```bash
+npm i
+```
+### Разработка
+Для запуска в режиме разработки используется команда:
+```
+npm run gulp
+```
+
+Сборка проекта
+```bash
+npm run build
+```
+
+Запуск
+```bash
+npm start
+```
