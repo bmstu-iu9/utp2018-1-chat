@@ -1,0 +1,401 @@
+<!DOCTYPE HTML>
+<html lang="">
+
+<head>
+  <meta charset="UTF-8">
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <title>Установка и использование · GitBook</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="description" content="">
+  <meta name="generator" content="GitBook 3.2.3">
+
+  <link rel="stylesheet" href="gitbook/style.css">
+
+  <link rel="stylesheet" href="gitbook/gitbook-plugin-api/api.css">
+
+  <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+
+  <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+
+  <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+
+  <link rel="stylesheet" href="gitbook/gitbook-plugin-theme-api/theme-api.css">
+
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+  <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+  <link rel="next" href="client/" />
+
+  <link rel="prev" href="developers.html" />
+
+</head>
+
+<body>
+
+  <div class="book">
+    <div class="book-summary">
+
+      <div id="book-search-input" role="search">
+        <input type="text" placeholder="Type to search" />
+      </div>
+
+      <nav role="navigation">
+
+        <ul class="summary">
+
+          <li class="chapter " data-level="1.1">
+
+            <a target="_blank" href="https://github.com/bmstu-iu9/utp2018-1-chat">
+
+
+                    Репозиторий
+
+                </a>
+
+          </li>
+          <li class="divider"></li>
+
+          <li class="chapter " data-level="1.2" data-path="./">
+
+            <a href="./">
+
+
+                    Введение
+
+                </a>
+
+            <ul class="articles">
+
+              <li class="chapter " data-level="1.2.1" data-path="developers.html">
+
+                <a href="developers.html">
+
+
+                    Разработчики
+
+                </a>
+
+              </li>
+
+              <li class="chapter active" data-level="1.2.2" data-path="usage.html">
+
+                <a href="usage.html">
+
+
+                    Установка и использование
+
+                </a>
+
+              </li>
+
+            </ul>
+
+          </li>
+
+          <li class="chapter " data-level="1.3" data-path="client/">
+
+            <a href="client/">
+
+
+                    Клиент
+
+                </a>
+
+          </li>
+
+          <li class="chapter " data-level="1.4" data-path="server/">
+
+            <a href="server/">
+
+
+                    Сервер
+
+                </a>
+
+          </li>
+
+          <li class="chapter " data-level="1.5" data-path="api/">
+
+            <a href="api/">
+
+
+                    API
+
+                </a>
+
+            <ul class="articles">
+
+              <li class="chapter " data-level="1.5.1" data-path="api/user.html">
+
+                <a href="api/user.html">
+
+
+                    Пользователь
+
+                </a>
+
+              </li>
+
+              <li class="chapter " data-level="1.5.2" data-path="api/session.html">
+
+                <a href="api/session.html">
+
+
+                    Сессии
+
+                </a>
+
+              </li>
+
+              <li class="chapter " data-level="1.5.3" data-path="api/dialog.html">
+
+                <a href="api/dialog.html">
+
+
+                    Диалоги
+
+                </a>
+
+              </li>
+
+              <li class="chapter " data-level="1.5.4" data-path="api/msg.html">
+
+                <a href="api/msg.html">
+
+
+                    Сообщения
+
+                </a>
+
+              </li>
+
+            </ul>
+
+          </li>
+
+        </ul>
+
+      </nav>
+
+    </div>
+
+    <div class="book-body">
+
+      <div class="body-inner">
+
+        <div class="book-header" role="navigation">
+
+          <!-- Title -->
+          <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Установка и использование</a>
+    </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <div id="book-search-results">
+              <div class="search-noresults">
+
+                <section class="normal markdown-section">
+
+                  <h1 id="&#x443;&#x441;&#x442;&#x430;&#x43D;&#x43E;&#x432;&#x43A;&#x430;-&#x438;-&#x438;&#x441;&#x43F;&#x43E;&#x43B;&#x44C;&#x437;&#x43E;&#x432;&#x430;&#x43D;&#x438;&#x435;">&#x423;&#x441;&#x442;&#x430;&#x43D;&#x43E;&#x432;&#x43A;&#x430; &#x438; &#x438;&#x441;&#x43F;&#x43E;&#x43B;&#x44C;&#x437;&#x43E;&#x432;&#x430;&#x43D;&#x438;&#x435;</h1>
+                  <h3 id="&#x443;&#x441;&#x442;&#x430;&#x43D;&#x43E;&#x432;&#x43A;&#x430;-&#x437;&#x430;&#x432;&#x438;&#x441;&#x438;&#x43C;&#x43E;&#x441;&#x442;&#x435;&#x439;">&#x423;&#x441;&#x442;&#x430;&#x43D;&#x43E;&#x432;&#x43A;&#x430; &#x437;&#x430;&#x432;&#x438;&#x441;&#x438;&#x43C;&#x43E;&#x441;&#x442;&#x435;&#x439;</h3>
+                  <pre><code class="lang-bash">npm i
+</code></pre>
+                  <h3 id="&#x440;&#x430;&#x437;&#x440;&#x430;&#x431;&#x43E;&#x442;&#x43A;&#x430;">&#x420;&#x430;&#x437;&#x440;&#x430;&#x431;&#x43E;&#x442;&#x43A;&#x430;</h3>
+                  <p>&#x414;&#x43B;&#x44F; &#x437;&#x430;&#x43F;&#x443;&#x441;&#x43A;&#x430; &#x432; &#x440;&#x435;&#x436;&#x438;&#x43C;&#x435; &#x440;&#x430;&#x437;&#x440;&#x430;&#x431;&#x43E;&#x442;&#x43A;&#x438; &#x438;&#x441;&#x43F;&#x43E;&#x43B;&#x44C;&#x437;&#x443;&#x435;&#x442;&#x441;&#x44F; &#x43A;&#x43E;&#x43C;&#x430;&#x43D;&#x434;&#x430;:</p>
+                  <pre><code>npm run gulp
+</code></pre>
+                  <p>&#x43B;&#x438;&#x431;&#x43E;, &#x432; &#x441;&#x43B;&#x443;&#x447;&#x430;&#x435;, &#x435;&#x441;&#x43B;&#x438; Gulp &#x443;&#x441;&#x442;&#x430;&#x43D;&#x43E;&#x432;&#x43B;&#x435;&#x43D; &#x433;&#x43B;&#x43E;&#x431;&#x430;&#x43B;&#x44C;&#x43D;&#x43E;:</p>
+                  <pre><code class="lang-bash">gulp
+</code></pre>
+                  <p>&#x412;&#x441;&#x435; &#x438;&#x437;&#x43C;&#x435;&#x43D;&#x435;&#x43D;&#x438;&#x44F; &#x431;&#x443;&#x434;&#x443;&#x442; &#x43E;&#x442;&#x441;&#x43B;&#x435;&#x436;&#x438;&#x432;&#x430;&#x442;&#x44C;&#x441;&#x44F;, &#x430;&#x432;&#x442;&#x43E;&#x43C;&#x430;&#x442;&#x438;&#x447;&#x435;&#x441;&#x43A;&#x430;&#x44F; &#x441;&#x431;&#x43E;&#x440;&#x43A;&#x430; &#x441;&#x442;&#x438;&#x43B;&#x435;&#x439; &#x438; &#x441;&#x43A;&#x440;&#x438;&#x43F;&#x442;&#x43E;&#x432;.</p>
+                  <p>&#x414;&#x43E;&#x441;&#x442;&#x443;&#x43F;&#x43D;&#x43E; &#x430;&#x432;&#x442;&#x43E;&#x43C;&#x430;&#x442;&#x438;&#x447;&#x435;&#x441;&#x43A;&#x43E;&#x435; &#x43E;&#x431;&#x43D;&#x43E;&#x432;&#x43B;&#x435;&#x43D;&#x438;&#x435; &#x441;&#x442;&#x440;&#x430;&#x43D;&#x438;&#x446;&#x44B; &#x432; &#x431;&#x440;&#x430;&#x443;&#x437;&#x435;&#x440;&#x435; &#x43F;&#x43E; &#x430;&#x434;&#x440;&#x435;&#x441;&#x443; <code>localhost:8081</code>.</p>
+                  <h3 id="&#x43F;&#x440;&#x43E;&#x434;&#x430;&#x43A;&#x448;&#x435;&#x43D;">&#x41F;&#x440;&#x43E;&#x434;&#x430;&#x43A;&#x448;&#x435;&#x43D;</h3>
+                  <p>&#x414;&#x43B;&#x44F; &#x441;&#x431;&#x43E;&#x440;&#x43A;&#x438; &#x43F;&#x440;&#x43E;&#x435;&#x43A;&#x442;&#x430; &#x438;&#x441;&#x43F;&#x43E;&#x43B;&#x44C;&#x437;&#x443;&#x435;&#x442;&#x441;&#x44F; &#x43A;&#x43E;&#x43C;&#x430;&#x43D;&#x434;&#x430;</p>
+                  <pre><code class="lang-bash">npm run build
+</code></pre>
+                  <p>&#x414;&#x43B;&#x44F; &#x437;&#x430;&#x43F;&#x443;&#x441;&#x43A;&#x430; &#x441;&#x43E;&#x431;&#x440;&#x430;&#x43D;&#x43D;&#x43E;&#x433;&#x43E; &#x43F;&#x440;&#x43E;&#x435;&#x43A;&#x442;&#x430;</p>
+                  <pre><code class="lang-bash">npm start
+</code></pre>
+
+                </section>
+
+              </div>
+              <div class="search-results">
+                <div class="has-results">
+
+                  <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+                  <ul class="search-results-list"></ul>
+
+                </div>
+                <div class="no-results">
+
+                  <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <script>
+      var gitbook = gitbook || [];
+      gitbook.push(function() {
+        gitbook.page.hasChanged({
+          "page": {
+            "title": "Установка и использование",
+            "level": "1.2.2",
+            "depth": 2,
+            "next": {
+              "title": "Клиент",
+              "level": "1.3",
+              "depth": 1,
+              "path": "client/README.md",
+              "ref": "client/README.md",
+              "articles": []
+            },
+            "previous": {
+              "title": "Разработчики",
+              "level": "1.2.1",
+              "depth": 2,
+              "path": "developers.md",
+              "ref": "developers.md",
+              "articles": []
+            },
+            "dir": "ltr"
+          },
+          "config": {
+            "gitbook": "*",
+            "theme": "default",
+            "variables": {},
+            "plugins": ["api", "theme-api", "livereload"],
+            "pluginsConfig": {
+              "livereload": {},
+              "search": {},
+              "lunr": {
+                "maxIndexSize": 1000000,
+                "ignoreSpecialCharacters": false
+              },
+              "fontsettings": {
+                "theme": "white",
+                "family": "sans",
+                "size": 2
+              },
+              "highlight": {},
+              "theme-api": {
+                "languages": [{
+                  "lang": "js",
+                  "name": "JavaScript",
+                  "default": true
+                }, {
+                  "lang": "go",
+                  "name": "Go"
+                }],
+                "split": true,
+                "theme": "dark"
+              },
+              "api": {},
+              "sharing": {
+                "facebook": true,
+                "twitter": true,
+                "google": false,
+                "weibo": false,
+                "instapaper": false,
+                "vk": false,
+                "all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+              },
+              "theme-default": {
+                "styles": {
+                  "website": "styles/website.css",
+                  "pdf": "styles/pdf.css",
+                  "epub": "styles/epub.css",
+                  "mobi": "styles/mobi.css",
+                  "ebook": "styles/ebook.css",
+                  "print": "styles/print.css"
+                },
+                "showLevel": false
+              }
+            },
+            "structure": {
+              "langs": "LANGS.md",
+              "readme": "README.md",
+              "glossary": "GLOSSARY.md",
+              "summary": "SUMMARY.md"
+            },
+            "pdf": {
+              "pageNumbers": true,
+              "fontSize": 12,
+              "fontFamily": "Arial",
+              "paperSize": "a4",
+              "chapterMark": "pagebreak",
+              "pageBreaksBefore": "/",
+              "margin": {
+                "right": 62,
+                "left": 62,
+                "top": 56,
+                "bottom": 56
+              }
+            },
+            "styles": {
+              "website": "styles/website.css",
+              "pdf": "styles/pdf.css",
+              "epub": "styles/epub.css",
+              "mobi": "styles/mobi.css",
+              "ebook": "styles/ebook.css",
+              "print": "styles/print.css"
+            }
+          },
+          "file": {
+            "path": "usage.md",
+            "mtime": "2018-09-02T11:20:22.955Z",
+            "type": "markdown"
+          },
+          "gitbook": {
+            "version": "3.2.3",
+            "time": "2018-09-02T11:21:16.632Z"
+          },
+          "basePath": ".",
+          "book": {
+            "language": ""
+          }
+        });
+      });
+    </script>
+  </div>
+
+  <script src="gitbook/gitbook.js"></script>
+  <script src="gitbook/theme.js"></script>
+
+  <script src="gitbook/gitbook-plugin-api/api.js"></script>
+
+  <script src="gitbook/gitbook-plugin-livereload/plugin.js"></script>
+
+  <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+
+  <script src="gitbook/gitbook-plugin-search/search.js"></script>
+
+  <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+
+  <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+
+  <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+
+  <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+
+  <script src="gitbook/gitbook-plugin-theme-api/theme-api.js"></script>
+
+</body>
+
+</html>

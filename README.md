@@ -1,14 +1,16 @@
-# Онлайн-чат [utp2018-1-chat]
+<div align="center">
+   <a href="https://github.com/webpack/webpack">
+      <img width="400" src="https://image.ibb.co/nfm5vK/logo_full_black_blue.jpg" alt="Gist">
+   </a>
+   <br>
+   <br>
+   <p>
+      Клиент-серверное приложение «Онлайн-чат», реализованное в рамках учебной практики, студентами первого курса кафедры ИУ9 МГТУ им. Н. Э. Баумана.
+   </p>
+</div>
 
-## Описание
-Веб-приложение онлайн-чат на Node.js.
+<h2 align="center">Разработчики</h2>
 
-#### Используемые инструменты и технологии:
-- Node.js
-- Gulp.js
-- RxDB (LevelDB)
-
-## Разработчики
 * [Гавриленко Арсен](https://github.com/senya-g) (старший)
 * [Котова Ольга](https://github.com/volhamster)
 * [Климова Наталия](https://github.com/tataklim)
@@ -16,18 +18,29 @@
 * [Ростецкий Антон](https://github.com/AntonRostetskiy)
 * [Рыбаков Дмитрий](https://github.com/bulletmys)
 
-## Использование
+<h2 align="center">Документация</h2>
+<div align="center">
+   <a href="https://bmstu-iu9.github.io/utp2018-1-chat">Перейти на страницу с документацией</a>
+</div>
 
-#### Установка зависимостей
+<h2 align="center">Установка и использование</h2>
+Установка зависимостей
+
 ```bash
 npm i
 ```
 
-#### Сборка и запуск приложения
+Сборка проекта
 ```bash
-# В режиме разработки
-npm run dev
-
-# В продакшен-версии
-npm run prod
+npm run build
 ```
+
+Запуск
+```bash
+npm start
+```
+
+<h2 align="center">Скриншоты</h2>
+<div align="center">
+   <p><img src="https://image.ibb.co/dwSWkK/chat_m.jpg" alt=""></p>
+</div>
