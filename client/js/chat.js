@@ -10,6 +10,8 @@ let Chat = (function () {
     let _dialogs = [];
     let _activeDialogID = '';
 
+    let _dialogsInputs = [];
+
     const _getDialogs = function () {
         return fetch(`/api/dialog/*`, {
             method: 'GET'
@@ -36,7 +38,7 @@ let Chat = (function () {
         dlgItemDOM.innerHTML = `\
             <a class="dlg-item"> \
                 <div class="dlg-item__meta"> \
-                    21:50 \
+                    ${dlg.get('messages')[dlg.get('messages').length - 1].options.split(' ')[4].slice(0, -3)} \
                 </div> \
                 \
                 <div class="dlg-item__photo"> \
@@ -61,10 +63,6 @@ let Chat = (function () {
                         } \
                       </span> \
                     </div> \
-                </div> \
-                \
-                <div class="dlg-item__label"> \
-                    5 \
                 </div> \
             </a>`;
 
@@ -115,7 +113,7 @@ let Chat = (function () {
                     </div> \
                     \
                     <div class="dialog__msg-meta"> \
-                      <span>${msg.options}</span> \
+                      <span>${msg.options.split(' ')[4].slice(0, -3)}</span> \
                     </div>`;
 
                 let el = document
@@ -155,6 +153,11 @@ let Chat = (function () {
         newDialog.then(data => {
             const nDlg = new Dialog(data);
             _dialogs.push(nDlg);
+            _dialogsInputs.push({
+                id: data['id'],
+                text: ''
+            });
+
             _renderDialog(nDlg);
         });
     };
@@ -206,38 +209,86 @@ let Chat = (function () {
         .catch(error => {
             console.log('Request failed', error);
         });
-    }
+    };
+
+    chat.getDialogsInput = function (id) {
+        let res;
+        _dialogsInputs.forEach(input => {
+            if (input['id'] === id) {
+                console.log(input['id'], input['text']);
+                res = input['text'];
+            }
+        });
+
+        return res;
+    };
+
+    chat.getDialogsI = function () {
+
+        return _dialogsInputs;
+    };
+
+    chat.updateDialogsInputs = function (id, value) {
+        console.log(id, value);
+        _dialogsInputs.forEach(input => {
+            if (input['id'] === id) {
+                input.text = value;
+            }
+        });
+    };
 
     chat.start = async function () {
         await _getDialogs().then(dialogs => {
             dialogs.forEach(data => {
                 _dialogs.push(new Dialog(JSON.stringify(data)));
+                _dialogsInputs.push({
+                    id: data['id'],
+                    text: ''
+                });
             });
         });
 
         _renderDialogs();
         _activeDialogID = _dialogs[0];
 
+        cssClasses.add(document.querySelector('.dialogs-list__dlg'), 'dialogs-list__dlg_active');
+
+        let updateDialogs = setInterval(() => {
+            _dialogs.forEach(dlg => {
+                dlg.update();
+            });
+        }, 2500);
     };
 
     return chat;
 })();
 
 function switchDialog(evt, dlg) {
+    Chat.updateDialogsInputs(
+        Chat.getActiveDialogID(),
+        document.querySelector('.msg-box .msg-box__input').value
+    );
+
+    Chat.setActiveDialogID(dlg);
+
+    console.log(Chat.getDialogsI());
     let tabContent = document.getElementsByClassName('chat-list__item');
     for (let i = 0; i < tabContent.length; i++)
         tabContent[i].style.display = 'none';
 
     let tabLinks = document.getElementsByClassName('dialogs-list__dlg');
     for (let i = 0; i < tabLinks.length; i++)
-        tabLinks[i].className = tabLinks[i].className.replace(' focus', '');
+        tabLinks[i].className = tabLinks[i].className.replace(' dialogs-list__dlg_active', '');
 
     document.getElementById(dlg).style.display = 'block';
-    evt.currentTarget.className += ' focus';
+    evt.currentTarget.className += ' dialogs-list__dlg_active';
 
-    Chat.setActiveDialogID(dlg);
-
-    // document.forms['messageField'].elements['message'].value = '';
+    const inputText = Chat.getDialogsInput(Chat.getActiveDialogID());
+    document.querySelector('.msg-box .msg-box__input').value = !inputText ? (
+        ''
+    ) : (
+        inputText
+    );
 }
 
 document.addEventListener('DOMContentLoaded', function () {

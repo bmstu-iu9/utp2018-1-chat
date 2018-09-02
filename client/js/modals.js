@@ -37,14 +37,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         let setopen = document.querySelector('.header-settings__link');
 
-        let setcancel = document.getElementById('settings-btn-cancel');
-
         setopen.onclick = function () {
             setm.style.display = "grid";
-        }
-
-        setcancel.onclick = function () {
-            setm.style.display = "none";
         }
 
         window.onclick = function (event) {
