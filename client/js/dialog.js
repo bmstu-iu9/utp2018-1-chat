@@ -24,7 +24,7 @@ class Dialog {
 
                 if (!hashCheck) {
                     this.data = data;
-                    
+
                     var dlgMode = document
                                         .getElementById(`${this.data['id']}`)
                                         .querySelector('.chat__dialogs-list');
@@ -63,7 +63,13 @@ class Dialog {
                                 </div> \
                                 \
                                 <div class="dialog__msg-meta"> \
-                                  <span>${msg.options.split(' ')[4].slice(0, -3)}</span> \
+                                    <span>
+                                        ${(msg.options) ? (
+                                            msg.options.split(' ')[4].slice(0, -3)
+                                        ) : (
+                                            ''
+                                        )}
+                                    </span> \
                                 </div>`;
 
                             let el = document

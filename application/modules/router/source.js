@@ -22,6 +22,7 @@ const mimeType = {
     'eot': 'application/vnd.ms-fontobject',
     'woff': 'application/font-woff',
     'woff2': 'application/font-woff2',
+    'otf': 'font/opentype',
 };
 
 const clientPath = path.join(__dirname, '..', '..', 'public');
