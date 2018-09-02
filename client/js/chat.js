@@ -38,7 +38,7 @@ let Chat = (function () {
         dlgItemDOM.innerHTML = `\
             <a class="dlg-item"> \
                 <div class="dlg-item__meta"> \
-                    21:50 \
+                    ${dlg.get('messages')[dlg.get('messages').length - 1].options.split(' ')[4].slice(0, -3)} \
                 </div> \
                 \
                 <div class="dlg-item__photo"> \
@@ -63,10 +63,6 @@ let Chat = (function () {
                         } \
                       </span> \
                     </div> \
-                </div> \
-                \
-                <div class="dlg-item__label"> \
-                    5 \
                 </div> \
             </a>`;
 
@@ -255,6 +251,8 @@ let Chat = (function () {
         _renderDialogs();
         _activeDialogID = _dialogs[0];
 
+        cssClasses.add(document.querySelector('.dialogs-list__dlg'), 'dialogs-list__dlg_active');
+
         let updateDialogs = setInterval(() => {
             _dialogs.forEach(dlg => {
                 dlg.update();
@@ -280,10 +278,10 @@ function switchDialog(evt, dlg) {
 
     let tabLinks = document.getElementsByClassName('dialogs-list__dlg');
     for (let i = 0; i < tabLinks.length; i++)
-        tabLinks[i].className = tabLinks[i].className.replace(' focus', '');
+        tabLinks[i].className = tabLinks[i].className.replace(' dialogs-list__dlg_active', '');
 
     document.getElementById(dlg).style.display = 'block';
-    evt.currentTarget.className += ' focus';
+    evt.currentTarget.className += ' dialogs-list__dlg_active';
 
     const inputText = Chat.getDialogsInput(Chat.getActiveDialogID());
     document.querySelector('.msg-box .msg-box__input').value = !inputText ? (
