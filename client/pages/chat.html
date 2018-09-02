@@ -31,9 +31,7 @@
   <div class="root">
     <div class="header">
       <div class="header-menu">
-        <div class="header-menu__logo">
-          <img src="img/logo/logo-full-black-blue.jpg" alt="">
-        </div>
+        <div class="header-menu__logo"></div>
       </div>
 
       <div class="header-settings">
@@ -61,20 +59,97 @@
 
         <div class="chat__footer">
           <div class="msg-box">
-            <input type="text" class="msg-box__input" 
+            <input type="text" class="msg-box__input"
                    placeholder="Введите сообщение...">
           </div>
 
 
           <div class="btn-box">
-            <a href="#" class="btn-box__icon" onclick="func()">
+            <a href="#" class="btn-box__icon" onmouseover="showEmoji()" onmouseout="hideEmoji()">
               <i class="far fa-smile"></i>
             </a>
-            <input type="file" id="dialog_window" name="photo" multiple accept="image/*, image/jpeg">
+            <div id="emoji" class="emoji-menu" onmouseover="showEmoji()" onmouseout="hideEmoji()">
+              <ul class="emoji-list">
+                <li><a onmousedown="putEmoji(this)">😀</a></li>
+                <li><a onmousedown="putEmoji(this)">😁</a></li>
+                <li><a onmousedown="putEmoji(this)">😂</a></li>
+                <li><a onmousedown="putEmoji(this)">😃</a></li>
+                <li><a onmousedown="putEmoji(this)">😄</a></li>
+                <li><a onmousedown="putEmoji(this)">😅</a></li>
+                <li><a onmousedown="putEmoji(this)">😆</a></li>
+                <li><a onmousedown="putEmoji(this)">😇</a></li>
+                <li><a onmousedown="putEmoji(this)">😈</a></li>
+                <li><a onmousedown="putEmoji(this)">😉</a></li>
+                <li><a onmousedown="putEmoji(this)">😊</a></li>
+                <li><a onmousedown="putEmoji(this)">😋</a></li>
+                <li><a onmousedown="putEmoji(this)">😌</a></li>
+                <li><a onmousedown="putEmoji(this)">😍</a></li>
+                <li><a onmousedown="putEmoji(this)">😎</a></li>
+                <li><a onmousedown="putEmoji(this)">😏</a></li>
+                <li><a onmousedown="putEmoji(this)">😐</a></li>
+                <li><a onmousedown="putEmoji(this)">😑</a></li>
+                <li><a onmousedown="putEmoji(this)">😒</a></li>
+                <li><a onmousedown="putEmoji(this)">😓</a></li>
+                <li><a onmousedown="putEmoji(this)">😔</a></li>
+                <li><a onmousedown="putEmoji(this)">😕</a></li>
+                <li><a onmousedown="putEmoji(this)">😖</a></li>
+                <li><a onmousedown="putEmoji(this)">😗</a></li>
+                <li><a onmousedown="putEmoji(this)">😘</a></li>
+                <li><a onmousedown="putEmoji(this)">😙</a></li>
+                <li><a onmousedown="putEmoji(this)">😚</a></li>
+                <li><a onmousedown="putEmoji(this)">😛</a></li>
+                <li><a onmousedown="putEmoji(this)">😜</a></li>
+                <li><a onmousedown="putEmoji(this)">😝</a></li>
+                <li><a onmousedown="putEmoji(this)">😞</a></li>
+                <li><a onmousedown="putEmoji(this)">😟</a></li>
+                <li><a onmousedown="putEmoji(this)">😠</a></li>
+                <li><a onmousedown="putEmoji(this)">😡</a></li>
+                <li><a onmousedown="putEmoji(this)">😢</a></li>
+                <li><a onmousedown="putEmoji(this)">😣</a></li>
+                <li><a onmousedown="putEmoji(this)">😤</a></li>
+                <li><a onmousedown="putEmoji(this)">😥</a></li>
+                <li><a onmousedown="putEmoji(this)">😦</a></li>
+                <li><a onmousedown="putEmoji(this)">😧</a></li>
+                <li><a onmousedown="putEmoji(this)">😨</a></li>
+                <li><a onmousedown="putEmoji(this)">😩</a></li>
+                <li><a onmousedown="putEmoji(this)">😪</a></li>
+                <li><a onmousedown="putEmoji(this)">😫</a></li>
+                <li><a onmousedown="putEmoji(this)">😬</a></li>
+                <li><a onmousedown="putEmoji(this)">😭</a></li>
+                <li><a onmousedown="putEmoji(this)">😮</a></li>
+                <li><a onmousedown="putEmoji(this)">😯</a></li>
+                <li><a onmousedown="putEmoji(this)">😰</a></li>
+                <li><a onmousedown="putEmoji(this)">😱</a></li>
+                <li><a onmousedown="putEmoji(this)">😲</a></li>
+                <li><a onmousedown="putEmoji(this)">😳</a></li>
+                <li><a onmousedown="putEmoji(this)">😴</a></li>
+                <li><a onmousedown="putEmoji(this)">😵</a></li>
+                <li><a onmousedown="putEmoji(this)">😶</a></li>
+                <li><a onmousedown="putEmoji(this)">😷</a></li>
+                <li><a onmousedown="putEmoji(this)">😸</a></li>
+                <li><a onmousedown="putEmoji(this)">😹</a></li>
+                <li><a onmousedown="putEmoji(this)">😺</a></li>
+                <li><a onmousedown="putEmoji(this)">😻</a></li>
+                <li><a onmousedown="putEmoji(this)">😼</a></li>
+                <li><a onmousedown="putEmoji(this)">😽</a></li>
+                <li><a onmousedown="putEmoji(this)">😾</a></li>
+                <li><a onmousedown="putEmoji(this)">😿</a></li>
 
-            <a href="#" class="btn-box__icon">
+                <li><a onmousedown="putEmoji(this)">💗</a></li>
+                <li><a onmousedown="putEmoji(this)">💘</a></li>
+                <li><a onmousedown="putEmoji(this)">💔</a></li>
+                <li><a onmousedown="putEmoji(this)">💕</a></li>
+                <li><a onmousedown="putEmoji(this)">💙</a></li>
+                <li><a onmousedown="putEmoji(this)">💚</a></li>
+                <li><a onmousedown="putEmoji(this)">💛</a></li>
+                <li><a onmousedown="putEmoji(this)">💜</a></li>
+              </ul>
+            </div>
+
+            <a href="#" class="btn-box__icon" onclick="func()">
               <i class="fas fa-plus"></i>
             </a>
+            <input type="file" id="dialog_window" name="photo" multiple accept="image/*, image/jpeg">
           </div>
         </div>
       </div>

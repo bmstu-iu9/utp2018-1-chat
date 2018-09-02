@@ -11,7 +11,8 @@
 }
 
 .header-menu__logo {
-  color: #fff;
+  background: url(/img/logo/logo-full-white-blue.png) no-repeat center center;
+  background-size: cover;
 }
 
 .burger-icon__line {
@@ -95,10 +96,41 @@
 }
 
 .modal {
-  background-color: rgba(14, 22, 33, 0.4);
+  background-color: rgba(14, 22, 33, 0.2);
 }
 
 .modal-content {
   background-color: #101921;
   border-color: #0e1621;
+}
+
+.button-accent {
+  background: #2b5278;
+  color: #fff;
+  box-shadow: 0 10px 36px rgba(43, 82, 120, 0.25), 0 4px 24px 0 rgba(43, 82, 120, 0.45);
+}
+
+.btn-box__icon {
+  color: #2b5278;
+}
+
+.input-field {
+  background: #fff;
+}
+
+.input-label {
+  color: #fff;
+}
+
+.input-label_primary::after,
+.input-label_primary::before {
+  border-color: #fff;
+}
+
+.input-field_primary {
+  color: #2b5278;
+}
+
+.chat__dialogs-list:empty:after {
+  color: #2b5278;
 }

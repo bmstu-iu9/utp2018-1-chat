@@ -35,10 +35,10 @@ let Auth = (function () {
     let auth = {};
 
     const _checkInput = (login, password, confirm) => {
-        //const reg = /[0-9a-zA-Z-_.]{6,}/;
+        const reg = /[0-9a-zA-Z-_.]{4,}/;
 
         if (!login || !password) return 1;
-        //if (!reg.test(login) || !reg.test(password)) return 2;
+        if (!reg.test(login) || !reg.test(password)) return 2;
         if (confirm !== undefined && password !== confirm) return 3;
 
         return 0;
@@ -47,7 +47,9 @@ let Auth = (function () {
     auth.singin = function (login, password) {
         const validation = _checkInput(login, password);
         if (validation !== 0) {
-            alert(validation);
+            if (validation === 1) alert('Введите логин и пароль для нового аккаунта.');
+            else if (validation === 2) alert('Логин и пароль должны состоять из маленьких или больших латинских букв, цифр, точки, дефиса или нижнего подчеркивания.');
+            else if (validation === 3) alert('Подтверждение пароля не совпадает');
             return;
         }
 
@@ -80,7 +82,9 @@ let Auth = (function () {
     auth.singup = function (login, password, cpassword) {
         const validation = _checkInput(login, password, cpassword);
         if (validation !== 0) {
-            alert(validation);
+            if (validation === 1) alert('Введите логин и пароль для нового аккаунта.');
+            else if (validation === 2) alert('Логин и пароль должны состоять из маленьких или больших латинских букв, цифр, точки, дефиса или нижнего подчеркивания (минимум 4 символа).');
+            else if (validation === 3) alert('Подтверждение пароля не совпадает');
             return;
         }
 
@@ -96,7 +100,7 @@ let Auth = (function () {
                 throw Error(response);
 
             response.json().then((status) => {
-                if (status === 'SUCCESS') {
+                if (status.status === 'SUCCESS') {
                     window.location.href = "http://localhost:8080";
                 } else {
                     alert(JSON.stringify(status));

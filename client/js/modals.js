@@ -13,6 +13,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         dlgccancel.onclick = function () {
+            document.getElementById("dlg-conv-title").value = '';
+            document.getElementById("dlg-conv-description").value = '';
+            document.getElementById("dlg-conv-members").value = '';
+            dlgcm.style.display = "none";
             dlgcm.style.display = "none";
         }
 
@@ -23,11 +27,23 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         document.getElementById("dlg-conv-btn-create").onclick = function () {
-            const dlgctitle = document.getElementById("dlg-conv-title").value;
-            const dlgcdescription = document.getElementById("dlg-conv-description").value;
-            const dlgcmembers = document.getElementById("dlg-conv-members").value + ` ${Chat.getThisUserByToken()}`;
+            Chat.getThisUserByToken().then(data => {
+                const dlgctitle = document.getElementById("dlg-conv-title").value;
+                const dlgcdescription = document.getElementById("dlg-conv-description").value;
+                const dlgcmembers = document.getElementById("dlg-conv-members").value + ` ${data.login}`;
 
-            Chat.createDialog('conversation', dlgctitle, dlgcdescription, 'default.jpg', dlgcmembers);
+                if (!dlgctitle || !dlgcdescription || !dlgcmembers) {
+                    alert('Необходимо заполнить все поля!');
+                    return;
+                }
+
+                Chat.createDialog('conversation', dlgctitle, dlgcdescription, 'default.jpg', dlgcmembers);
+            }).then(data => {
+                document.getElementById("dlg-conv-title").value = '';
+                document.getElementById("dlg-conv-description").value = '';
+                document.getElementById("dlg-conv-members").value = '';
+                dlgcm.style.display = "none";
+            });
         }
     })();
 
