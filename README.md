@@ -1,8 +1,6 @@
-# Онлайн-чат [utp2018-1-chat]
-
 <div align="center">
    <a href="https://github.com/webpack/webpack">
-      <img width="200" src="https://image.ibb.co/nfm5vK/logo_full_black_blue.jpg" alt="Gist">
+      <img width="400" src="https://image.ibb.co/nfm5vK/logo_full_black_blue.jpg" alt="Gist">
    </a>
    
    <h1>Gist</h1>
@@ -12,6 +10,7 @@
 </div>
 
 <h2 align="center">Разработчики</h2>
+
 * [Гавриленко Арсен](https://github.com/senya-g) (старший)
 * [Котова Ольга](https://github.com/volhamster)
 * [Климова Наталия](https://github.com/tataklim)
