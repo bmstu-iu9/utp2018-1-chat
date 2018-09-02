@@ -27,6 +27,11 @@ document.addEventListener('DOMContentLoaded', function () {
             const dlgcdescription = document.getElementById("dlg-conv-description").value;
             const dlgcmembers = document.getElementById("dlg-conv-members").value + ` ${Chat.getThisUserByToken()}`;
 
+            if (!dlgctitle || !dlgcdescription || !dlgcmembers) {
+                alert('Необходимо заполнить все поля!');
+                return;
+            }
+
             Chat.createDialog('conversation', dlgctitle, dlgcdescription, 'default.jpg', dlgcmembers);
         }
     })();
