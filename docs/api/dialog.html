@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-  <title>API · GitBook</title>
+  <title>Диалоги · GitBook</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="description" content="">
   <meta name="generator" content="GitBook 3.2.3">
@@ -28,9 +28,9 @@
   <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
   <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
-  <link rel="next" href="user.html" />
+  <link rel="next" href="msg.html" />
 
-  <link rel="prev" href="../server/" />
+  <link rel="prev" href="session.html" />
 
 </head>
 
@@ -118,7 +118,7 @@
 
           </li>
 
-          <li class="chapter active" data-level="1.5" data-path="./">
+          <li class="chapter " data-level="1.5" data-path="./">
 
             <a href="./">
 
@@ -151,7 +151,7 @@
 
               </li>
 
-              <li class="chapter " data-level="1.5.3" data-path="dialog.html">
+              <li class="chapter active" data-level="1.5.3" data-path="dialog.html">
 
                 <a href="dialog.html">
 
@@ -192,7 +192,7 @@
           <!-- Title -->
           <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >API</a>
+        <a href=".." >Диалоги</a>
     </h1>
         </div>
 
@@ -204,7 +204,100 @@
 
                 <section class="normal markdown-section">
 
-                  <h1 id="api">API</h1>
+                  <h1 id="&#x434;&#x438;&#x430;&#x43B;&#x43E;&#x433;&#x438;">&#x414;&#x438;&#x430;&#x43B;&#x43E;&#x433;&#x438;</h1>
+                  <p>
+                    <div class="api-container">
+                      <div class="api-header"><small class="get">GET</small>
+                        <h2 id="&#x43F;&#x43E;&#x43B;&#x443;&#x447;&#x435;&#x43D;&#x438;&#x435;-&#x434;&#x438;&#x430;&#x43B;&#x43E;&#x433;&#x430;">&#x41F;&#x43E;&#x43B;&#x443;&#x447;&#x435;&#x43D;&#x438;&#x435; &#x434;&#x438;&#x430;&#x43B;&#x43E;&#x433;&#x430;</h2><span>/api/dialog/:id</span></div>
+                      <div class="api-content">
+                        <div class="api-description">
+                          <p>&#x41F;&#x43E;&#x43B;&#x443;&#x447;&#x435;&#x43D;&#x438;&#x435; &#x434;&#x438;&#x430;&#x43B;&#x43E;&#x433;&#x430;.</p>
+                          <h3 id="&#x43F;&#x430;&#x440;&#x430;&#x43C;&#x435;&#x442;&#x440;&#x44B;">&#x41F;&#x430;&#x440;&#x430;&#x43C;&#x435;&#x442;&#x440;&#x44B;:</h3>
+                          <table>
+                            <thead>
+                              <tr>
+                                <th style="text-align:left">&#x41D;&#x430;&#x437;&#x432;&#x430;&#x43D;&#x438;&#x435;</th>
+                                <th style="text-align:left">&#x422;&#x438;&#x43F;</th>
+                                <th style="text-align:left">&#x41E;&#x43F;&#x438;&#x441;&#x430;&#x43D;&#x438;&#x435;</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td style="text-align:left"><strong>id</strong></td>
+                                <td style="text-align:left">string</td>
+                                <td style="text-align:left">ID &#x434;&#x438;&#x430;&#x43B;&#x43E;&#x433;&#x430;</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <h3 id="&#x43E;&#x442;&#x432;&#x435;&#x442;">&#x41E;&#x442;&#x432;&#x435;&#x442;:</h3>
+                          <p><strong><em>200 OK</em></strong></p>
+                          <p>&#x41F;&#x440;&#x438; &#x443;&#x441;&#x43F;&#x435;&#x448;&#x43D;&#x43E;&#x439; &#x43E;&#x431;&#x440;&#x430;&#x431;&#x43E;&#x442;&#x43A;&#x438; &#x437;&#x430;&#x43F;&#x440;&#x43E;&#x441;&#x430; &#x432;&#x43E;&#x437;&#x432;&#x440;&#x430;&#x449;&#x430;&#x435;&#x442;&#x441;&#x44F; &#x434;&#x438;&#x430;&#x43B;&#x43E;&#x433; &#x441; &#x43F;&#x435;&#x440;&#x435;&#x434;&#x430;&#x43D;&#x43D;&#x44B;&#x43C; id.</p>
+                          <pre><code class="lang-json">{
+    <span class="hljs-string">&quot;id&quot;</span>: string,
+    <span class="hljs-string">&quot;kind&quot;</span>: string,
+    <span class="hljs-string">&quot;title&quot;</span>: string,
+    <span class="hljs-string">&quot;description&quot;</span>: string,
+    <span class="hljs-string">&quot;avatar&quot;</span>: string,
+    <span class="hljs-string">&quot;date&quot;</span>: string,
+    <span class="hljs-string">&quot;members&quot;</span>: array,
+    <span class="hljs-string">&quot;messages&quot;</span>: array,
+    <span class="hljs-string">&quot;pinned&quot;</span>: number
+}
+</code></pre>
+                        </div>
+                      </div>
+                    </div>
+                  </p>
+                  <p>
+                    <div class="api-container">
+                      <div class="api-header"><small class="post">POST</small>
+                        <h2 id="&#x441;&#x43E;&#x437;&#x434;&#x430;&#x43D;&#x438;&#x435;-&#x434;&#x438;&#x430;&#x43B;&#x43E;&#x433;&#x430;">&#x421;&#x43E;&#x437;&#x434;&#x430;&#x43D;&#x438;&#x435; &#x434;&#x438;&#x430;&#x43B;&#x43E;&#x433;&#x430;</h2><span>/api/dialog</span></div>
+                      <div class="api-content">
+                        <div class="api-description">
+                          <p>&#x41F;&#x43E;&#x43B;&#x443;&#x447;&#x435;&#x43D;&#x438;&#x435; &#x43E;&#x441;&#x43D;&#x43E;&#x432;&#x43D;&#x43E;&#x439; &#x438;&#x43D;&#x444;&#x43E;&#x440;&#x43C;&#x430;&#x446;&#x438;&#x438; &#x43E; &#x43F;&#x43E;&#x43B;&#x44C;&#x437;&#x43E;&#x432;&#x430;&#x442;&#x435;&#x43B;&#x435;.</p>
+                          <h3 id="&#x43F;&#x430;&#x440;&#x430;&#x43C;&#x435;&#x442;&#x440;&#x44B;-body">&#x41F;&#x430;&#x440;&#x430;&#x43C;&#x435;&#x442;&#x440;&#x44B; [body]:</h3>
+                          <table>
+                            <thead>
+                              <tr>
+                                <th style="text-align:left">&#x41D;&#x430;&#x437;&#x432;&#x430;&#x43D;&#x438;&#x435;</th>
+                                <th style="text-align:left">&#x422;&#x438;&#x43F;</th>
+                                <th style="text-align:left">&#x41E;&#x43F;&#x438;&#x441;&#x430;&#x43D;&#x438;&#x435;</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td style="text-align:left"><strong>kind</strong></td>
+                                <td style="text-align:left">string</td>
+                                <td style="text-align:left">&#x422;&#x438;&#x43F; &#x434;&#x438;&#x430;&#x43B;&#x43E;&#x433;&#x430;</td>
+                              </tr>
+                              <tr>
+                                <td style="text-align:left"><strong>title</strong></td>
+                                <td style="text-align:left">string</td>
+                                <td style="text-align:left">&#x41D;&#x430;&#x437;&#x432;&#x430;&#x43D;&#x438;&#x435;</td>
+                              </tr>
+                              <tr>
+                                <td style="text-align:left"><strong>description</strong></td>
+                                <td style="text-align:left">string</td>
+                                <td style="text-align:left">&#x41E;&#x43F;&#x438;&#x441;&#x430;&#x43D;&#x438;&#x435;</td>
+                              </tr>
+                              <tr>
+                                <td style="text-align:left"><strong>avatar</strong></td>
+                                <td style="text-align:left">string</td>
+                                <td style="text-align:left">&#x418;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x435;</td>
+                              </tr>
+                              <tr>
+                                <td style="text-align:left"><strong>members</strong></td>
+                                <td style="text-align:left">array</td>
+                                <td style="text-align:left">&#x423;&#x447;&#x430;&#x441;&#x442;&#x43D;&#x438;&#x43A;&#x438;</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <h3 id="&#x43E;&#x442;&#x432;&#x435;&#x442;">&#x41E;&#x442;&#x432;&#x435;&#x442;:</h3>
+                          <p><strong><em>200 OK</em></strong></p>
+                        </div>
+                      </div>
+                    </div>
+                  </p>
 
                 </section>
 
@@ -236,23 +329,23 @@
       gitbook.push(function() {
         gitbook.page.hasChanged({
           "page": {
-            "title": "API",
-            "level": "1.5",
-            "depth": 1,
+            "title": "Диалоги",
+            "level": "1.5.3",
+            "depth": 2,
             "next": {
-              "title": "Пользователь",
-              "level": "1.5.1",
+              "title": "Сообщения",
+              "level": "1.5.4",
               "depth": 2,
-              "path": "api/user.md",
-              "ref": "api/user.md",
+              "path": "api/msg.md",
+              "ref": "api/msg.md",
               "articles": []
             },
             "previous": {
-              "title": "Сервер",
-              "level": "1.4",
-              "depth": 1,
-              "path": "server/README.md",
-              "ref": "server/README.md",
+              "title": "Сессии",
+              "level": "1.5.2",
+              "depth": 2,
+              "path": "api/session.md",
+              "ref": "api/session.md",
               "articles": []
             },
             "dir": "ltr"
@@ -339,8 +432,8 @@
             }
           },
           "file": {
-            "path": "api/README.md",
-            "mtime": "2018-09-02T10:55:56.045Z",
+            "path": "api/dialog.md",
+            "mtime": "2018-09-02T11:08:08.456Z",
             "type": "markdown"
           },
           "gitbook": {
