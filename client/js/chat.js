@@ -10,6 +10,8 @@ let Chat = (function () {
     let _dialogs = [];
     let _activeDialogID = '';
 
+    let _dialogsInputs = [];
+
     const _getDialogs = function () {
         return fetch(`/api/dialog/*`, {
             method: 'GET'
@@ -155,6 +157,11 @@ let Chat = (function () {
         newDialog.then(data => {
             const nDlg = new Dialog(data);
             _dialogs.push(nDlg);
+            _dialogsInputs.push({
+                id: data['id'],
+                text: ''
+            });
+
             _renderDialog(nDlg);
         });
     };
@@ -206,12 +213,42 @@ let Chat = (function () {
         .catch(error => {
             console.log('Request failed', error);
         });
-    }
+    };
+
+    chat.getDialogsInput = function (id) {
+        let res;
+        _dialogsInputs.forEach(input => {
+            if (input['id'] === id) {
+                console.log(input['id'], input['text']);
+                res = input['text'];
+            }
+        });
+
+        return res;
+    };
+
+    chat.getDialogsI = function () {
+
+        return _dialogsInputs;
+    };
+
+    chat.updateDialogsInputs = function (id, value) {
+        console.log(id, value);
+        _dialogsInputs.forEach(input => {
+            if (input['id'] === id) {
+                input.text = value;
+            }
+        });
+    };
 
     chat.start = async function () {
         await _getDialogs().then(dialogs => {
             dialogs.forEach(data => {
                 _dialogs.push(new Dialog(JSON.stringify(data)));
+                _dialogsInputs.push({
+                    id: data['id'],
+                    text: ''
+                });
             });
         });
 
@@ -229,6 +266,14 @@ let Chat = (function () {
 })();
 
 function switchDialog(evt, dlg) {
+    Chat.updateDialogsInputs(
+        Chat.getActiveDialogID(),
+        document.querySelector('.msg-box .msg-box__input').value
+    );
+
+    Chat.setActiveDialogID(dlg);
+
+    console.log(Chat.getDialogsI());
     let tabContent = document.getElementsByClassName('chat-list__item');
     for (let i = 0; i < tabContent.length; i++)
         tabContent[i].style.display = 'none';
@@ -240,9 +285,12 @@ function switchDialog(evt, dlg) {
     document.getElementById(dlg).style.display = 'block';
     evt.currentTarget.className += ' focus';
 
-    Chat.setActiveDialogID(dlg);
-
-    // document.forms['messageField'].elements['message'].value = '';
+    const inputText = Chat.getDialogsInput(Chat.getActiveDialogID());
+    document.querySelector('.msg-box .msg-box__input').value = !inputText ? (
+        ''
+    ) : (
+        inputText
+    );
 }
 
 document.addEventListener('DOMContentLoaded', function () {
