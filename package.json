@@ -6,9 +6,9 @@
     "main": "./application/server.js",
     "scripts": {
         "gulp": "gulp",
-        "build": "set NODE_ENV=production && gulp build",
+        "build": "gulp build",
         "production": "forever ./application/server.js",
-        "start": "forever ./application/server.js",
+        "start": "forever ./application/server.js"
     },
     "contributors": [
         "Arsen Gavrilenko (@senya-g)",
