@@ -38,7 +38,11 @@ let Chat = (function () {
         dlgItemDOM.innerHTML = `\
             <a class="dlg-item"> \
                 <div class="dlg-item__meta"> \
-                    ${dlg.get('messages')[dlg.get('messages').length - 1].options.split(' ')[4].slice(0, -3)} \
+                    ${(dlg.get('messages').length > 0) ? (
+                        dlg.get('messages')[dlg.get('messages').length - 1].options.split(' ')[4].slice(0, -3)
+                    ) : (
+                        ''
+                    )} \
                 </div> \
                 \
                 <div class="dlg-item__photo"> \

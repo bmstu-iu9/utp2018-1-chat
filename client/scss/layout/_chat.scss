@@ -1,7 +1,7 @@
 .chat {
   grid-column: 4 / -1;
   display: grid;
-  grid-template: 6vh calc(94vh - 140px) 75px/1fr;
+  grid-template: calc(100vh - 140px) 75px/1fr;
   background: #f3f6f9;
 }
 
@@ -152,10 +152,10 @@
   border-right: 1px solid #c5cfd9;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.15);
   z-index: 3;
-} 
+}
 
 .chat .chat__header .message-search{
-  grid-column-start: 6;  
+  grid-column-start: 6;
   grid-column-end: 13;
 
   display: inline-grid;
@@ -165,7 +165,7 @@
 .chat-search__input{
   display: block;
   height: calc(4vh);
-  margin-top: calc(1vh); 
+  margin-top: calc(1vh);
   grid-column-start: 1;
   grid-column-end: 4;
   border-radius: 15px;
@@ -180,7 +180,7 @@
   background:url(../img/search3.png) no-repeat;
   border: none;
 
-  cursor: pointer; 
+  cursor: pointer;
 }
 
 .chat-seach__end{
@@ -191,7 +191,7 @@
   background:url(../img/button1.png) no-repeat;
   border: none;
 
-  cursor: pointer; 
+  cursor: pointer;
 }
 
 .chat-seach__run:hover{
@@ -241,4 +241,53 @@
 
 #dialog_window{
     display: none;
+}
+
+.emoji-menu {
+  height: 200px;
+  width: 250px;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  z-index: 119;
+  right: -4px;
+  bottom: 31px;
+  border-radius: 4px;
+  box-shadow: 0 1px 20px 5px rgba(0,0,0,.1);
+  background-color: #ffffff;
+  border: 1px solid #c5d0db;
+  position: absolute;
+  margin-right: 146px;
+  margin-bottom: 50px;
+  visibility: hidden;
+  -o-transition: opacity 150ms ease-in-out, visibility 150ms ease-in-out 150ms;
+  transition: opacity 1500ms ease-in-out, visibility 150ms ease-in-out 150ms;
+  overflow-y: auto;
+  overflow-x: unset;
+}
+
+.emoji-font {
+  font-family: 'EmojiOneColor';
+}
+
+.emoji-menu_shown {
+  visibility: visible;
+  -o-transition: opacity 150ms ease-in-out, visibility 0ms ease-in-out 0ms;
+  transition: opacity 150ms ease-in-out, visibility 0ms ease-in-out 0ms;
+  opacity: 1;
+  filter: none;
+}
+
+.emoji-menu .emoji-list {
+  position: relative;
+}
+
+.emoji-list {
+  list-style-type: none;
+  margin: 5px;
+}
+
+.emoji-list li {
+  display: inline-block;
+  margin: 3px;
+  cursor: pointer;
 }
