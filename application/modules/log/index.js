@@ -12,10 +12,10 @@ module.exports.format = async (level, date, message) => {
 
 module.exports.info = async (msg) => {
     if (config['method'] == 'console') {
-        console.log('\x1b[36m%s\x1b[0m%s', '[INFO] ', `[${new Date().toUTCString()}] : ${msg}`)
+        console.log('\x1b[36m%s\x1b[0m%s', '[INFO] ', `[${new Date(new Date().getTime() + 3* 3600 * 1000).toUTCString()}] : ${msg}`)
     } else if (config['method'] == 'file') {
         fs.writeFile(config['wayForFile', '/n']);
-        fs.writeFile(config['wayForFile'], await format('Info', new Date().toUTCString(),msg), function(error){
+        fs.writeFile(config['wayForFile'], await format('Info', new Date(new Date().getTime() + 3* 3600 * 1000), msg), function(error){
             if(error) throw error;
         });
     }
@@ -27,7 +27,7 @@ module.exports.format = async (level, date, prefix, message) => {
 
 module.exports.pinfo = async (msg, prefix, col) => {
     if (config['method'] == 'console') {
-        let datee = new Date().toUTCString();
+        let datee = new Date(new Date().getTime() + 3* 3600 * 1000);
         let textt = '[Info]' + ' [' + datee + '] : ' + prefix.toUpperCase() + ' ' + msg;
         let a = 0;
         let splitText = textt.split(' ');
@@ -52,7 +52,7 @@ module.exports.pinfo = async (msg, prefix, col) => {
 
     } else if (config['method'] == 'file') {
         fs.writeFile(config['wayForFile', '/n']);
-        fs.writeFile(config['wayForFile'], await format('Info', new Date().toUTCString(), prefix, msg), function (error){
+        fs.writeFile(config['wayForFile'], await format('Info', new Date(new Date().getTime() + 3* 3600 * 1000).toUTCString(), prefix, msg), function (error){
             if(error) throw error;
         });
     }
@@ -61,11 +61,11 @@ module.exports.pinfo = async (msg, prefix, col) => {
 
 module.exports.error = async (msg) => {
     if (config['method'] == 'console') {
-        console.log('\x1b[31m%s\x1b[0m%s', '[ERROR] ', `[${new Date().toUTCString()}] : ${msg}`)
+        console.log('\x1b[31m%s\x1b[0m%s', '[ERROR] ', `[${new Date(new Date().getTime() + 3* 3600 * 1000).toUTCString()}] : ${msg}`)
 
     } else if (config['method'] == 'file') {
         fs.writeFile(config['wayForFile', '/n']);
-        fs.writeFile(config['wayForFile'], await format('Error', new Date().toUTCString(), msg), function(error) {
+        fs.writeFile(config['wayForFile'], await format('Error', new Date(new Date().getTime() + 3* 3600 * 1000).toUTCString(), msg), function(error) {
             if(error) throw error;
         });
     }
@@ -73,11 +73,11 @@ module.exports.error = async (msg) => {
 
 module.exports.warning = async (msg) => {
     if (config['method'] == 'console') {
-        console.log('\x1b[33m%s\x1b[0m%s', '[WARN] ', `[${new Date().toUTCString()}] : ${msg}`)
+        console.log('\x1b[33m%s\x1b[0m%s', '[WARN] ', `[${new Date(new Date().getTime() + 3* 3600 * 1000).toUTCString()}] : ${msg}`)
 
     } else if (config['method'] == 'file') {
         fs.writeFile(config['wayForFile', '/n']);
-        fs.writeFile(config['wayForFile'], await format('Warning', new Date().toUTCString(), msg), function (error) {
+        fs.writeFile(config['wayForFile'], await format('Warning', new Date(new Date().getTime() + 3* 3600 * 1000).toUTCString(), msg), function (error) {
             if(error) throw error;
         });
     }
@@ -85,11 +85,11 @@ module.exports.warning = async (msg) => {
 
 module.exports.trace= async (msg) => {
     if (config['method'] == 'console') {
-        console.log('\x1b[35m%s\x1b[0m%s', '[TRACE] ', `[${new Date().toUTCString()}] : ${msg}`)
+        console.log('\x1b[35m%s\x1b[0m%s', '[TRACE] ', `[${new Date(new Date().getTime() + 3* 3600 * 1000).toUTCString()}] : ${msg}`)
 
     } else if (config['method'] == 'file') {
         fs.writeFile(config['wayForFile', '/n']);
-        fs.writeFile(config['wayForFile'], await format('Warning', new Date().toUTCString(), msg), function (error) {
+        fs.writeFile(config['wayForFile'], await format('Warning', new Date(new Date().getTime() + 3* 3600 * 1000).toUTCString(), msg), function (error) {
             if(error) throw error;
         });
     }

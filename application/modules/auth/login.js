@@ -30,7 +30,7 @@ module.exports.signin = async (response, data) => {
             );
 
             if (postPassData.passHash === doc.get('password')) {
-                const now = new Date();
+                const now = new Date(new Date().getTime() + 3* 3600 * 1000);
 
                 return {
                     flag: true,

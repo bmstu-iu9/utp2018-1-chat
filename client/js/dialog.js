@@ -99,7 +99,7 @@ class Dialog {
                 'text'
             ),
             text: input,
-            options: [`${new Date().toUTCString()}`]
+            options: [`${new Date(new Date().getTime() + 3* 3600 * 1000).toUTCString()}`]
         };
 
         if (msg.kind === 'test' && !msg.text) {
@@ -130,6 +130,8 @@ class Dialog {
                 }
             });
         }
+
+        document.querySelector(".msg-box .msg-box__input").value = '';
     }
 
     render(msg) {
