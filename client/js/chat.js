@@ -343,3 +343,7 @@ function endSearch() {
 
     Array.from(sent_msgs).forEach(e => e.style.display = '');
 }
+
+function func() {
+    document.querySelector('#dialog_window').click();
+}
