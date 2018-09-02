@@ -95,7 +95,7 @@ const createCollections = async (db) => {
             async addMember(id, login) {
                 this.findOne(id)
                     .exec()
-                    .then(dlg => {
+                    .then(async (dlg) => {
                         let members = dlg.get('members');
                         members.push(login);
                         dlg.set('members', members);
@@ -109,7 +109,7 @@ const createCollections = async (db) => {
             async deleteMember(id, login) {
                 this.findOne(id)
                     .exec()
-                    .then(dlg => {
+                    .then(async (dlg) => {
                         dlg.set('members', dlg.get('members').unset(login));
                         await dlg.save();
                     })
@@ -121,7 +121,7 @@ const createCollections = async (db) => {
             async addMsg(dlgID, msgData) {
                 return this.findOne(dlgID)
                     .exec()
-                    .then(dlg => {
+                    .then(async (dlg) => {
                         if (!dlg) {
                             return status.NON_EXISTENT_OBJ;
                         } else {
