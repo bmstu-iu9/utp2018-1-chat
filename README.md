@@ -2,8 +2,7 @@
    <a href="https://github.com/webpack/webpack">
       <img width="400" src="https://image.ibb.co/nfm5vK/logo_full_black_blue.jpg" alt="Gist">
    </a>
-   
-   <h1>Gist</h1>
+
    <p>
       Клиент-серверное приложение «Онлайн-чат», реализованное в рамках учебной практики, студентами первого курса кафедры ИУ9 МГТУ им. Баумана.
    </p>
@@ -20,18 +19,14 @@
 
 <h2 align="center">Документация</h2>
 <div align="center">
-   [Перейти на страницу с документацией](https://bmstu-iu9.github.io/utp2018-1-chat)
+   <a href="https://bmstu-iu9.github.io/utp2018-1-chat">Перейти на страницу с документацией</a>
 </div>
 
 <h2 align="center">Установка и использование</h2>
 Установка зависимостей
+
 ```bash
 npm i
-```
-### Разработка
-Для запуска в режиме разработки используется команда:
-```
-npm run gulp
 ```
 
 Сборка проекта
@@ -43,3 +38,8 @@ npm run build
 ```bash
 npm start
 ```
+
+<h2 align="center">Скриншоты</h2>
+<div align="center">
+   <p><img src="https://image.ibb.co/dwSWkK/chat_m.jpg" alt=""></p>
+</div>
