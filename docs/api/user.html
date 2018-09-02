@@ -1,0 +1,592 @@
+<!DOCTYPE HTML>
+<html lang="">
+
+<head>
+  <meta charset="UTF-8">
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <title>Пользователь · GitBook</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="description" content="">
+  <meta name="generator" content="GitBook 3.2.3">
+
+  <link rel="stylesheet" href="../gitbook/style.css">
+
+  <link rel="stylesheet" href="../gitbook/gitbook-plugin-api/api.css">
+
+  <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+
+  <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+
+  <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+
+  <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-api/theme-api.css">
+
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+  <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+  <link rel="next" href="session.html" />
+
+  <link rel="prev" href="./" />
+
+</head>
+
+<body>
+
+  <div class="book">
+    <div class="book-summary">
+
+      <div id="book-search-input" role="search">
+        <input type="text" placeholder="Type to search" />
+      </div>
+
+      <nav role="navigation">
+
+        <ul class="summary">
+
+          <li class="chapter " data-level="1.1">
+
+            <a target="_blank" href="https://github.com/bmstu-iu9/utp2018-1-chat">
+
+
+                    Репозиторий
+
+                </a>
+
+          </li>
+          <li class="divider"></li>
+
+          <li class="chapter " data-level="1.2" data-path="../">
+
+            <a href="../">
+
+
+                    Введение
+
+                </a>
+
+            <ul class="articles">
+
+              <li class="chapter " data-level="1.2.1" data-path="../developers.html">
+
+                <a href="../developers.html">
+
+
+                    Разработчики
+
+                </a>
+
+              </li>
+
+              <li class="chapter " data-level="1.2.2" data-path="../usage.html">
+
+                <a href="../usage.html">
+
+
+                    Установка и использование
+
+                </a>
+
+              </li>
+
+            </ul>
+
+          </li>
+
+          <li class="chapter " data-level="1.3" data-path="../client/">
+
+            <a href="../client/">
+
+
+                    Клиент
+
+                </a>
+
+          </li>
+
+          <li class="chapter " data-level="1.4" data-path="../server/">
+
+            <a href="../server/">
+
+
+                    Сервер
+
+                </a>
+
+          </li>
+
+          <li class="chapter " data-level="1.5" data-path="./">
+
+            <a href="./">
+
+
+                    API
+
+                </a>
+
+            <ul class="articles">
+
+              <li class="chapter active" data-level="1.5.1" data-path="user.html">
+
+                <a href="user.html">
+
+
+                    Пользователь
+
+                </a>
+
+              </li>
+
+              <li class="chapter " data-level="1.5.2" data-path="session.html">
+
+                <a href="session.html">
+
+
+                    Сессии
+
+                </a>
+
+              </li>
+
+              <li class="chapter " data-level="1.5.3" data-path="dialog.html">
+
+                <a href="dialog.html">
+
+
+                    Диалоги
+
+                </a>
+
+              </li>
+
+              <li class="chapter " data-level="1.5.4" data-path="msg.html">
+
+                <a href="msg.html">
+
+
+                    Сообщения
+
+                </a>
+
+              </li>
+
+            </ul>
+
+          </li>
+
+        </ul>
+
+      </nav>
+
+    </div>
+
+    <div class="book-body">
+
+      <div class="body-inner">
+
+        <div class="book-header" role="navigation">
+
+          <!-- Title -->
+          <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Пользователь</a>
+    </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <div id="book-search-results">
+              <div class="search-noresults">
+
+                <section class="normal markdown-section">
+
+                  <h1 id="&#x43F;&#x43E;&#x43B;&#x44C;&#x437;&#x43E;&#x432;&#x430;&#x442;&#x435;&#x43B;&#x44C;">&#x41F;&#x43E;&#x43B;&#x44C;&#x437;&#x43E;&#x432;&#x430;&#x442;&#x435;&#x43B;&#x44C;</h1>
+                  <p>
+                    <div class="api-container">
+                      <div class="api-header"><small class="get">GET</small>
+                        <h2 id="&#x438;&#x43D;&#x444;&#x43E;&#x440;&#x43C;&#x430;&#x446;&#x438;&#x44F;-&#x43E;-&#x43F;&#x43E;&#x43B;&#x44C;&#x437;&#x43E;&#x432;&#x430;&#x442;&#x435;&#x43B;&#x435;">&#x418;&#x43D;&#x444;&#x43E;&#x440;&#x43C;&#x430;&#x446;&#x438;&#x44F; &#x43E; &#x43F;&#x43E;&#x43B;&#x44C;&#x437;&#x43E;&#x432;&#x430;&#x442;&#x435;&#x43B;&#x435;</h2><span>/api/user/:login</span></div>
+                      <div class="api-content">
+                        <div class="api-description">
+                          <p>&#x41F;&#x43E;&#x43B;&#x443;&#x447;&#x435;&#x43D;&#x438;&#x435; &#x43E;&#x441;&#x43D;&#x43E;&#x432;&#x43D;&#x43E;&#x439; &#x438;&#x43D;&#x444;&#x43E;&#x440;&#x43C;&#x430;&#x446;&#x438;&#x438; &#x43E; &#x43F;&#x43E;&#x43B;&#x44C;&#x437;&#x43E;&#x432;&#x430;&#x442;&#x435;&#x43B;&#x435;.</p>
+                          <h3 id="&#x43F;&#x430;&#x440;&#x430;&#x43C;&#x435;&#x442;&#x440;&#x44B;">&#x41F;&#x430;&#x440;&#x430;&#x43C;&#x435;&#x442;&#x440;&#x44B;:</h3>
+                          <table>
+                            <thead>
+                              <tr>
+                                <th style="text-align:left">&#x41D;&#x430;&#x437;&#x432;&#x430;&#x43D;&#x438;&#x435;</th>
+                                <th style="text-align:left">&#x422;&#x438;&#x43F;</th>
+                                <th style="text-align:left">&#x41E;&#x43F;&#x438;&#x441;&#x430;&#x43D;&#x438;&#x435;</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td style="text-align:left"><strong>login</strong></td>
+                                <td style="text-align:left">string</td>
+                                <td style="text-align:left">&#x41B;&#x43E;&#x433;&#x438;&#x43D; &#x43F;&#x43E;&#x43B;&#x44C;&#x437;&#x43E;&#x432;&#x430;&#x442;&#x435;&#x43B;&#x44F;</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <h3 id="&#x43E;&#x442;&#x432;&#x435;&#x442;">&#x41E;&#x442;&#x432;&#x435;&#x442;:</h3>
+                          <p><strong><em>200 OK</em></strong></p>
+                          <p>&#x41F;&#x440;&#x438; &#x443;&#x441;&#x43F;&#x435;&#x448;&#x43D;&#x43E;&#x439; &#x43E;&#x431;&#x440;&#x430;&#x431;&#x43E;&#x442;&#x43A;&#x438; &#x437;&#x430;&#x43F;&#x440;&#x43E;&#x441;&#x430; &#x432;&#x43E;&#x437;&#x432;&#x440;&#x430;&#x449;&#x430;&#x435;&#x442;&#x441;&#x44F; &#x43B;&#x43E;&#x433;&#x438;&#x43D; &#x43F;&#x43E;&#x43B;&#x44C;&#x437;&#x43E;&#x432;&#x430;&#x442;&#x435;&#x43B;&#x44F;, &#x434;&#x430;&#x442;&#x430; &#x440;&#x435;&#x433;&#x438;&#x441;&#x442;&#x440;&#x430;&#x446;&#x438;&#x438;, &#x438;&#x43C;&#x44F;, &#x444;&#x430;&#x43C;&#x438;&#x43B;&#x438;&#x44F;, &#x434;&#x430;&#x442;&#x430; &#x440;&#x43E;&#x436;&#x434;&#x435;&#x43D;&#x438;&#x44F;, &#x431;&#x438;&#x43E;&#x433;&#x440;&#x430;&#x444;&#x438;&#x44F;, &#x441;&#x43F;&#x438;&#x441;&#x43E;&#x43A; &#x434;&#x440;&#x443;&#x433;&#x435;&#x439; (&#x43A;&#x43E;&#x43D;&#x442;&#x430;&#x43A;&#x442;&#x43E;&#x432;), &#x441;&#x43F;&#x438;&#x441;&#x43E;&#x43A; &#x434;&#x438;&#x430;&#x43B;&#x43E;&#x433;&#x43E;&#x432; (&#x432; &#x43A;&#x43E;&#x442;&#x43E;&#x440;&#x44B;&#x445; &#x441;&#x43E;&#x441;&#x442;&#x43E;&#x438;&#x442; &#x43F;&#x43E;&#x43B;&#x44C;&#x437;&#x43E;&#x432;&#x430;&#x442;&#x435;&#x43B;&#x44C;), &#x441;&#x442;&#x430;&#x442;&#x443;&#x441; &#x432; &#x441;&#x435;&#x442;&#x438; (&#x43E;&#x43D;&#x43B;&#x430;&#x439;&#x43D;).</p>
+                          <pre><code class="lang-json">{
+    <span class="hljs-string">&quot;login&quot;</span>: <span class="hljs-string">&quot;admin&quot;</span>,
+    <span class="hljs-string">&quot;date&quot;</span>: <span class="hljs-string">&quot;01 &#x44F;&#x43D;&#x432;&#x430;&#x440;&#x44F; 1900&quot;</span>,
+    <span class="hljs-string">&quot;firstname&quot;</span>: <span class="hljs-string">&quot;&#x418;&#x43C;&#x44F;&quot;</span>,
+    <span class="hljs-string">&quot;lasttname&quot;</span>: <span class="hljs-string">&quot;&#x424;&#x430;&#x43C;&#x438;&#x43B;&#x438;&#x44F;&quot;</span>,
+    <span class="hljs-string">&quot;birthday&quot;</span>: <span class="hljs-string">&quot;13 &#x438;&#x44E;&#x43B;&#x44F; 1830&quot;</span>,
+    <span class="hljs-string">&quot;bio&quot;</span>: <span class="hljs-string">&quot;&#x411;&#x438;&#x43E;&#x433;&#x440;&#x430;&#x444;&#x438;&#x44F;&quot;</span>,
+    <span class="hljs-string">&quot;friends&quot;</span>: [
+        <span class="hljs-string">&quot;login_friend1&quot;</span>,
+        <span class="hljs-string">&quot;login_friend2&quot;</span>,
+        <span class="hljs-string">&quot;login_friend3&quot;</span>
+    ],
+    <span class="hljs-string">&quot;dialogs&quot;</span>: [
+        <span class="hljs-string">&quot;dlg_id1&quot;</span>,
+        <span class="hljs-string">&quot;dlg_id2&quot;</span>
+    ],
+    <span class="hljs-string">&quot;online&quot;</span>: <span class="hljs-literal">true</span>
+}
+</code></pre>
+                        </div>
+                      </div>
+                    </div>
+                  </p>
+                  <p>
+                    <div class="api-container">
+                      <div class="api-header"><small class="post">POST</small>
+                        <h2 id="&#x440;&#x435;&#x433;&#x438;&#x441;&#x442;&#x440;&#x430;&#x446;&#x438;&#x44F;-&#x43F;&#x43E;&#x43B;&#x44C;&#x437;&#x43E;&#x432;&#x430;&#x442;&#x435;&#x43B;&#x44F;">&#x420;&#x435;&#x433;&#x438;&#x441;&#x442;&#x440;&#x430;&#x446;&#x438;&#x44F; &#x43F;&#x43E;&#x43B;&#x44C;&#x437;&#x43E;&#x432;&#x430;&#x442;&#x435;&#x43B;&#x44F;</h2><span>/api/user</span></div>
+                      <div class="api-content">
+                        <div class="api-description">
+                          <h3 id="&#x43F;&#x430;&#x440;&#x430;&#x43C;&#x435;&#x442;&#x440;&#x44B;-body">&#x41F;&#x430;&#x440;&#x430;&#x43C;&#x435;&#x442;&#x440;&#x44B; [body]:</h3>
+                          <table>
+                            <thead>
+                              <tr>
+                                <th style="text-align:left">&#x41D;&#x430;&#x437;&#x432;&#x430;&#x43D;&#x438;&#x435;</th>
+                                <th style="text-align:left">&#x422;&#x438;&#x43F;</th>
+                                <th style="text-align:left">&#x41E;&#x43F;&#x438;&#x441;&#x430;&#x43D;&#x438;&#x435;</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td style="text-align:left"><strong>login</strong></td>
+                                <td style="text-align:left">string</td>
+                                <td style="text-align:left">&#x41B;&#x43E;&#x433;&#x438;&#x43D; &#x43F;&#x43E;&#x43B;&#x44C;&#x437;&#x43E;&#x432;&#x430;&#x442;&#x435;&#x43B;&#x44F;</td>
+                              </tr>
+                              <tr>
+                                <td style="text-align:left"><strong>password</strong></td>
+                                <td style="text-align:left">string</td>
+                                <td style="text-align:left">&#x41F;&#x430;&#x440;&#x43E;&#x43B;&#x44C; &#x43F;&#x43E;&#x43B;&#x44C;&#x437;&#x43E;&#x432;&#x430;&#x442;&#x435;&#x43B;&#x44F;</td>
+                              </tr>
+                              <tr>
+                                <td style="text-align:left"><strong>date</strong></td>
+                                <td style="text-align:left">string</td>
+                                <td style="text-align:left">&#x414;&#x430;&#x442;&#x430; &#x440;&#x435;&#x433;&#x438;&#x441;&#x442;&#x440;&#x430;&#x446;&#x438;&#x438; &#x432; UTC</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <h3 id="&#x43E;&#x442;&#x432;&#x435;&#x442;">&#x41E;&#x442;&#x432;&#x435;&#x442;:</h3>
+                          <p><strong><em>200 OK</em></strong></p>
+                        </div>
+                      </div>
+                    </div>
+                  </p>
+                  <p>
+                    <div class="api-container">
+                      <div class="api-header"><small class="put">PUT</small>
+                        <h2 id="&#x440;&#x435;&#x434;&#x430;&#x43A;&#x442;&#x438;&#x440;&#x43E;&#x432;&#x430;&#x43D;&#x438;&#x435;-&#x438;&#x43D;&#x444;&#x43E;&#x440;&#x43C;&#x430;&#x446;&#x438;&#x438;-&#x43E;-&#x43F;&#x43E;&#x43B;&#x44C;&#x437;&#x43E;&#x432;&#x430;&#x442;&#x435;&#x43B;&#x435;">&#x420;&#x435;&#x434;&#x430;&#x43A;&#x442;&#x438;&#x440;&#x43E;&#x432;&#x430;&#x43D;&#x438;&#x435; &#x438;&#x43D;&#x444;&#x43E;&#x440;&#x43C;&#x430;&#x446;&#x438;&#x438; &#x43E; &#x43F;&#x43E;&#x43B;&#x44C;&#x437;&#x43E;&#x432;&#x430;&#x442;&#x435;&#x43B;&#x435;</h2><span>/api/user</span></div>
+                      <div class="api-content">
+                        <div class="api-description">
+                          <h3 id="&#x43F;&#x430;&#x440;&#x430;&#x43C;&#x435;&#x442;&#x440;&#x44B;">&#x41F;&#x430;&#x440;&#x430;&#x43C;&#x435;&#x442;&#x440;&#x44B;:</h3>
+                          <table>
+                            <thead>
+                              <tr>
+                                <th style="text-align:left">&#x41D;&#x430;&#x437;&#x432;&#x430;&#x43D;&#x438;&#x435;</th>
+                                <th style="text-align:left">&#x422;&#x438;&#x43F;</th>
+                                <th style="text-align:left">&#x41E;&#x43F;&#x438;&#x441;&#x430;&#x43D;&#x438;&#x435;</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td style="text-align:left"><strong>login</strong></td>
+                                <td style="text-align:left">string</td>
+                                <td style="text-align:left">&#x41B;&#x43E;&#x433;&#x438;&#x43D; &#x43F;&#x43E;&#x43B;&#x44C;&#x437;&#x43E;&#x432;&#x430;&#x442;&#x435;&#x43B;&#x44F;</td>
+                              </tr>
+                              <tr>
+                                <td style="text-align:left">firstname</td>
+                                <td style="text-align:left">string</td>
+                                <td style="text-align:left">&#x418;&#x43C;&#x44F; &#x43F;&#x43E;&#x43B;&#x44C;&#x437;&#x43E;&#x432;&#x430;&#x442;&#x435;&#x43B;&#x44F;</td>
+                              </tr>
+                              <tr>
+                                <td style="text-align:left">lasttname</td>
+                                <td style="text-align:left">string</td>
+                                <td style="text-align:left">&#x424;&#x430;&#x43C;&#x438;&#x43B;&#x438;&#x44F; &#x43F;&#x43E;&#x43B;&#x44C;&#x437;&#x43E;&#x432;&#x430;&#x442;&#x435;&#x43B;&#x44F;</td>
+                              </tr>
+                              <tr>
+                                <td style="text-align:left">birthday</td>
+                                <td style="text-align:left">string</td>
+                                <td style="text-align:left">&#x414;&#x430;&#x442;&#x430; &#x440;&#x43E;&#x436;&#x434;&#x435;&#x43D;&#x438;&#x44F;</td>
+                              </tr>
+                              <tr>
+                                <td style="text-align:left">bio</td>
+                                <td style="text-align:left">string</td>
+                                <td style="text-align:left">&#x411;&#x438;&#x43E;&#x433;&#x440;&#x430;&#x444;&#x438;&#x44F; &#x43F;&#x43E;&#x43B;&#x44C;&#x437;&#x43E;&#x432;&#x430;&#x442;&#x435;&#x43B;&#x44F;</td>
+                              </tr>
+                              <tr>
+                                <td style="text-align:left">friends</td>
+                                <td style="text-align:left">string</td>
+                                <td style="text-align:left">&#x41C;&#x430;&#x441;&#x441;&#x438;&#x432; &#x434;&#x440;&#x443;&#x437;&#x435;&#x439; (&#x43A;&#x43E;&#x43D;&#x442;&#x430;&#x43A;&#x442;&#x43E;&#x432;)</td>
+                              </tr>
+                              <tr>
+                                <td style="text-align:left">dialogs</td>
+                                <td style="text-align:left">string</td>
+                                <td style="text-align:left">&#x41C;&#x430;&#x441;&#x441;&#x438;&#x432; &#x434;&#x438;&#x430;&#x43B;&#x43E;&#x433;&#x43E;&#x432;</td>
+                              </tr>
+                              <tr>
+                                <td style="text-align:left">online</td>
+                                <td style="text-align:left">boolean</td>
+                                <td style="text-align:left">&#x421;&#x442;&#x430;&#x442;&#x443;&#x441; &#x43F;&#x43E;&#x43B;&#x44C;&#x437;&#x43E;&#x432;&#x430;&#x442;&#x435;&#x43B;&#x44F;</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <h3 id="&#x43E;&#x442;&#x432;&#x435;&#x442;">&#x41E;&#x442;&#x432;&#x435;&#x442;:</h3>
+                          <p><strong><em>200 OK</em></strong></p>
+                        </div>
+                      </div>
+                    </div>
+                  </p>
+                  <p>
+                    <div class="api-container">
+                      <div class="api-header"><small class="delete">DELETE</small>
+                        <h2 id="&#x443;&#x434;&#x430;&#x43B;&#x435;&#x43D;&#x438;&#x435;-&#x43F;&#x43E;&#x43B;&#x44C;&#x437;&#x43E;&#x432;&#x430;&#x442;&#x435;&#x43B;&#x44F;">&#x423;&#x434;&#x430;&#x43B;&#x435;&#x43D;&#x438;&#x435; &#x43F;&#x43E;&#x43B;&#x44C;&#x437;&#x43E;&#x432;&#x430;&#x442;&#x435;&#x43B;&#x44F;</h2><span>/api/user</span></div>
+                      <div class="api-content">
+                        <div class="api-description">
+                          <h3 id="&#x43F;&#x430;&#x440;&#x430;&#x43C;&#x435;&#x442;&#x440;&#x44B;">&#x41F;&#x430;&#x440;&#x430;&#x43C;&#x435;&#x442;&#x440;&#x44B;:</h3>
+                          <table>
+                            <thead>
+                              <tr>
+                                <th style="text-align:left">&#x41D;&#x430;&#x437;&#x432;&#x430;&#x43D;&#x438;&#x435;</th>
+                                <th style="text-align:left">&#x422;&#x438;&#x43F;</th>
+                                <th style="text-align:left">&#x41E;&#x43F;&#x438;&#x441;&#x430;&#x43D;&#x438;&#x435;</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td style="text-align:left"><strong>login</strong></td>
+                                <td style="text-align:left">String</td>
+                                <td style="text-align:left">&#x41B;&#x43E;&#x433;&#x438;&#x43D; &#x43F;&#x43E;&#x43B;&#x44C;&#x437;&#x43E;&#x432;&#x430;&#x442;&#x435;&#x43B;&#x44F;</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <h3 id="&#x43E;&#x442;&#x432;&#x435;&#x442;">&#x41E;&#x442;&#x432;&#x435;&#x442;:</h3>
+                          <p><strong><em>200 OK</em></strong></p>
+                        </div>
+                      </div>
+                    </div>
+                  </p>
+
+                </section>
+
+              </div>
+              <div class="search-results">
+                <div class="has-results">
+
+                  <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+                  <ul class="search-results-list"></ul>
+
+                </div>
+                <div class="no-results">
+
+                  <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <script>
+      var gitbook = gitbook || [];
+      gitbook.push(function() {
+        gitbook.page.hasChanged({
+          "page": {
+            "title": "Пользователь",
+            "level": "1.5.1",
+            "depth": 2,
+            "next": {
+              "title": "Сессии",
+              "level": "1.5.2",
+              "depth": 2,
+              "path": "api/session.md",
+              "ref": "api/session.md",
+              "articles": []
+            },
+            "previous": {
+              "title": "API",
+              "level": "1.5",
+              "depth": 1,
+              "path": "api/README.md",
+              "ref": "api/README.md",
+              "articles": [{
+                "title": "Пользователь",
+                "level": "1.5.1",
+                "depth": 2,
+                "path": "api/user.md",
+                "ref": "api/user.md",
+                "articles": []
+              }, {
+                "title": "Сессии",
+                "level": "1.5.2",
+                "depth": 2,
+                "path": "api/session.md",
+                "ref": "api/session.md",
+                "articles": []
+              }, {
+                "title": "Диалоги",
+                "level": "1.5.3",
+                "depth": 2,
+                "path": "api/dialog.md",
+                "ref": "api/dialog.md",
+                "articles": []
+              }, {
+                "title": "Сообщения",
+                "level": "1.5.4",
+                "depth": 2,
+                "path": "api/msg.md",
+                "ref": "api/msg.md",
+                "articles": []
+              }]
+            },
+            "dir": "ltr"
+          },
+          "config": {
+            "gitbook": "*",
+            "theme": "default",
+            "variables": {},
+            "plugins": ["api", "theme-api", "livereload"],
+            "pluginsConfig": {
+              "livereload": {},
+              "search": {},
+              "lunr": {
+                "maxIndexSize": 1000000,
+                "ignoreSpecialCharacters": false
+              },
+              "fontsettings": {
+                "theme": "white",
+                "family": "sans",
+                "size": 2
+              },
+              "highlight": {},
+              "theme-api": {
+                "languages": [{
+                  "lang": "js",
+                  "name": "JavaScript",
+                  "default": true
+                }, {
+                  "lang": "go",
+                  "name": "Go"
+                }],
+                "split": true,
+                "theme": "dark"
+              },
+              "api": {},
+              "sharing": {
+                "facebook": true,
+                "twitter": true,
+                "google": false,
+                "weibo": false,
+                "instapaper": false,
+                "vk": false,
+                "all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+              },
+              "theme-default": {
+                "styles": {
+                  "website": "styles/website.css",
+                  "pdf": "styles/pdf.css",
+                  "epub": "styles/epub.css",
+                  "mobi": "styles/mobi.css",
+                  "ebook": "styles/ebook.css",
+                  "print": "styles/print.css"
+                },
+                "showLevel": false
+              }
+            },
+            "structure": {
+              "langs": "LANGS.md",
+              "readme": "README.md",
+              "glossary": "GLOSSARY.md",
+              "summary": "SUMMARY.md"
+            },
+            "pdf": {
+              "pageNumbers": true,
+              "fontSize": 12,
+              "fontFamily": "Arial",
+              "paperSize": "a4",
+              "chapterMark": "pagebreak",
+              "pageBreaksBefore": "/",
+              "margin": {
+                "right": 62,
+                "left": 62,
+                "top": 56,
+                "bottom": 56
+              }
+            },
+            "styles": {
+              "website": "styles/website.css",
+              "pdf": "styles/pdf.css",
+              "epub": "styles/epub.css",
+              "mobi": "styles/mobi.css",
+              "ebook": "styles/ebook.css",
+              "print": "styles/print.css"
+            }
+          },
+          "file": {
+            "path": "api/user.md",
+            "mtime": "2018-09-02T11:12:31.558Z",
+            "type": "markdown"
+          },
+          "gitbook": {
+            "version": "3.2.3",
+            "time": "2018-09-02T11:21:16.632Z"
+          },
+          "basePath": "..",
+          "book": {
+            "language": ""
+          }
+        });
+      });
+    </script>
+  </div>
+
+  <script src="../gitbook/gitbook.js"></script>
+  <script src="../gitbook/theme.js"></script>
+
+  <script src="../gitbook/gitbook-plugin-api/api.js"></script>
+
+  <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+
+  <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+
+  <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+
+  <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+
+  <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+
+  <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+
+  <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+
+  <script src="../gitbook/gitbook-plugin-theme-api/theme-api.js"></script>
+
+</body>
+
+</html>
