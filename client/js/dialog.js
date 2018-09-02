@@ -88,7 +88,7 @@ class Dialog {
     }
 
     send() {
-        const input = document.querySelector(".msg-box .msg-box__input").value;
+        const input = markdown(document.querySelector(".msg-box .msg-box__input").value);
         const hasAttachment = false;
 
         let msg = {
