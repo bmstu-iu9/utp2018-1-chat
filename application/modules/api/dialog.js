@@ -31,7 +31,6 @@ const receiver = async (methods, request, response) => {
                 if (data.flag === true) {
                     allDlgs.forEach(dlg => {
                         if (dlg.get('members').indexOf(data.login) != -1) {
-                            console.log('kek');
                             userDlgs.push(dlg);
                         }
                     });

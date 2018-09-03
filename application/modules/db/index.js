@@ -5,6 +5,8 @@ const path = require('path');
 const RxDB = require('rxdb');
 RxDB.plugin(require('pouchdb-adapter-leveldb'));
 
+const log = require('log');
+
 const status = require('db/status');
 
 const userSchema = require('db/models/user');
@@ -88,7 +90,7 @@ const createCollections = async (db) => {
                         return dialogs;
                     })
                     .catch(error => {
-                        console.log(error);
+                        log.error(error);
                     });
             },
 
@@ -102,7 +104,7 @@ const createCollections = async (db) => {
                         await dlg.save();
                     })
                     .catch(error => {
-                        console.log(error);
+                        log.error(error);
                     });
             },
 
@@ -143,7 +145,7 @@ const createCollections = async (db) => {
                         }
                     })
                     .catch(error => {
-                        console.log(error);
+                        log.error(error);
                     });
             }
         }
