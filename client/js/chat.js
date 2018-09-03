@@ -307,8 +307,16 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
+function startSearch() {
+    if (document.querySelector('.sidebar-search__input').value !== '') {
+        goSearch();
+    } else {
+        endSearch();
+    }
+}
+
 function goSearch() {
-    const req = document.getElementById('myDiv').value.toLowerCase();
+    const req = document.querySelector('.sidebar-search__input').value.toLowerCase();
 
     if (req === '') {
         alert("пустой поисковый запрос");
