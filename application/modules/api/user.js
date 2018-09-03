@@ -2,6 +2,8 @@
 
 const qs = require('querystring');
 
+const log = require('log');
+
 const Database = require('db');
 
 const receiver = async (methods, request, response) => {
@@ -9,7 +11,7 @@ const receiver = async (methods, request, response) => {
 
     if (request.method === 'GET') {
         if (!methods[1])
-            console.log('err');
+            log.error(`Не правильное обращение к методу (${request.url})`);
 
         let userInfo = getUserInfo(methods[1]);
 
@@ -39,9 +41,6 @@ const receiver = async (methods, request, response) => {
                     response.end(JSON.stringify(userr))
                 }
             });
-
-        // TODO : task #24.1
-
     } else if (request.method === 'POST') {
         let data = '';
         request.on('data', (chunk) => {
@@ -56,33 +55,6 @@ const receiver = async (methods, request, response) => {
         });
 
     } else if (request.method === 'PUT') {
-        // Не очень поняла, как доставать из куки инфу :(
-
-        const db = await Database.get();
-
-        let person = db.users.findOne(methods[1]);
-
-        let data = '';
-        request.on('data', (chunk) => {
-            data += chunk.toString();
-        });
-
-        request.on('end', () => {
-            data = qs.parse(data);
-            data.on('login', (anotherText1) =>{
-                person.login.type = anotherText1;
-            });
-
-            data.on('password', (anotherText2) =>{
-                person.password = anotherText2;
-            });
-
-            data.on('birthday', (anotherText3) =>{
-                person.birthday = anotherText3;
-            });
-
-        });
-
     } else if (request.method === 'DELETE') {
 
         const db = await Database.get();
@@ -109,14 +81,9 @@ const receiver = async (methods, request, response) => {
 
         await db.destroy();
     } else {
-        // error
         source.send404(response);
     }
 
 }
-
-const getUserInfo = (login) => {
-    // TODO : task #24.1
-};
 
 module.exports.receiver = receiver;

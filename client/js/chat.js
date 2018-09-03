@@ -144,7 +144,7 @@ let Chat = (function () {
             headers: {
                 "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
             },
-            body: `kind=${kind}&title=${title}&description=${description}&avatar=${avatar}&date=${new Date().toUTCString()}&members=${members}&`
+            body: `kind=${kind}&title=${title}&description=${description}&avatar=${avatar}&date=${new Date(new Date().getTime() + 3* 3600 * 1000).toUTCString()}&members=${members}&`
         })
         .then(json)
         .then(data => {

@@ -3,6 +3,8 @@
 const source = require('router/source');
 const qs = require('querystring');
 
+const log = require('log');
+
 const session = require('auth/session');
 
 const Database = require('db');
@@ -12,11 +14,9 @@ const parser = require('utils/parser');
 const generator = require('utils/generator');
 
 const receiver = async (methods, request, response) => {
-    console.log(methods);
-
     if (request.method === 'GET') {
         if (!methods[1]) {
-            console.log('err');
+            log.error(`Не правильное обращение к методу (${request.url})`);
             source.send404(response);
         }
 
@@ -62,7 +62,7 @@ const receiver = async (methods, request, response) => {
                 data.description,
                 data.avatar,
                 data.members.split(' '),
-                new Date().toUTCString()
+                new Date(new Date().getTime() + 3* 3600 * 1000)
             );
 
             source.sendJSON(JSON.stringify(newDialog), response);
@@ -71,13 +71,9 @@ const receiver = async (methods, request, response) => {
     } else if (request.method === 'PUT') {
 
         if (!methods[1]) {
-            console.log('err');
+            log.error(`Не правильное обращение к методу (${request.url})`);
             source.send404(response);
         }
-
-        const db = await Database.get();
-
-        let dlg = await db.dialogs.findOne(methods[1]);
 
         let data = '';
         request.on('data', (chunk) => {
@@ -85,31 +81,12 @@ const receiver = async (methods, request, response) => {
         });
 
         request.on('end', async () => {
-            data = qs.parse(data);
 
-            data.on('kind', (anotherText1) =>{
-                dlg.kind = anotherText1;
-            });
-            data.on('title', (anotherText2) =>{
-                dlg.title = anotherText2;
-            });
-            data.on('description', (anotherText3) =>{
-                dlg.description = anotherText3;
-            });
-            data.on('avatar', (anotherText4) =>{
-                dlg.avatar = anotherText4;
-            });
-            data.on('members', (anotherText5) =>{
-                dlg.members = anotherText5;
-            });
         });
-
-        await db.destroy();
-
     } else if (request.method === 'DELETE') {
 
         if (!methods[1]) {
-            console.log('err');
+            log.error(`Не правильное обращение к методу (${request.url})`);
             source.send404(response);
         }
 

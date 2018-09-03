@@ -4,18 +4,20 @@ const source = require('router/source');
 const parser = require('utils/parser')
 const qs = require('querystring');
 
+const log = require('log');
+
 const Database = require('db');
 const status = require('db/status');
 
 const receiver = async (methods, request, response) => {
     if (request.method === 'GET') {
         if (!methods[1]) {
-            console.log('Не указан id');
+            log.error(`Не правильное обращение к методу (${request.url})`);
             source.send404(response);
         }
 
         const db = await Database.get();
-        
+
         db.sessions.findOne(methods[1])
             .exec()
             .then((doc) => {
