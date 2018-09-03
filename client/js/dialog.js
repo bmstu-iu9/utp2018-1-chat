@@ -113,7 +113,7 @@ class Dialog {
                 const resStatus = fetch(`/api/msg/${this.data['id']}`, {
                     method: 'POST',
                     headers: {
-                        "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+                        'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
                     },
                     body: `kind=${msg['kind']}&text=${msg['text']}&author=${author['login']}&options=${msg['options']}`
                 })
@@ -131,7 +131,7 @@ class Dialog {
             });
         }
 
-        document.querySelector(".msg-box .msg-box__input").value = '';
+        document.querySelector('.msg-box .msg-box__input').value = '';
     }
 
     render(msg) {

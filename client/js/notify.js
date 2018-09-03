@@ -1,12 +1,12 @@
 'use strict'
 
 const tit = document.title;
-let snd = new Audio("../media/notify.wav");
+let snd = new Audio('../media/notify.wav');
 
 let changeTitle = function() {
     this.title = function () {
         let title = document.title;
-        document.title = (title === "New message" ? tit : "New message");
+        document.title = (title === 'New message' ? tit : 'New message');
     }
 };
 

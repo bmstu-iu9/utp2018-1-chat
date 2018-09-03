@@ -5,7 +5,7 @@
   let hasClass, addClass, removeClass;
 
   function classReg(className) {
-    return new RegExp("(^|\\s+)" + className + "(\\s+|$)");
+    return new RegExp('(^|\\s+)' + className + '(\\s+|$)');
   }
 
   if ('classList' in document.documentElement) {
