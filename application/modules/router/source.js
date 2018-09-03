@@ -5,6 +5,8 @@ const fs = require('fs');
 const os = require('os');
 const path = require('path');
 
+const log = require('log');
+
 const mimeType = {
     'gif': 'image/gif',
     'jpg': 'image/jpg',
@@ -35,6 +37,8 @@ class Source {
     }
 
     sendAsset(file, request, response) {
+        log.trace(`Выдачи ресурса (${file})`);
+
         this.file = request.url.substr(1);
 
         this.mime = mimeType[path.extname(request.url).substr(1)];
@@ -52,6 +56,8 @@ class Source {
     }
 
     sendPage(page, response) {
+        log.trace(`Выдача страницы (${page})`);
+
         const stream = fs.createReadStream(path.resolve(clientPath, 'pages', `${page}.html`));
 
         response.writeHead(200, {
@@ -74,6 +80,8 @@ class Source {
     }
 
     sendError(error, response) {
+        log.trace(`Выдача сообщения об ошибки`);
+
         response.writeHeader((error.code === 'ENOENT') ? 404 : 500, {
             'Content-Type': mimeType['html']
         });
@@ -82,6 +90,8 @@ class Source {
     }
 
     send404(response) {
+        log.trace(`Выдача сообщения об ошибки`);
+
         response.writeHead(404, {
             'Content-Type': mimeType['html']
         });

@@ -4,6 +4,8 @@ require('app-module-path').addPath(__dirname + '/modules');
 const http = require('http');
 const Router = require('router');
 
+const log = require('log');
+
 const Database = require('db');
 
 const port = 8080;
@@ -15,5 +17,5 @@ const server = http.createServer((request, response) => {
 });
 
 server.listen(port, 'localhost', () => {
-    console.log(`Сервер запущен: http://localhost:${port}`);
+    log.info(`Сервер запущен на localhost:${port}`);
 });

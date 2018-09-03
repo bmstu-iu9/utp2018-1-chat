@@ -4,13 +4,15 @@ const source = require('router/source');
 const parser = require('utils/parser')
 const qs = require('querystring');
 
+const log = require('log');
+
 const Database = require('db');
 const status = require('db/status');
 
 const receiver = async (methods, request, response) => {
     if (request.method === 'GET') {
         if (!methods[1]) {
-            console.log('Не указан id');
+            log.error(`Не правильное обращение к методу (${request.url})`);
             source.send404(response);
         }
 
@@ -22,7 +24,7 @@ const receiver = async (methods, request, response) => {
 
     } else if (request.method === 'POST') {
         if (!methods[1]) {
-            console.log('Не указан ID диалога');
+            log.error(`Не правильное обращение к методу (${request.url})`);
             source.send404(response);
         }
 
@@ -40,7 +42,7 @@ const receiver = async (methods, request, response) => {
 
     } else if (request.method === 'PUT') {
         if (!methods[1]) {
-            console.log('err');
+            log.error(`Не правильное обращение к методу (${request.url})`);
             source.send404(response);
         }
 
@@ -58,7 +60,7 @@ const receiver = async (methods, request, response) => {
 
     } else if (request.method === 'DELETE'){
         if (!methods[1]) {
-            console.log('err');
+            log.error(`Не правильное обращение к методу (${request.url})`);
             source.send404(response);
         }
 
@@ -69,7 +71,7 @@ const receiver = async (methods, request, response) => {
             .exec()
             .then(async (doc) => {
                 if (!doc) {
-                    console.log('err');
+                    log.error(`Попытка удалить несуществующее сообщение (${request.url})`);
                     source.send404(response);
                 } else {
                     await doc.remove();
