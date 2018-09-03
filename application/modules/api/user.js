@@ -7,8 +7,6 @@ const log = require('log');
 const Database = require('db');
 
 const receiver = async (methods, request, response) => {
-    console.log(methods);
-
     if (request.method === 'GET') {
         if (!methods[1])
             log.error(`Не правильное обращение к методу (${request.url})`);

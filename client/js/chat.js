@@ -142,7 +142,7 @@ let Chat = (function () {
         let newDialog = fetch(`/api/dialog`, {
             method: 'POST',
             headers: {
-                "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+                'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
             },
             body: `kind=${kind}&title=${title}&description=${description}&avatar=${avatar}&date=${new Date(new Date().getTime() + 3* 3600 * 1000).toUTCString()}&members=${members}&`
         })
@@ -188,7 +188,7 @@ let Chat = (function () {
 
     chat.getCookie = function (name) {
         let matches = document.cookie.match(new RegExp(
-            "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+            '(?:^|; )' + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + '=([^;]*)'
         ));
 
         return matches ? decodeURIComponent(matches[1]) : undefined;
@@ -319,10 +319,11 @@ function goSearch() {
     const req = document.querySelector('.sidebar-search__input').value.toLowerCase();
 
     if (req === '') {
-        alert("пустой поисковый запрос");
+        alert('Пустой запрос поиска');
+        return;
     } else {
-        const in_msgs = document.getElementsByClassName("dialog__wrap-msg dialog__wrap-msg_incoming");
-        const sent_msgs = document.getElementsByClassName("dialog__wrap-msg dialog__wrap-msg_sent");
+        const in_msgs = document.querySelector('.dialog__wrap-msg .dialog__wrap-msg_incoming');
+        const sent_msgs = document.querySelector('.dialog__wrap-msg .dialog__wrap-msg_sent');
 
         let counter = 0;
 
@@ -348,8 +349,8 @@ function goSearch() {
 }
 
 function endSearch() {
-    const in_msgs = document.getElementsByClassName("dialog__wrap-msg dialog__wrap-msg_incoming");
-    const sent_msgs = document.getElementsByClassName("dialog__wrap-msg dialog__wrap-msg_sent");
+    const in_msgs = document.querySelector('.dialog__wrap-msg .dialog__wrap-msg_incoming');
+    const sent_msgs = document.querySelector('.dialog__wrap-msg .dialog__wrap-msg_sent');
 
     Array.from(in_msgs).forEach(e => e.style.display = '');
 

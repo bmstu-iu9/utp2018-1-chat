@@ -65,18 +65,17 @@ let Auth = (function () {
                 throw Error(response);
 
             response.json().then((status) => {
-                //if (status === {"status":"SUCCESS"}) {
-                    window.location.href = "http://localhost:8080";
-                //} else {
-                    //alert(JSON.stringify(status));
-                //}
+                console.log(status.status);
+                if (status.status === 'SUCCESS') {
+                    window.location.href = 'http://localhost:8080';
+                } else {
+                    alert(JSON.stringify(status));
+                }
             });
         })
         .catch(error => {
             throw new Error(`Request failed: ${error}`);
         });
-
-
     };
 
     auth.singup = function (login, password, cpassword) {
@@ -91,7 +90,7 @@ let Auth = (function () {
         fetch(`/api/user/signup`, {
             method: 'POST',
             headers: {
-                "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+                'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
             },
             body: `up-login=${login}&up-password=${password}&up-confirm=${cpassword}`
         })
@@ -101,7 +100,8 @@ let Auth = (function () {
 
             response.json().then((status) => {
                 if (status.status === 'SUCCESS') {
-                    window.location.href = "http://localhost:8080";
+                    alert('Новый пользователь успешно зарегистрирован')
+                    window.location.href = 'http://localhost:8080';
                 } else {
                     alert(JSON.stringify(status));
                 }
