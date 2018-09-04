@@ -87,6 +87,7 @@
   color: #f5f5f5;
 }
 
+.dialog__msg-author,
 .dialog__msg-meta {
   color: #778697;
 }
@@ -137,4 +138,8 @@
 
 .settings__label {
   color: #Fff;
+}
+
+.dialogs-list::-webkit-scrollbar-thumb {
+  background: #2b5278;
 }
