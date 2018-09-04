@@ -14,6 +14,10 @@
 
 .chat__dialogs-list {
   position: relative;
+  padding: 0 30px;
+  overflow-y: scroll;
+  height: calc(100vh - 65px - 75px);
+  padding: 0 30px;
 }
 
 .chat__dialogs-list:empty:after {
@@ -27,7 +31,6 @@
 .chat-list__item {
   display: none;
   animation: fadeEffect 1.5s;
-  padding: 0 30px;
 }
 
 .chat-list__item:first-child {
@@ -49,6 +52,15 @@
 
 .dialog li:first-child {
   margin-top: 30px;
+}
+
+.dialog__msg-author {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+
+  color: #c1ccd8;
+  font-weight: 600;
+  font-size: .7rem;
 }
 
 .dialog__meta {
@@ -78,13 +90,18 @@
 }
 
 .dialog__wrap-msg_incoming {
+  grid-template: 15px auto / auto auto;
   justify-content: start;
   float: left;
 }
 
 .dialog__wrap-msg_sent {
   justify-content: end;
-  //float: right;
+}
+
+.dialog__wrap-msg_sent .dialog__msg-meta {
+  grid-column: 1;
+  grid-row: 1;
 }
 
 .dialog__msg {
@@ -120,7 +137,8 @@
   font-weight: 600;
   font-size: 0.7rem;
   padding: 0 20px;
-  //margin: 15px 0;
+  grid-column: 2 / -1;
+  grid-row: 2 / -1;
 }
 
 .dialog__wrap-msg_sent .dialog__msg-meta {
@@ -133,13 +151,18 @@
 }
 
 .dialog__msg_incoming {
+  grid-column: 1 / 2;
+  grid-row: 2 / -1;
+
   background: #fff;
   color: #000;
+  border-radius: 0 10px 10px 10px;
 }
 
 .dialog__msg_sent {
   background: main-colors('accent');
   color: #fff;
+  border-radius: 10px 0 10px 10px;
 }
 
 .chat .chat__header {
