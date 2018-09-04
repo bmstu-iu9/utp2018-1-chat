@@ -107,9 +107,10 @@ let Chat = (function () {
 
                 msgChatDOM.innerHTML = `\
                     ${isSent ? (
-                        '<div class="dialog__msg dialog__msg_sent">'
+                        `<div class="dialog__msg dialog__msg_sent">`
                     ) : (
-                        '<div class="dialog__msg dialog__msg_incoming">'
+                        `<span class="dialog__msg-author">${msg['author'] }</span> \
+                        <div class="dialog__msg dialog__msg_incoming">`
                     )} \
                         <span class="dialog__msg-text"> \
                             ${msg['text']} \
