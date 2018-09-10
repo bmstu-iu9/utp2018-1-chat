@@ -9,6 +9,6 @@ requireDir('./lib/gulp/tasks', { recurse: true });
 global.isProduction = false;
 
 gulp.task('dev', gulp.series('clean', 'server', 'watch'));
-gulp.task('build', gulp.series('clean', 'styles', 'scripts', 'images', 'html'));
+gulp.task('build', gulp.series('clean', 'styles', 'scripts', 'images', 'html', 'copy'));
 
 gulp.task('default', gulp.series('dev'));
