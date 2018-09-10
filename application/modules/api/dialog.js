@@ -61,7 +61,7 @@ const receiver = async (methods, request, response) => {
                 data.description,
                 data.avatar,
                 data.members.split(' '),
-                new Date(new Date().getTime() + 3* 3600 * 1000)
+                new Date(new Date().getTime() + 3* 3600 * 1000).toUTCString()
             );
 
             source.sendJSON(JSON.stringify(newDialog), response);
