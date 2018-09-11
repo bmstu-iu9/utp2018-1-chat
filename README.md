@@ -11,12 +11,12 @@
 
 <h2 align="center">Разработчики</h2>
 
-* [Гавриленко Арсен](https://github.com/senya-g) (старший)
-* [Котова Ольга](https://github.com/volhamster)
-* [Климова Наталия](https://github.com/tataklim)
-* [Бахметьев Глеб](https://github.com/sk8bored)
-* [Ростецкий Антон](https://github.com/AntonRostetskiy)
-* [Рыбаков Дмитрий](https://github.com/bulletmys)
+* Гавриленко Арсен ([senya-g](https://github.com/senya-g)) [старший]
+* Котова Ольга ([Volhamster](https://github.com/volhamster))
+* Климова Наталия ([Tataklim](https://github.com/tataklim))
+* Бахметьев Глеб ([sk8bored](https://github.com/sk8bored))
+* Ростецкий Антон ([AntonRostetskiy](https://github.com/AntonRostetskiy))
+* Рыбаков Дмитрий ([bulletmys](https://github.com/bulletmys))
 
 <h2 align="center">Документация</h2>
 <div align="center">
